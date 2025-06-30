@@ -1,21 +1,32 @@
-//: A UIKit based Playground for presenting user interface
-  
-import UIKit
+import SwiftUI
 import PlaygroundSupport
 
-class MyViewController : UIViewController {
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
+class LearningForChildViewModel: ObservableObject {
+  @Published var evenNum: [Int] = []
 
-        let label = UILabel()
-        label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
-        label.text = "Hello World!"
-        label.textColor = .black
-        
-        view.addSubview(label)
-        self.view = view
-    }
+  func generateEvenNumbers() {
+    evenNum = Array(1...10).filter { $0 % 2 == 0 }
+  }
 }
-// Present the view controller in the Live View window
-PlaygroundPage.current.liveView = MyViewController()
+
+struct LearningForChildView: View {
+  @StateObject var model: LearningForChildViewModel
+
+  init(model: LearningForChildViewModel = LearningForChildViewModel()) {
+    _model = StateObject(wrappedValue: model)
+  }
+
+  var body: some View {
+    VStack(spacing: 20) {
+      Text(model.evenNum.map { String($0) }.joined(separator: ", "))
+      Button("偶数を表示") {
+        model.generateEvenNumbers()
+      }
+    }
+    .padding()
+  }
+}
+
+PlaygroundPage.current.setLiveView(LearningForChildView())
+
+
