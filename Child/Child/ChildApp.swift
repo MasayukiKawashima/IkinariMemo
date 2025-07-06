@@ -13,7 +13,7 @@ import SwiftUI
 struct ChildApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          TopView()
         }
     }
 }
