@@ -10,6 +10,7 @@ import SwiftUI
 struct TopView: View {
 
 // MARK: Properties
+// iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
 
   private let titleHeightRatio: CGFloat = 0.11
   private let contentHeightRatio: CGFloat = 0.74
@@ -33,9 +34,8 @@ struct TopView: View {
 
         Spacer().frame(height: geometry.size.height * spacerHeightRatio)
 
-        Color.blue
+        TitleView()
           .frame(height: geometry.size.height * titleHeightRatio)
-          .overlay(Text("Title"))
 
         Color.gray
           .frame(height: geometry.size.height * contentHeightRatio)
