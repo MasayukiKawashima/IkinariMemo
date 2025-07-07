@@ -37,9 +37,9 @@ struct TopView: View {
         TitleView()
           .frame(height: geometry.size.height * titleHeightRatio)
 
-        Color.gray
+        ContentView()
           .frame(height: geometry.size.height * contentHeightRatio)
-          .overlay(Text("Content"))
+          
 
         Spacer().frame(height: geometry.size.height * spacerHeightRatio)
 
