@@ -105,7 +105,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5585B82E13B04400CF231E /* Build configuration list for PBXNativeTarget "Child" */;
 			buildPhases = (
-				FA609A3F2E19795E00C9DC9C /* Run SwiftLint */,
 				FA5585902E13B04200CF231E /* Sources */,
 				FA5585912E13B04200CF231E /* Frameworks */,
 				FA5585922E13B04200CF231E /* Resources */,
@@ -119,8 +118,6 @@
 				FA5585DC2E13B6F700CF231E /* Preview Content */,
 			);
 			name = Child;
-			packageProductDependencies = (
-			);
 			productName = Child;
 			productReference = FA5585942E13B04200CF231E /* Child.app */;
 			productType = "com.apple.product-type.application";
@@ -142,8 +139,6 @@
 				FA5585A72E13B04400CF231E /* ChildTests */,
 			);
 			name = ChildTests;
-			packageProductDependencies = (
-			);
 			productName = ChildTests;
 			productReference = FA5585A42E13B04400CF231E /* ChildTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -165,8 +160,6 @@
 				FA5585B12E13B04400CF231E /* ChildUITests */,
 			);
 			name = ChildUITests;
-			packageProductDependencies = (
-			);
 			productName = ChildUITests;
 			productReference = FA5585AE2E13B04400CF231E /* ChildUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -238,28 +231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		FA609A3F2E19795E00C9DC9C /* Run SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA5585902E13B04200CF231E /* Sources */ = {
