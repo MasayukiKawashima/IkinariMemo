@@ -8,6 +8,8 @@
 import Foundation
 
 class ContentViewModel: ObservableObject {
+  
+  // MARK: - Properties
 
   @Published var textContent: String = ""
 }

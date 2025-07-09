@@ -8,11 +8,97 @@
 import SwiftUI
 
 struct SideMenuView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  
+  // MARK: - Properties
+  
+  @StateObject var viewModel: SideMenuViewModel = SideMenuViewModel()
+  private let maxWidth = UIScreen.main.bounds.width
+  
+  // Iphone16Pro(Height: 874px)を基準に各レートを算出
+  // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
+  private let memoRowsHeightRatio: CGFloat = 0.0434
+  private let chevronRightIconHeightRatio: CGFloat = 0.0228
+  private let moreTextHeightRatio: CGFloat = 0.0228
+  private let gearshapeIconHeightRatio: CGFloat = 0.040
+  private let gearshapeIconTrailingPaddingRatio = 0.017
+  private let moreSectionFotterHeightRatio: CGFloat = 0.068
+  private let settingsSectionSpaceRatio: CGFloat = 0.0228
+  
+  
+  // MARK: - Body
+  
+  var body: some View {
+    ZStack {
+      GeometryReader { geometry in
+      Color.black
+        .edgesIgnoringSafeArea(.all)
+        .opacity(0.4)
+      ZStack {
+        
+        let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+        
+          List() {
+            
+            Section {
+              ForEach(viewModel.sideMenuMemoLists, id: \.self) { memo in
+                Text(memo)
+                  .frame(height: fullHeight * memoRowsHeightRatio)
+              }
+            }
+            
+            Section {
+              HStack {
+                Spacer()
+                HStack(spacing: 4) {
+                  Text("more")
+                    .font(.system(size: fullHeight * moreTextHeightRatio))
+                  Image(systemName: "chevron.right")
+                }
+                .font(.body)
+                .font(.system(size: fullHeight * chevronRightIconHeightRatio))
+                .foregroundStyle(.gray)
+              }
+              .listRowBackground(Color.clear)
+              .listRowSeparator(.hidden)
+            } footer: {
+              
+              // フッターを使って余白を作成
+              Spacer()
+                .frame(height: fullHeight * moreSectionFotterHeightRatio)
+            }
+            
+            Section {
+              VStack(spacing: fullHeight * settingsSectionSpaceRatio) {
+                Divider()
+                  .frame(height: 1.5)
+                  .background(Color.gray.opacity(0.4))
+                  .shadow(color: Color.black.opacity(0.4),
+                          radius: 4, x: 0, y: -2)
+                
+                HStack {
+                  Spacer()
+                  Image(systemName: "gearshape")
+                    .font(.system(size: fullHeight * gearshapeIconHeightRatio))
+                    .foregroundStyle(.gray)
+                    .padding(.trailing, fullHeight * gearshapeIconTrailingPaddingRatio)
+                }
+              }
+              .listRowInsets(EdgeInsets())
+              .listRowBackground(Color.clear)
+              .listRowSeparator(.hidden)
+            }
+          }
+          .scrollDisabled(true)
+          .listStyle(.grouped)
+          .frame(maxHeight: geometry.size.height)
+        }
+        .padding(.trailing, maxWidth/4)
+        .offset(x: 0)
+      }
     }
+  }
 }
 
 #Preview {
-    SideMenuView()
+  SideMenuView()
 }

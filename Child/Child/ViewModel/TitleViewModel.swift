@@ -8,6 +8,8 @@
 import Foundation
 
 class TitleViewModel: ObservableObject {
+  
+  // MARK: - Properties
 
   @Published var title: String = ""
 }
