@@ -29,7 +29,6 @@ struct SideMenuView: View {
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   
-  
   // MARK: - Body
   
   var body: some View {
@@ -93,9 +92,9 @@ struct SideMenuView: View {
                     }                  }) {
                     Image(systemName: "xmark")
                       .font(.system(size: fullHeight * xmarkIconHeightRatio))
-                      .padding(.trailing, fullHeight * xmarkIconTrailingPaddingRatio)
-                      .foregroundStyle(.gray)
                   }
+                    .buttonStyle(XmarkButtonColorStyle())
+                    .padding(.trailing, fullHeight * xmarkIconTrailingPaddingRatio)
                 }
               }
               .listRowInsets(EdgeInsets())
