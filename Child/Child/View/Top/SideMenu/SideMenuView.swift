@@ -37,6 +37,11 @@ struct SideMenuView: View {
         Color.black
           .edgesIgnoringSafeArea(.all)
           .opacity(isOpen ? 0.4 : 0)
+          .onTapGesture {
+            withAnimation(.linear(duration: 0.2)) {
+              isOpen.toggle()
+            }
+          }
         ZStack {
           
           let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
@@ -89,10 +94,10 @@ struct SideMenuView: View {
                   Button(action: {
                     withAnimation(.linear(duration: 0.2)) {
                       isOpen.toggle()
-                    }                  }) {
-                    Image(systemName: "xmark")
-                      .font(.system(size: fullHeight * xmarkIconHeightRatio))
-                  }
+                    } }) {
+                      Image(systemName: "xmark")
+                        .font(.system(size: fullHeight * xmarkIconHeightRatio))
+                    }
                     .buttonStyle(XmarkButtonColorStyle())
                     .padding(.trailing, fullHeight * xmarkIconTrailingPaddingRatio)
                 }
