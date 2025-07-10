@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TopView: View {
-
-// MARK: Properties
-// iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
+  
+  // MARK: Properties
+  
+  @StateObject private var viewModel: TopViewModel = TopViewModel()
+  
+  // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
   private let titleHeightRatio: CGFloat = 0.11
   private let contentHeightRatio: CGFloat = 0.66
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
@@ -18,20 +21,27 @@ struct TopView: View {
   private let adBannerHeight: CGFloat = 50
   private let sideMenuIconSidePaddingRatio: CGFloat = 0.024
   private let sideMenuIconSizeRatio: CGFloat = 0.036
-
-// MARK: Body
-
+  
+  // MARK: Body
+  
   var body: some View {
     GeometryReader { geometry in
       
       ZStack {
         VStack(spacing: 0) {
           HStack {
-            Image(systemName: "line.3.horizontal")
-              .font(.system(size: geometry.size.height * sideMenuIconSizeRatio , weight: .bold))
-              .padding(.leading, geometry.size.width * sideMenuIconSidePaddingRatio)
-              .padding(.trailing, geometry.size.width * sideMenuIconSidePaddingRatio)
-            //ハンバーガーメニューアイコンとTitleViewの余白を調整する
+            
+            Button(action: {
+              withAnimation(.linear(duration: 0.2)) {
+                viewModel.isSideMenuOpen.toggle()
+              }
+            }) {
+              Image(systemName: "line.3.horizontal")
+                .font(.system(size: geometry.size.height * sideMenuIconSizeRatio , weight: .bold))
+                .foregroundStyle(Color.black)
+                .padding(.leading, geometry.size.width * sideMenuIconSidePaddingRatio)
+                .padding(.trailing, geometry.size.width * sideMenuIconSidePaddingRatio)
+            }
             Spacer()
           }
           
@@ -50,7 +60,7 @@ struct TopView: View {
             .frame(height: adBannerHeight)
             .overlay(Text("Ad Banner"))
         }
-        SideMenuView()
+        SideMenuView(isOpen: $viewModel.isSideMenuOpen)
       }
     }
   }
