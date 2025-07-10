@@ -23,10 +23,11 @@ struct SideMenuView: View {
   private let chevronRightIconHeightRatio: CGFloat = 0.0228
   private let moreTextHeightRatio: CGFloat = 0.0228
   private let gearshapeIconHeightRatio: CGFloat = 0.040
-  private let gearshapeIconTrailingPaddingRatio = 0.017
+  private let gearshapeIconLeadingPaddingRatio = 0.017
+  private let xmarkIconHeightRatio: CGFloat = 0.040
+  private let xmarkIconTrailingPaddingRatio = 0.017
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
-  
   
   // MARK: - Body
   
@@ -36,6 +37,11 @@ struct SideMenuView: View {
         Color.black
           .edgesIgnoringSafeArea(.all)
           .opacity(isOpen ? 0.4 : 0)
+          .onTapGesture {
+            withAnimation(.linear(duration: 0.2)) {
+              isOpen.toggle()
+            }
+          }
         ZStack {
           
           let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
@@ -79,11 +85,21 @@ struct SideMenuView: View {
                           radius: 4, x: 0, y: -2)
                 
                 HStack {
-                  Spacer()
                   Image(systemName: "gearshape")
                     .font(.system(size: fullHeight * gearshapeIconHeightRatio))
                     .foregroundStyle(.gray)
-                    .padding(.trailing, fullHeight * gearshapeIconTrailingPaddingRatio)
+                    .padding(.leading, fullHeight * gearshapeIconLeadingPaddingRatio)
+                  Spacer()
+                  
+                  Button(action: {
+                    withAnimation(.linear(duration: 0.2)) {
+                      isOpen.toggle()
+                    } }) {
+                      Image(systemName: "xmark")
+                        .font(.system(size: fullHeight * xmarkIconHeightRatio))
+                    }
+                    .buttonStyle(XmarkButtonColorStyle())
+                    .padding(.trailing, fullHeight * xmarkIconTrailingPaddingRatio)
                 }
               }
               .listRowInsets(EdgeInsets())

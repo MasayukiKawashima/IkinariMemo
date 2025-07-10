@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SideMenuViewModel: ObservableObject {
   
   // MARK: - Properties
   
   @Published  var sideMenuMemoLists = ["メモ１", "メモ２", "メモ3", "メモ4", "メモ5", "メモ6", "メモ7", "メモ8"]
+  
 }
