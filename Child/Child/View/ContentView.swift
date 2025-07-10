@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-
+  
   @StateObject private var ViewModel: ContentViewModel = ContentViewModel()
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
-
-    var body: some View {
-      GeometryReader { geometry in
-        TextEditor(text: $ViewModel.textContent)
-          .padding(.leading, geometry.size.width * TextEditorSidePaddingRatio)
-          .padding(.trailing, geometry.size.width * TextEditorSidePaddingRatio)
-      }
+  
+  var body: some View {
+    GeometryReader { geometry in
+      TextEditor(text: $ViewModel.textContent)
+        .padding(.leading, geometry.size.width * TextEditorSidePaddingRatio)
+        .padding(.trailing, geometry.size.width * TextEditorSidePaddingRatio)
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }

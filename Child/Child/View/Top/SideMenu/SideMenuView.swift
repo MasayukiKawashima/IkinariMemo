@@ -12,6 +12,9 @@ struct SideMenuView: View {
   // MARK: - Properties
   
   @StateObject var viewModel: SideMenuViewModel = SideMenuViewModel()
+  
+  @Binding var isOpen: Bool
+  
   private let maxWidth = UIScreen.main.bounds.width
   
   // Iphone16Pro(Height: 874px)を基準に各レートを算出
@@ -30,13 +33,13 @@ struct SideMenuView: View {
   var body: some View {
     ZStack {
       GeometryReader { geometry in
-      Color.black
-        .edgesIgnoringSafeArea(.all)
-        .opacity(0.4)
-      ZStack {
-        
-        let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
-        
+        Color.black
+          .edgesIgnoringSafeArea(.all)
+          .opacity(isOpen ? 0.4 : 0)
+        ZStack {
+          
+          let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+          
           List() {
             
             Section {
@@ -93,12 +96,8 @@ struct SideMenuView: View {
           .frame(maxHeight: geometry.size.height)
         }
         .padding(.trailing, maxWidth/4)
-        .offset(x: 0)
+        .offset(x: isOpen ? 0 : -maxWidth)
       }
     }
   }
-}
-
-#Preview {
-  SideMenuView()
 }
