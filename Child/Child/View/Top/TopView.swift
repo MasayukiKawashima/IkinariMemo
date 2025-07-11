@@ -25,42 +25,44 @@ struct TopView: View {
   // MARK: Body
   
   var body: some View {
-    GeometryReader { geometry in
-      
-      ZStack {
-        VStack(spacing: 0) {
-          HStack {
-            
-            Button(action: {
-              withAnimation(.linear(duration: 0.2)) {
-                viewModel.isSideMenuOpen.toggle()
+    NavigationStack {
+      GeometryReader { geometry in
+        
+        ZStack {
+          VStack(spacing: 0) {
+            HStack {
+              
+              Button(action: {
+                withAnimation(.linear(duration: 0.2)) {
+                  viewModel.isSideMenuOpen.toggle()
+                }
+              }) {
+                Image(systemName: "line.3.horizontal")
+                  .font(.system(size: geometry.size.height * sideMenuIconSizeRatio , weight: .bold))
+                  .foregroundStyle(Color.black)
+                  .padding(.leading, geometry.size.width * sideMenuIconSidePaddingRatio)
+                  .padding(.trailing, geometry.size.width * sideMenuIconSidePaddingRatio)
               }
-            }) {
-              Image(systemName: "line.3.horizontal")
-                .font(.system(size: geometry.size.height * sideMenuIconSizeRatio , weight: .bold))
-                .foregroundStyle(Color.black)
-                .padding(.leading, geometry.size.width * sideMenuIconSidePaddingRatio)
-                .padding(.trailing, geometry.size.width * sideMenuIconSidePaddingRatio)
+              Spacer()
             }
-            Spacer()
+            
+            Spacer().frame(height: geometry.size.height * sideMenuIconBottomSpacerHeightRatio)
+            
+            TitleView()
+              .frame(height: geometry.size.height * titleHeightRatio)
+            
+            ContentView()
+              .frame(height: geometry.size.height * contentHeightRatio)
+            
+            
+            Spacer().frame(height: geometry.size.height * contentViewBottomSpacerHeightRatio)
+            
+            Color.yellow
+              .frame(height: adBannerHeight)
+              .overlay(Text("Ad Banner"))
           }
-          
-          Spacer().frame(height: geometry.size.height * sideMenuIconBottomSpacerHeightRatio)
-          
-          TitleView()
-            .frame(height: geometry.size.height * titleHeightRatio)
-          
-          ContentView()
-            .frame(height: geometry.size.height * contentHeightRatio)
-          
-          
-          Spacer().frame(height: geometry.size.height * contentViewBottomSpacerHeightRatio)
-          
-          Color.yellow
-            .frame(height: adBannerHeight)
-            .overlay(Text("Ad Banner"))
+          SideMenuView(isOpen: $viewModel.isSideMenuOpen)
         }
-        SideMenuView(isOpen: $viewModel.isSideMenuOpen)
       }
     }
   }
