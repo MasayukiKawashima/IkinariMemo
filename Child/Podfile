@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '16.0'
+
+target 'Child' do
+
+  pod 'RealmSwift'
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Child
+
+  target 'ChildTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ChildUITests' do
+    # Pods for testing
+  end
+
+end
