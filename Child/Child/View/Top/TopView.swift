@@ -65,6 +65,8 @@ struct TopView: View {
         }
       }
     }
+    .navigationBarHidden(true)
+    .accentColor(.gray)
   }
 }
 
