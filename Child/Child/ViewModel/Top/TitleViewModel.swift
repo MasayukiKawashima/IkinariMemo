@@ -14,7 +14,8 @@ class TitleViewModel: ObservableObject {
   
   @Published var title: String = "" {
     didSet {
-      guard title != oldValue else { return } // 前回と同じ値ならスキップ
+      // 前回と同じ値ならスキップ
+      guard title != oldValue else { return } 
       saveTitle()
     }
   }
@@ -26,7 +27,9 @@ class TitleViewModel: ObservableObject {
   
   init() {
     realm = try! Realm()
-    loadTitle()
+//    loadTitle()
+    let result = realm.objects(UserMemo.self)
+    print(result)
   }
   
   // MARK: - Methods
@@ -45,7 +48,8 @@ class TitleViewModel: ObservableObject {
       try? realm.write {
         userMemo.title = title
       }
-    } else {
+    } else
+    {
       let newMemo = UserMemo()
       newMemo.title = title
       try? realm.write {
