@@ -6,21 +6,30 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContentView: View {
   
-  @StateObject private var ViewModel: ContentViewModel = ContentViewModel()
+  @ObservedRealmObject var currentUserMemo: UserMemo
+  @StateObject private var viewModel: ContentViewModel
+  
+  init(currentUserMemo: UserMemo) {
+    _viewModel = StateObject(wrappedValue: ContentViewModel(currentUserMemo: currentUserMemo))
+    self.currentUserMemo = currentUserMemo
+  }
+  
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   
   var body: some View {
     GeometryReader { geometry in
-      TextEditor(text: $ViewModel.textContent)
-        .padding(.leading, geometry.size.width * TextEditorSidePaddingRatio)
-        .padding(.trailing, geometry.size.width * TextEditorSidePaddingRatio)
+      TextEditor(text: $viewModel.textContent)
+        .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
     }
   }
 }
 
+
 #Preview {
-  ContentView()
+  let previewData = UserMemo()
+  ContentView(currentUserMemo: previewData)
 }

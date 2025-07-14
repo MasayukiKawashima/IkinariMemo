@@ -48,11 +48,11 @@ struct TopView: View {
             
             Spacer().frame(height: geometry.size.height * sideMenuIconBottomSpacerHeightRatio)
             
-            TitleView()
-              .frame(height: geometry.size.height * titleHeightRatio)
-            
-            ContentView()
-              .frame(height: geometry.size.height * contentHeightRatio)
+            TitleView(currentUserMemo: viewModel.currentUserMemo)
+                .frame(height: geometry.size.height * titleHeightRatio)
+              
+            ContentView(currentUserMemo: viewModel.currentUserMemo)
+                .frame(height: geometry.size.height * contentHeightRatio)
             
             
             Spacer().frame(height: geometry.size.height * contentViewBottomSpacerHeightRatio)

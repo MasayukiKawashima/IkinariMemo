@@ -6,25 +6,31 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct TitleView: View {
   
-  @StateObject private var viewModel: TitleViewModel = TitleViewModel()
-  // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
+  @ObservedRealmObject var currentUserMemo: UserMemo
+  @StateObject private var viewModel: TitleViewModel
+  
+  init(currentUserMemo: UserMemo) {
+    _viewModel = StateObject(wrappedValue: TitleViewModel(currentUserMemo: currentUserMemo))
+    self.currentUserMemo = currentUserMemo
+    }
   private let titleTextSizeRatio: CGFloat = 0.074
   private let TextFieldSidePaddingRatio: CGFloat = 0.024
   
   var body: some View {
     GeometryReader { geometry in
-      
       TextField("Title", text: $viewModel.title)
         .font(.system(size: geometry.size.width * titleTextSizeRatio))
-        .padding(.leading, geometry.size.width * TextFieldSidePaddingRatio)
-        .padding(.trailing, geometry.size.width * TextFieldSidePaddingRatio)
+        .padding(.horizontal, geometry.size.width * TextFieldSidePaddingRatio)
     }
   }
 }
 
+
 #Preview {
-  TitleView()
+      let previewData = UserMemo()
+      TitleView(currentUserMemo: previewData)
 }
