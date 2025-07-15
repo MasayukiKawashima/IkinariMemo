@@ -51,6 +51,8 @@ struct SideMenuView: View {
                 ForEach(viewModel.sideMenuMemoLists, id: \.self) { memo in
                   Text(memo)
                     .frame(height: fullHeight * memoRowsHeightRatio)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
                 }
               }
               

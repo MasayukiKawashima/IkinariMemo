@@ -12,6 +12,6 @@ class SideMenuViewModel: ObservableObject {
   
   // MARK: - Properties
   
-  @Published  var sideMenuMemoLists = (1...8).map { "メモ\($0)" }
+  @Published  var sideMenuMemoLists = (1...8).map { "メモあああああああああああああああああああああああああああああああああああああああああ\($0)" }
   
 }

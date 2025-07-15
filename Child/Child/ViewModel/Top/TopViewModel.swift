@@ -24,8 +24,6 @@ class TopViewModel: ObservableObject {
       //currentUserMemo引数がnilだったら新しいUserMemoを作成
       //新しいUserMemoをつくるだけ。Realmにはまだ保存しない
       let newMemo = UserMemo()
-      newMemo.title = "成功！"
-      newMemo.content = "UserMemoの伝搬フロー成功"
       self.currentUserMemo = newMemo
     }
   }
