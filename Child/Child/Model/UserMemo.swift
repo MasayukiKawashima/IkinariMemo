@@ -18,5 +18,4 @@ class UserMemo: Object, ObjectKeyIdentifiable {
   override static func primaryKey() -> String? {
     return "_id"
   }
-  
 }
