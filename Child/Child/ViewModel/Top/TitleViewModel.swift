@@ -32,7 +32,19 @@ class TitleViewModel: ObservableObject {
   
   private func saveTitle() {
     try? realm.write {
-      currentUserMemo.title = title
+      // currentUserMemoのIDでRealmから既存のオブジェクトを検索
+      if let existingMemo = realm.object(ofType: UserMemo.self, forPrimaryKey: currentUserMemo.id) {
+        // 既存のオブジェクトが存在する場合、上書き
+        existingMemo.title = title
+        existingMemo.updatedAt = Date()
+      } else {
+        // 存在しない場合、新しいオブジェクトとして追加
+        currentUserMemo.title = title
+        //ユーザーにとってはメモを新規作成するの実質この段階なためcreatedAtを再設定
+        currentUserMemo.createdAt = Date()
+        currentUserMemo.updatedAt = Date()
+        realm.add(currentUserMemo)
+      }
     }
   }
 }

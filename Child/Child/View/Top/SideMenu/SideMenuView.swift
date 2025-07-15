@@ -48,9 +48,11 @@ struct SideMenuView: View {
             List() {
               
               Section {
-                ForEach(viewModel.sideMenuMemoLists, id: \.self) { memo in
-                  Text(memo)
+                ForEach(viewModel.getTitlesFromSideMenuMemoLists(), id: \.self) { title in
+                  Text(title)
                     .frame(height: fullHeight * memoRowsHeightRatio)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
                 }
               }
               
