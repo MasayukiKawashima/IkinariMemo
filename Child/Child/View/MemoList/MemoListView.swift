@@ -25,9 +25,11 @@ struct MemoListView: View {
       
       List {
         Section {
-          ForEach(viewModel.sideMenuMemoLists, id: \.self) { memo in
+          ForEach(viewModel.getTitlesFromAllMemoLists(), id: \.self) { memo in
             Text(memo)
               .frame(height: fullHeight * memoRowsHeightRatio)
+              .lineLimit(1)
+              .truncationMode(.tail)
           }
         }
       }

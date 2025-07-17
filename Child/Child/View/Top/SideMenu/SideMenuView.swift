@@ -15,6 +15,7 @@ struct SideMenuView: View {
   
   @Binding var isOpen: Bool
   
+  
   private let maxWidth = UIScreen.main.bounds.width
   
   // Iphone16Pro(Height: 874px)を基準に各レートを算出
@@ -57,22 +58,29 @@ struct SideMenuView: View {
               }
               
               Section {
-                NavigationLink(destination: MemoListView()) {
-                  HStack(spacing: 4) {
-                    Spacer()
-                    Text("more")
-                      .font(.system(size: fullHeight * moreTextHeightRatio))
-                  }
-                  .foregroundStyle(.gray)
+                NavigationLink(
+                    destination: MemoListView()
+                        .onAppear {
+                            // 画面遷移のアニメーション時間を考慮して遅延
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                isOpen = false
+                            }
+                        }
+                ) {
+                    HStack(spacing: 4) {
+                        Spacer()
+                        Text("more")
+                            .font(.system(size: fullHeight * moreTextHeightRatio))
+                    }
+                    .foregroundStyle(.gray)
                 }
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
               } footer: {
-                
-                // フッターを使って余白を作成
                 Spacer()
                   .frame(height: fullHeight * moreSectionFotterHeightRatio)
               }
+
               
               Section {
                 VStack(spacing: fullHeight * settingsSectionSpaceRatio) {
