@@ -10,13 +10,7 @@ import RealmSwift
 
 struct ContentView: View {
   
-  @ObservedRealmObject var currentUserMemo: UserMemo
-  @StateObject private var viewModel: ContentViewModel
-  
-  init(currentUserMemo: UserMemo) {
-    _viewModel = StateObject(wrappedValue: ContentViewModel(currentUserMemo: currentUserMemo))
-    self.currentUserMemo = currentUserMemo
-  }
+  @StateObject private var viewModel: ContentViewModel = ContentViewModel()
   
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   
@@ -30,6 +24,5 @@ struct ContentView: View {
 
 
 #Preview {
-  let previewData = UserMemo()
-  ContentView(currentUserMemo: previewData)
+  ContentView()
 }

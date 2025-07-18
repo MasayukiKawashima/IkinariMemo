@@ -24,8 +24,8 @@ class ContentViewModel: ObservableObject {
   
   // MARK: - Init
   
-  init(currentUserMemo: UserMemo) {
-    self.currentUserMemo = currentUserMemo
+  init() {
+    self.currentUserMemo = CurrentUserMemoManager.shared.currentUserMemo
     self.textContent = currentUserMemo.content
     self.realm = try! Realm()
   }

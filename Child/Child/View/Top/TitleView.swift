@@ -10,13 +10,8 @@ import RealmSwift
 
 struct TitleView: View {
   
-  @ObservedRealmObject var currentUserMemo: UserMemo
-  @StateObject private var viewModel: TitleViewModel
+  @StateObject private var viewModel: TitleViewModel = TitleViewModel()
   
-  init(currentUserMemo: UserMemo) {
-    _viewModel = StateObject(wrappedValue: TitleViewModel(currentUserMemo: currentUserMemo))
-    self.currentUserMemo = currentUserMemo
-    }
   private let titleTextSizeRatio: CGFloat = 0.074
   private let TextFieldSidePaddingRatio: CGFloat = 0.024
   
@@ -31,6 +26,5 @@ struct TitleView: View {
 
 
 #Preview {
-      let previewData = UserMemo()
-      TitleView(currentUserMemo: previewData)
+      TitleView()
 }
