@@ -50,10 +50,19 @@ struct SideMenuView: View {
               
               Section {
                 ForEach(viewModel.getTitlesFromSideMenuMemoLists(), id: \.self) { title in
-                  Text(title)
-                    .frame(height: fullHeight * memoRowsHeightRatio)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
+                  HStack {
+                    Text(title)
+                      .frame(height: fullHeight * memoRowsHeightRatio)
+                      .lineLimit(1)
+                      .truncationMode(.tail)
+                    
+                    Spacer()
+                  }
+                  .contentShape(Rectangle())
+                  .onTapGesture {
+                    //タップ時処理
+                    print("タップされました")
+                  }
                 }
               }
               
