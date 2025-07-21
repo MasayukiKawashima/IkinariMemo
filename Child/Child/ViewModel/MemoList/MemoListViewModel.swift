@@ -27,7 +27,7 @@ class MemoListViewModel: ObservableObject {
   
   func getTitlesFromAllMemoLists() -> [String] {
     // 実際のメモからタイトルを取得し、配列に変換
-    var titles = Array(memoLists.map { userMemo in
+    let titles = Array(memoLists.map { userMemo in
       return userMemo.title.isEmpty ? "タイトル未設定" : userMemo.title
     })
     return titles
