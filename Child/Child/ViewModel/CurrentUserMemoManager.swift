@@ -1,5 +1,5 @@
 //
-//  CurrentUserMemoManager.swift
+//  CurrentUserMemoViewModel.swift
 //  Child
 //
 //  Created by 川島真之 on 2025/07/18.
@@ -8,11 +8,11 @@
 import Foundation
 import RealmSwift
 
-final class CurrentUserMemoManager: ObservableObject {
+final class CurrentUserMemoViewModel: ObservableObject {
   
   // MARK: - Properties
   // シングルトンとして定義
-  static let shared: CurrentUserMemoManager = .init()
+  static let shared: CurrentUserMemoViewModel = .init()
   @Published var currentUserMemo: UserMemo
   
   // MARK: - Init

@@ -25,7 +25,7 @@ class TitleViewModel: ObservableObject {
   // MARK: - Init
   
   init() {
-    self.currentUserMemo = CurrentUserMemoManager.shared.currentUserMemo
+    self.currentUserMemo = CurrentUserMemoViewModel.shared.currentUserMemo
     self.title = currentUserMemo.title
     self.realm = try! Realm()
   }
