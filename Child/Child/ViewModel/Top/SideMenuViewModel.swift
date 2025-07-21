@@ -48,4 +48,24 @@ class SideMenuViewModel: ObservableObject {
     
     return titles
   }
+  
+  func getDisplayItems() -> [UserMemoListItem] {
+    var items: [UserMemoListItem] = []
+    
+    for userMemo in self.sideMenuMemoLists {
+      items.append(UserMemoListItem(userMemo: userMemo))
+    }
+    
+    while items.count < 8 {
+      items.append(UserMemoListItem(userMemo: nil))
+    }
+    return items
+  }
+  
+  func selectMemo(_ item: UserMemoListItem) {
+    guard let userMemo = item.userMemo else { return }
+    CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
+    print(CurrentUserMemoViewModel.shared.currentUserMemo)
+  }
+
 }

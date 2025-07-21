@@ -9,17 +9,16 @@ import SwiftUI
 import RealmSwift
 
 struct TitleView: View {
-  
-  @StateObject private var viewModel: TitleViewModel = TitleViewModel()
-  
-  private let titleTextSizeRatio: CGFloat = 0.074
-  private let TextFieldSidePaddingRatio: CGFloat = 0.024
-  
+  @StateObject private var viewModel = TitleViewModel()
+
   var body: some View {
     GeometryReader { geometry in
-      TextField("Title", text: $viewModel.title)
-        .font(.system(size: geometry.size.width * titleTextSizeRatio))
-        .padding(.horizontal, geometry.size.width * TextFieldSidePaddingRatio)
+      TextField("Title", text: Binding(
+        get: { viewModel.title },
+        set: { viewModel.updateTitle($0) }
+      ))
+      .font(.system(size: geometry.size.width * 0.074))
+      .padding(.horizontal, geometry.size.width * 0.024)
     }
   }
 }
