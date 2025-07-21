@@ -7,45 +7,40 @@
 
 import Foundation
 import RealmSwift
+import Combine
 
 class TitleViewModel: ObservableObject {
   
-  // MARK: - Properties
+  @Published var title: String = ""
+  private var cancellable: AnyCancellable?
   
-  @Published var title: String = "" {
-    didSet {
-      guard title != oldValue else { return }
-      saveTitle()
-    }
-  }
-  
-  private var currentUserMemo: UserMemo
+  private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var realm: Realm
-  
-  // MARK: - Init
-  
-  init() {
-    self.currentUserMemo = CurrentUserMemoViewModel.shared.currentUserMemo
-    self.title = currentUserMemo.title
+
+  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+    self.currentUserMemoViewModel = currentUserMemoViewModel
     self.realm = try! Realm()
+
+    // currentUserMemo の変化を監視
+    self.cancellable = currentUserMemoViewModel.$currentUserMemo
+      .sink { [weak self] newMemo in
+        self?.title = newMemo.title
+      }
   }
-  
+
+  func updateTitle(_ newTitle: String) {
+    guard newTitle != title else { return }
+    title = newTitle
+    saveTitle()
+  }
+
   private func saveTitle() {
     try? realm.write {
-      // currentUserMemoのIDでRealmから既存のオブジェクトを検索
-      if let existingMemo = realm.object(ofType: UserMemo.self, forPrimaryKey: currentUserMemo.id) {
-        // 既存のオブジェクトが存在する場合、上書き
-        existingMemo.title = title
-        existingMemo.updatedAt = Date()
-      } else {
-        // 存在しない場合、新しいオブジェクトとして追加
-        currentUserMemo.title = title
-        //ユーザーにとってはメモを新規作成するの実質この段階なためcreatedAtを再設定
-        currentUserMemo.createdAt = Date()
-        currentUserMemo.updatedAt = Date()
-        realm.add(currentUserMemo)
-      }
+      currentUserMemoViewModel.currentUserMemo.title = title
+      currentUserMemoViewModel.currentUserMemo.updatedAt = Date()
+      realm.add(currentUserMemoViewModel.currentUserMemo, update: .modified)
     }
   }
 }
+
 

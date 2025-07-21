@@ -16,7 +16,10 @@ struct ContentView: View {
   
   var body: some View {
     GeometryReader { geometry in
-      TextEditor(text: $viewModel.textContent)
+      TextField("", text: Binding(
+        get: { viewModel.textContent },
+        set: { viewModel.updateContent($0) }
+      ))
         .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
     }
   }

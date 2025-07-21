@@ -49,11 +49,19 @@ struct SideMenuView: View {
             List() {
               
               Section {
-                ForEach(viewModel.getTitlesFromSideMenuMemoLists(), id: \.self) { title in
-                  Text(title)
-                    .frame(height: fullHeight * memoRowsHeightRatio)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
+                ForEach(viewModel.getDisplayItems()) { item in
+                  HStack {
+                    Text(item.displayTitle)
+                      .frame(height: fullHeight * memoRowsHeightRatio)
+                      .lineLimit(1)
+                      .truncationMode(.tail)
+                    
+                    Spacer()
+                  }
+                  .contentShape(Rectangle())
+                  .onTapGesture {
+                    handleMemoTap(item)
+                  }
                 }
               }
               
@@ -121,6 +129,15 @@ struct SideMenuView: View {
           .offset(x: isOpen ? 0 : -maxWidth)
         }
       
+    }
+  }
+  
+  private func handleMemoTap(_ item: UserMemoListItem) {
+    if !item.isEmpty {
+      viewModel.selectMemo(item)
+      withAnimation(.linear(duration: 0.2)) {
+        isOpen = false
+      }
     }
   }
 }
