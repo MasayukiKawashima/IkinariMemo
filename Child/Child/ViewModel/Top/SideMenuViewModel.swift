@@ -20,7 +20,7 @@ class SideMenuViewModel: ObservableObject {
     self.realm = try! Realm()
     // 最新の8件のみを取得
     let allMemos = realm.objects(UserMemo.self).sorted(byKeyPath: "createdAt", ascending: false)
-    print(allMemos)
+
     if allMemos.count > 8 {
       // 8件以上ある場合は最新の8件のみ
       let limitedMemos = Array(allMemos.prefix(8))
@@ -65,7 +65,6 @@ class SideMenuViewModel: ObservableObject {
   func selectMemo(_ item: UserMemoListItem) {
     guard let userMemo = item.userMemo else { return }
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
-    print(CurrentUserMemoViewModel.shared.currentUserMemo)
   }
 
 }

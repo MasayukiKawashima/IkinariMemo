@@ -14,15 +14,15 @@ class TitleViewModel: ObservableObject {
   @Published var title: String = ""
   private var cancellable: AnyCancellable?
   
-  private var currentMemoVM: CurrentUserMemoViewModel
+  private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var realm: Realm
 
-  init(currentMemoVM: CurrentUserMemoViewModel = .shared) {
-    self.currentMemoVM = currentMemoVM
+  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+    self.currentUserMemoViewModel = currentUserMemoViewModel
     self.realm = try! Realm()
 
     // currentUserMemo の変化を監視
-    self.cancellable = currentMemoVM.$currentUserMemo
+    self.cancellable = currentUserMemoViewModel.$currentUserMemo
       .sink { [weak self] newMemo in
         self?.title = newMemo.title
       }
@@ -36,9 +36,9 @@ class TitleViewModel: ObservableObject {
 
   private func saveTitle() {
     try? realm.write {
-      currentMemoVM.currentUserMemo.title = title
-      currentMemoVM.currentUserMemo.updatedAt = Date()
-      realm.add(currentMemoVM.currentUserMemo, update: .modified)
+      currentUserMemoViewModel.currentUserMemo.title = title
+      currentUserMemoViewModel.currentUserMemo.updatedAt = Date()
+      realm.add(currentUserMemoViewModel.currentUserMemo, update: .modified)
     }
   }
 }
