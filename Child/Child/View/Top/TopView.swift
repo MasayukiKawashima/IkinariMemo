@@ -19,8 +19,8 @@ struct TopView: View {
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
   private let contentViewBottomSpacerHeightRatio: CGFloat = 0.023
   private let adBannerHeight: CGFloat = 50
-  private let sideMenuIconSidePaddingRatio: CGFloat = 0.024
-  private let sideMenuIconSizeRatio: CGFloat = 0.036
+  private let iconSidePaddingRatio: CGFloat = 0.024
+  private let iconSizeRatio: CGFloat = 0.036
   
   // MARK: Body
   
@@ -38,12 +38,22 @@ struct TopView: View {
                 }
               }) {
                 Image(systemName: "line.3.horizontal")
-                  .font(.system(size: geometry.size.height * sideMenuIconSizeRatio , weight: .bold))
+                  .font(.system(size: geometry.size.height * iconSizeRatio , weight: .bold))
                   .foregroundStyle(Color.black)
-                  .padding(.leading, geometry.size.width * sideMenuIconSidePaddingRatio)
-                  .padding(.trailing, geometry.size.width * sideMenuIconSidePaddingRatio)
+                  .padding(.leading, geometry.size.width * iconSidePaddingRatio)
               }
+              
               Spacer()
+              
+              //新規メモ作成ボタン
+              Button(action: {
+                //ボタン押下時処理
+              }) {
+                Image(systemName: "pencil.circle.fill")
+                  .font(.system(size: geometry.size.height * iconSizeRatio , weight: .bold))
+                  .foregroundStyle(Color.black)
+                  .padding(.trailing, geometry.size.width * iconSidePaddingRatio)
+              }
             }
             
             Spacer().frame(height: geometry.size.height * sideMenuIconBottomSpacerHeightRatio)
