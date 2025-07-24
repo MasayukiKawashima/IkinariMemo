@@ -13,7 +13,7 @@ final class CurrentUserMemoViewModel: ObservableObject {
   // MARK: - Properties
   // シングルトンとして定義
   static let shared: CurrentUserMemoViewModel = .init()
-  @Published var currentUserMemo: UserMemo
+  @Published  var currentUserMemo: UserMemo
   
   // MARK: - Init
   
@@ -26,5 +26,4 @@ final class CurrentUserMemoViewModel: ObservableObject {
   func upDate(userMemo: UserMemo) {
     self.currentUserMemo = userMemo
   }
-  
 }
