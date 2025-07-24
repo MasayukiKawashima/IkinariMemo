@@ -47,7 +47,7 @@ struct TopView: View {
               
               //新規メモ作成ボタン
               Button(action: {
-                //ボタン押下時処理
+                viewModel.upDateCurrentUserMemo()
               }) {
                 Image(systemName: "pencil.circle.fill")
                   .font(.system(size: geometry.size.height * iconSizeRatio , weight: .bold))
