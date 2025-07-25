@@ -18,17 +18,21 @@ class SideMenuViewModel: ObservableObject {
   
   init() {
     self.realm = try! Realm()
-    // 最新の8件のみを取得
-    let allMemos = realm.objects(UserMemo.self).sorted(byKeyPath: "createdAt", ascending: false)
+    
+    let allMemos = realm.objects(UserMemo.self)
+      .sorted(byKeyPath: "createdAt", ascending: false)
 
     if allMemos.count > 8 {
-      // 8件以上ある場合は最新の8件のみ
-      let limitedMemos = Array(allMemos.prefix(8))
+      //すべてのメモから最新8件を取得
+      let limitedMemosArray = Array(allMemos.prefix(8))
+      //最新8件のidを取得
+      let ids = limitedMemosArray.map { $0.id }
+      //それらのidを使って、同じidのRealmオブジェクトを再取得
+      //取得する際に作成日時にでソートして、新しいメモが上に表示されるようにする
       self.sideMenuMemoLists = realm.objects(UserMemo.self)
-        .filter("SELF IN %@", limitedMemos)
+        .filter("id IN %@", ids)
         .sorted(byKeyPath: "createdAt", ascending: false)
     } else {
-      // 8件以下の場合はそのまま
       self.sideMenuMemoLists = allMemos
     }
   }
