@@ -38,7 +38,10 @@ struct TopView: View {
                 }
               }) {
                 Image(systemName: "line.3.horizontal")
-                  .font(.system(size: geometry.size.height * iconSizeRatio , weight: .bold))
+                  .font(.system(
+                    size: max(geometry.size.height * iconSizeRatio, 1),
+                    weight: .bold
+                  ))
                   .foregroundStyle(Color.black)
                   .padding(.leading, geometry.size.width * iconSidePaddingRatio)
               }
@@ -50,7 +53,10 @@ struct TopView: View {
                 viewModel.upDateCurrentUserMemo()
               }) {
                 Image(systemName: "pencil.circle.fill")
-                  .font(.system(size: geometry.size.height * iconSizeRatio , weight: .bold))
+                  .font(.system(
+                    size: max(geometry.size.height * iconSizeRatio, 1),
+                    weight: .bold
+                  ))
                   .foregroundStyle(Color.black)
                   .padding(.trailing, geometry.size.width * iconSidePaddingRatio)
               }
