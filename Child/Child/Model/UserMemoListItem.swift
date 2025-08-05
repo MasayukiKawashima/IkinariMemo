@@ -18,7 +18,7 @@ class UserMemoListItem: Identifiable {
     self.userMemo = userMemo
     
     if let userMemo = userMemo {
-      self.displayTitle = userMemo.title.isEmpty ? "タイトル未設定" : userMemo.title
+      self.displayTitle = userMemo.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "タイトル未設定" : userMemo.title
       self.isEmpty = false
       
     } else {
