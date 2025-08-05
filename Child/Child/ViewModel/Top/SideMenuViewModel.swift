@@ -39,19 +39,19 @@ class SideMenuViewModel: ObservableObject {
   
   // MARK: - Methods
   
-  func getTitlesFromSideMenuMemoLists() -> [String] {
-    // 実際のメモからタイトルを取得し、配列に変換
-    var titles = Array(sideMenuMemoLists.map { userMemo in
-      return userMemo.title.isEmpty ? "タイトル未設定" : userMemo.title
-    })
-    
-    // 8件に満たない場合は空文字で埋める
-    while titles.count < 8 {
-      titles.append("")
-    }
-    
-    return titles
-  }
+//  func getTitlesFromSideMenuMemoLists() -> [String] {
+//    // 実際のメモからタイトルを取得し、配列に変換
+//    var titles = Array(sideMenuMemoLists.map { userMemo in
+//      return userMemo.title.isEmpty ? "タイトル未設定" : userMemo.title
+//    })
+//    
+//    // 8件に満たない場合は空文字で埋める
+//    while titles.count < 8 {
+//      titles.append("")
+//    }
+//    
+//    return titles
+//  }
   
   func getDisplayItems() -> [UserMemoListItem] {
     var items: [UserMemoListItem] = []
