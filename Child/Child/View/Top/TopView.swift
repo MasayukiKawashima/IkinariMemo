@@ -15,7 +15,7 @@ struct TopView: View {
   
   // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
   private let titleHeightRatio: CGFloat = 0.11
-  private let contentHeightRatio: CGFloat = 0.66
+  private let contentHeightRatio: CGFloat = 0.58
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
   private let contentViewBottomSpacerHeightRatio: CGFloat = 0.023
   private let adBannerHeight: CGFloat = 50
@@ -26,7 +26,11 @@ struct TopView: View {
   
   var body: some View {
     NavigationStack {
+    
       GeometryReader { geometry in
+        
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
         
         ZStack {
           VStack(spacing: 0) {
@@ -39,11 +43,11 @@ struct TopView: View {
               }) {
                 Image(systemName: "line.3.horizontal")
                   .font(.system(
-                    size: max(geometry.size.height * iconSizeRatio, 1),
+                    size: max(screenHeight * iconSizeRatio, 1),
                     weight: .bold
                   ))
                   .foregroundStyle(Color.black)
-                  .padding(.leading, geometry.size.width * iconSidePaddingRatio)
+                  .padding(.leading, screenWidth * iconSidePaddingRatio)
               }
               
               Spacer()
@@ -54,29 +58,31 @@ struct TopView: View {
               }) {
                 Image(systemName: "pencil.circle.fill")
                   .font(.system(
-                    size: max(geometry.size.height * iconSizeRatio, 1),
+                    size: max(screenHeight * iconSizeRatio, 1),
                     weight: .bold
                   ))
                   .foregroundStyle(Color.black)
-                  .padding(.trailing, geometry.size.width * iconSidePaddingRatio)
+                  .padding(.trailing, screenWidth * iconSidePaddingRatio)
               }
             }
             
-            Spacer().frame(height: geometry.size.height * sideMenuIconBottomSpacerHeightRatio)
+            Spacer().frame(height: screenHeight * sideMenuIconBottomSpacerHeightRatio)
             
             TitleView()
-                .frame(height: geometry.size.height * titleHeightRatio)
+              .frame(height: screenHeight * titleHeightRatio)
               
             ContentView()
-                .frame(height: geometry.size.height * contentHeightRatio)
+              .frame(height: screenHeight * contentHeightRatio)
             
             
-            Spacer().frame(height: geometry.size.height * contentViewBottomSpacerHeightRatio)
+            Spacer().frame(height: screenHeight * contentViewBottomSpacerHeightRatio)
             
             Color.yellow
               .frame(height: adBannerHeight)
               .overlay(Text("Ad Banner"))
+  
           }
+          
           SideMenuView(isOpen: $viewModel.isSideMenuOpen)
         }
       }
