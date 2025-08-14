@@ -89,7 +89,15 @@ struct TopView: View {
           if isKeyboardVisible {
             Color.black.opacity(0.001)
               .ignoresSafeArea()
-              .onTapGesture {} // タップを吸収
+              .onTapGesture {
+                // 🔹 キーボードを閉じる
+                UIApplication.shared.sendAction(
+                  #selector(UIResponder.resignFirstResponder),
+                  to: nil,
+                  from: nil,
+                  for: nil
+                )
+              }
           }
         }
       }
