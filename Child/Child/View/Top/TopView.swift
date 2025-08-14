@@ -12,6 +12,7 @@ struct TopView: View {
   // MARK: Properties
   
   @StateObject private var viewModel: TopViewModel = TopViewModel()
+  @State private var isKeyboardVisible: Bool = false
   
   // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
   private let titleHeightRatio: CGFloat = 0.11
@@ -84,11 +85,24 @@ struct TopView: View {
           }
           
           SideMenuView(isOpen: $viewModel.isSideMenuOpen)
+          
+          if isKeyboardVisible {
+            Color.black.opacity(0.001)
+              .ignoresSafeArea()
+              .onTapGesture {} // タップを吸収
+          }
         }
       }
     }
     .navigationBarHidden(true)
     .accentColor(.gray)
+    
+    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+      isKeyboardVisible = true
+    }
+    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+      isKeyboardVisible = false
+    }
   }
 }
 
