@@ -70,5 +70,23 @@ class SideMenuViewModel: ObservableObject {
     guard let userMemo = item.userMemo else { return }
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
   }
+  
+  func deleteItems(at offsets: IndexSet) {
+    let items = getDisplayItems()
+    
+    for index in offsets {
+      let item = items[index]
+      if let userMemo = item.userMemo {
+        do {
+          try realm.write {
+            realm.delete(userMemo)
+          }
+        } catch {
+          print("削除エラー: \(error.localizedDescription)")
+        }
+      }
+    }
+  }
+
 
 }

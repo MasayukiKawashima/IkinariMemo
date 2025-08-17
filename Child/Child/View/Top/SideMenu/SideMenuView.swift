@@ -63,6 +63,9 @@ struct SideMenuView: View {
                     handleMemoTap(item)
                   }
                 }
+                .onDelete { offsets in
+                  viewModel.deleteItems(at: offsets)
+                }
               }
               
               Section {
