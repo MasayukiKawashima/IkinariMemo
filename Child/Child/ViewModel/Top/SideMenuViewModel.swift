@@ -12,39 +12,45 @@ import RealmSwift
 class SideMenuViewModel: ObservableObject {
   
   // MARK: - Properties
-  @Published var sideMenuMemoLists: Results<UserMemo>
-  let realm: Realm
+  @Published var sideMenuMemoLists: [UserMemo] = []
+    private var token: NotificationToken?
+    let realm: Realm
   
-  init() {
-    self.realm = try! Realm()
-      
-    self.sideMenuMemoLists = realm.objects(UserMemo.self)
-      .sorted(byKeyPath: "createdAt", ascending: false)
-    reloadSideMenuMemoLists()
-  }
+  // MARK: - Init
+
+    init() {
+      self.realm = try! Realm()
+      observeMemos()
+    }
   
   // MARK: - Methods
   
-  /// 最新の最大8件を再取得する
-  private func reloadSideMenuMemoLists() {
+  private func observeMemos() {
+    let allMemos = realm.objects(UserMemo.self)
+      .sorted(byKeyPath: "createdAt", ascending: false)
+    
+    token = allMemos.observe { [weak self] _ in
+      self?.reloadSideMenuMemoLists()
+    }
+    
+    reloadSideMenuMemoLists()
+  }
+  
+  // 最新の最大8件を再取得する
+  func reloadSideMenuMemoLists() {
     let allMemos = realm.objects(UserMemo.self)
       .sorted(byKeyPath: "createdAt", ascending: false)
     
     if allMemos.count > 8 {
-      let limitedMemosArray = Array(allMemos.prefix(8))
-      let ids = limitedMemosArray.map { $0.id }
-      self.sideMenuMemoLists = realm.objects(UserMemo.self)
-        .filter("id IN %@", ids)
-        .sorted(byKeyPath: "createdAt", ascending: false)
+      self.sideMenuMemoLists = Array(allMemos.prefix(8))
     } else {
-      self.sideMenuMemoLists = allMemos
+      self.sideMenuMemoLists = Array(allMemos)
     }
-    // Published 更新を反映させる
-    objectWillChange.send()
   }
   
   func getDisplayItems() -> [UserMemoListItem] {
     var items: [UserMemoListItem] = []
+    
     for userMemo in self.sideMenuMemoLists {
       items.append(UserMemoListItem(userMemo: userMemo))
     }
@@ -54,6 +60,7 @@ class SideMenuViewModel: ObservableObject {
     return items
   }
   
+  //メモタップ時にCurrentUserMemoを更新する
   func selectMemo(_ item: UserMemoListItem) {
     guard let userMemo = item.userMemo else { return }
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
