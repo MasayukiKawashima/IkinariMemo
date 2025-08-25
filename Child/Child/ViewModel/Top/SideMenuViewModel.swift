@@ -17,6 +17,7 @@ class SideMenuViewModel: ObservableObject {
   
   init() {
     self.realm = try! Realm()
+      
     self.sideMenuMemoLists = realm.objects(UserMemo.self)
       .sorted(byKeyPath: "createdAt", ascending: false)
     reloadSideMenuMemoLists()
@@ -63,7 +64,15 @@ class SideMenuViewModel: ObservableObject {
     
     for index in offsets {
       let item = items[index]
+      
       if let userMemo = item.userMemo {
+        //削除するメモが現在表示中のメモだったら
+        if userMemo.id == CurrentUserMemoViewModel.shared.currentUserMemo.id {
+          //新しいメモをセットする
+          let newMemo = UserMemo()
+          CurrentUserMemoViewModel.shared.upDate(userMemo: newMemo)
+        }
+        
         do {
           try realm.write {
             realm.delete(userMemo)
@@ -73,7 +82,9 @@ class SideMenuViewModel: ObservableObject {
         }
       }
     }
-    // 🔴 削除後に再取得して8件に揃える
     reloadSideMenuMemoLists()
   }
+
 }
+
+
