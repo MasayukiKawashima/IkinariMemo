@@ -19,7 +19,7 @@ struct SideMenuView: View {
   
   let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   
-  // Iphone16Pro(Height: 874px)を基準に各レートを算出
+  // Iphone16Pro(Height: 874px, Width: 402px)を基準に各レートを算出
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
   private let memoRowsHeightRatio: CGFloat = 0.0434
   private let moreTextHeightRatio: CGFloat = 0.0228
@@ -30,6 +30,7 @@ struct SideMenuView: View {
   private let moreTextTrailingPaddingRatio = 0.017
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
+  private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   
   // MARK: - Body
   
@@ -47,31 +48,44 @@ struct SideMenuView: View {
         
         VStack {
           let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
-          //　メモリスト
-          List() {
-            Section {
-              ForEach(viewModel.getDisplayItems()) { item in
-                HStack {
-                  Text(item.displayTitle)
-                    .frame(height: fullHeight * memoRowsHeightRatio)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-                  Spacer()
+          
+          let results = viewModel.hasAnyUserMemo()
+          //メモが一件でもある場合
+          if results {
+            //　メモリスト
+            List() {
+              Section {
+                ForEach(viewModel.getDisplayItems()) { item in
+                  HStack {
+                    Text(item.displayTitle)
+                      .frame(height: fullHeight * memoRowsHeightRatio)
+                      .lineLimit(1)
+                      .truncationMode(.tail)
+                    Spacer()
+                  }
+                  .contentShape(Rectangle())
+                  .onTapGesture {
+                    handleMemoTap(item)
+                  }
                 }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                  handleMemoTap(item)
+                .onDelete { offsets in
+                  viewModel.deleteItems(at: offsets)
                 }
-              }
-              .onDelete { offsets in
-                viewModel.deleteItems(at: offsets)
               }
             }
+            .frame(height: geometry.size.height * 0.7)
+            .scrollContentBackground(.hidden)
+            .scrollDisabled(true)
+            .listStyle(.grouped)
+          } else {
+            //メモが一件もない場合
+            VStack {
+              Text("No Memos")
+                .bold()
+                .font(.system(size: geometry.size.width * placerHolderTextFontSizeRatio))
+            }
+            .frame(height: geometry.size.height * 0.7)
           }
-          .frame(height: geometry.size.height * 0.7)
-          .scrollContentBackground(.hidden)
-          .scrollDisabled(true)
-          .listStyle(.grouped)
           
           // moreボタン
           NavigationLink(
