@@ -54,9 +54,6 @@ class SideMenuViewModel: ObservableObject {
     for userMemo in self.sideMenuMemoLists {
       items.append(UserMemoListItem(userMemo: userMemo))
     }
-    while items.count < 8 {
-      items.append(UserMemoListItem(userMemo: nil))
-    }
     return items
   }
   
