@@ -21,7 +21,7 @@ struct SideMenuView: View {
   
   // Iphone16Pro(Height: 874px, Width: 402px)を基準に各レートを算出
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
-  private let memoRowsHeightRatio: CGFloat = 0.0434
+  private let memoRowsHeightRatio: CGFloat = 0.0286
   private let moreTextHeightRatio: CGFloat = 0.0228
   private let gearshapeIconHeightRatio: CGFloat = 0.040
   private let gearshapeIconLeadingPaddingRatio = 0.017
@@ -31,6 +31,9 @@ struct SideMenuView: View {
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
+  
+  private let memoTitleFontSizeRatio: CGFloat = 0.0228
+  private let memoUpdatedDateFontSizeRatio: CGFloat = 0.0160
   
   // MARK: - Body
   
@@ -56,12 +59,24 @@ struct SideMenuView: View {
             List() {
               Section {
                 ForEach(viewModel.getDisplayItems()) { item in
-                  HStack {
-                    Text(item.displayTitle)
-                      .frame(height: fullHeight * memoRowsHeightRatio)
-                      .lineLimit(1)
-                      .truncationMode(.tail)
-                    Spacer()
+                  VStack {
+                    HStack {
+                      Text(item.displayTitle)
+                        .font(.system(size: geometry.size.height * memoTitleFontSizeRatio))
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .padding(.leading, 6)
+                      Spacer()
+                    }
+                    
+                    HStack {
+                      Text(item.displayUpdatedDate)
+                        .font(.system(size: geometry.size.height * memoUpdatedDateFontSizeRatio))
+                        .foregroundColor(Color.gray)
+                        .padding(.leading, 6)
+                      Spacer()
+                    }
+                    
                   }
                   .contentShape(Rectangle())
                   .onTapGesture {
@@ -147,11 +162,10 @@ struct SideMenuView: View {
   // MARK: - Methods
   
   private func handleMemoTap(_ item: UserMemoListItem) {
-    if !item.isEmpty {
-      viewModel.selectMemo(item)
-      withAnimation(.linear(duration: 0.2)) {
-        isOpen = false
-      }
+    
+    viewModel.selectMemo(item)
+    withAnimation(.linear(duration: 0.2)) {
+      isOpen = false
     }
   }
 }

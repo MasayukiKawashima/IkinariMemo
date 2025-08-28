@@ -12,18 +12,15 @@ class UserMemoListItem: Identifiable {
   let id = UUID()
   let userMemo: UserMemo?
   let displayTitle: String
-  let isEmpty: Bool
+  let displayUpdatedDate: String
   
-  init(userMemo: UserMemo?) {
+  init(userMemo: UserMemo) {
     self.userMemo = userMemo
+    self.displayTitle = userMemo.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "タイトル未設定" : userMemo.title
     
-    if let userMemo = userMemo {
-      self.displayTitle = userMemo.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "タイトル未設定" : userMemo.title
-      self.isEmpty = false
-      
-    } else {
-      self.displayTitle = ""
-      self.isEmpty = true
-    }
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy.MM.dd"
+    displayUpdatedDate = formatter.string(from: userMemo.updatedAt)
   }
 }
+
