@@ -45,7 +45,6 @@ class MemoListViewModel: ObservableObject {
   func selectMemo(_ item: UserMemoListItem) {
     guard let userMemo = item.userMemo else { return }
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
-    print(CurrentUserMemoViewModel.shared.currentUserMemo)
   }
 
 }
