@@ -14,9 +14,6 @@ struct MemoListView: View {
   @StateObject var viewModel: MemoListViewModel = MemoListViewModel()
   @Environment(\.dismiss) private var dismiss
   
-  private let memoRowsHeightRatio: CGFloat = 0.0434
-  
-  
   // MARK: - Body
   
   var body: some View {
@@ -27,15 +24,8 @@ struct MemoListView: View {
       List {
         Section {
           ForEach(viewModel.getDisplayItems()) { item in
-            HStack {
-              Text(item.displayTitle)
-                .frame(height: fullHeight * memoRowsHeightRatio)
-                .lineLimit(1)
-                .truncationMode(.tail)
-              
-              Spacer()
-            }
-            .contentShape(Rectangle())
+            
+            UserMemoListItemView(item: item)
             .onTapGesture {
               handleMemoTap(item)
             }
