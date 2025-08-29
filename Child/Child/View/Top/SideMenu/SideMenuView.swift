@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SideMenuView: View {
   
+  //memo fullHeight = 874, geometry.size.height = 778.0
+  //memoTitleFontSize = 17.7384, memoUpdateDateFontSize = 12.448
+  
   // MARK: - Properties
   
   @StateObject var viewModel: SideMenuViewModel = SideMenuViewModel()
@@ -17,7 +20,7 @@ struct SideMenuView: View {
   
   private let maxWidth = UIScreen.main.bounds.width
   
-  let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
+  private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   
   // Iphone16Pro(Height: 874px, Width: 402px)を基準に各レートを算出
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
@@ -31,10 +34,7 @@ struct SideMenuView: View {
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
-  
-  private let memoTitleFontSizeRatio: CGFloat = 0.0228
-  private let memoUpdatedDateFontSizeRatio: CGFloat = 0.0160
-  
+
   // MARK: - Body
   
   var body: some View {
@@ -59,26 +59,8 @@ struct SideMenuView: View {
             List() {
               Section {
                 ForEach(viewModel.getDisplayItems()) { item in
-                  VStack {
-                    HStack {
-                      Text(item.displayTitle)
-                        .font(.system(size: geometry.size.height * memoTitleFontSizeRatio))
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .padding(.leading, 6)
-                      Spacer()
-                    }
-                    
-                    HStack {
-                      Text(item.displayUpdatedDate)
-                        .font(.system(size: geometry.size.height * memoUpdatedDateFontSizeRatio))
-                        .foregroundColor(Color.gray)
-                        .padding(.leading, 6)
-                      Spacer()
-                    }
-                    
-                  }
-                  .contentShape(Rectangle())
+                  
+                  UserMemoListItemView(item: item)
                   .onTapGesture {
                     handleMemoTap(item)
                   }

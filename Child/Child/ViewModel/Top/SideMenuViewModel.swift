@@ -86,7 +86,6 @@ class SideMenuViewModel: ObservableObject {
         }
       }
     }
-    reloadSideMenuMemoLists()
   }
   
   func hasAnyUserMemo() -> Bool {
