@@ -71,5 +71,17 @@ class MemoListViewModel: ObservableObject {
     guard let userMemo = item.userMemo else { return }
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
   }
-
+  
+  func hasAnyUserMemo() -> Bool {
+    do {
+      let realm = try Realm()
+      let results = realm.objects(UserMemo.self)
+      // !results.isEmptyとすることで、一件でもある場合true、ない場合はfalse
+      return !results.isEmpty
+    } catch {
+      print("Realmの初期化に失敗しました: \(error)")
+      return false
+    }
+  }
+  
 }
