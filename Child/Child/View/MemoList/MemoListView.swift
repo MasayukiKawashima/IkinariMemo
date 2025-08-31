@@ -30,6 +30,9 @@ struct MemoListView: View {
               handleMemoTap(item)
             }
           }
+          .onDelete { offsets in
+            viewModel.deleteItems(at: offsets)
+          }
         }
       }
     }
