@@ -88,6 +88,7 @@ class SideMenuViewModel: ObservableObject {
     }
   }
   
+  //メモが一件もない場合にプレスホルダーViewを表示するための判定メソッド
   func hasAnyUserMemo() -> Bool {
     do {
       let realm = try Realm()
