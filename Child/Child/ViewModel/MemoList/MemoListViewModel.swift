@@ -15,12 +15,14 @@ class MemoListViewModel: ObservableObject {
   
   @Published  var memoLists: Results<UserMemo>
   let realm: Realm
+  private var token: NotificationToken?
   // MARK: - Init
   
   init() {
     self.realm = try! Realm()
     memoLists = realm.objects(UserMemo.self).sorted(byKeyPath: "createdAt", ascending: false)
     
+    observeMemos()
   }
   
   // MARK: - Methods
@@ -54,6 +56,35 @@ class MemoListViewModel: ObservableObject {
         } catch {
           print("削除エラー: \(error.localizedDescription)")
         }
+      }
+    }
+  }
+  
+  private func observeMemos() {
+    let allMemos = realm.objects(UserMemo.self)
+      .sorted(byKeyPath: "createdAt", ascending: false)
+    
+    token = allMemos.observe { [weak self] changes in
+      guard let self = self else { return }
+      
+      switch changes {
+      case .initial:
+        // 初期データの読み込み時（再描画しない）
+        break
+        
+      case .update:
+        // データに変更があった時
+        // データが0件になった場合のみ処理
+        if allMemos.isEmpty {
+          DispatchQueue.main.async {
+            // 画面を再描画するための処理
+            self.memoLists = allMemos
+          }
+        }
+        
+      case .error(let error):
+        // エラーハンドリング
+        print("Realm監視エラー: \(error.localizedDescription)")
       }
     }
   }
