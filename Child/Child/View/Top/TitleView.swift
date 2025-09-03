@@ -13,12 +13,15 @@ struct TitleView: View {
 
   var body: some View {
     GeometryReader { geometry in
-      TextField("Title", text: Binding(
-        get: { viewModel.title },
-        set: { viewModel.updateTitle($0) }
-      ))
-      .font(.system(size: geometry.size.width * 0.074))
-      .padding(.horizontal, geometry.size.width * 0.024)
+      ScrollView(.horizontal, showsIndicators: true) {
+        TextField("Title", text: Binding(
+          get: { viewModel.title },
+          set: { viewModel.updateTitle($0) }
+        ))
+        .lineLimit(1)
+        .font(.system(size: geometry.size.width * 0.074))
+        .padding(.horizontal, geometry.size.width * 0.024)
+      }
     }
   }
 }
