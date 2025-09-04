@@ -15,7 +15,7 @@ struct TopView: View {
   @State private var isKeyboardVisible: Bool = false
   
   // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
-  private let titleHeightRatio: CGFloat = 0.11
+  private let titleHeightRatio: CGFloat = 0.08
   private let contentHeightRatio: CGFloat = 0.58
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
   private let contentViewBottomSpacerHeightRatio: CGFloat = 0.023

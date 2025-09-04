@@ -16,11 +16,13 @@ struct ContentView: View {
   
   var body: some View {
     GeometryReader { geometry in
-      TextField("", text: Binding(
-        get: { viewModel.textContent },
-        set: { viewModel.updateContent($0) }
-      ))
+      ScrollView(.vertical, showsIndicators: true) {
+        TextEditor(text: Binding(
+          get: { viewModel.textContent },
+          set: { viewModel.updateContent($0) }
+        ))
         .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
+      }
     }
   }
 }
