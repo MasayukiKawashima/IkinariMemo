@@ -139,6 +139,17 @@ struct SideMenuView: View {
         .offset(x: isOpen ? 0 : -maxWidth)
       }
     }
+    //// 左向きスワイプで閉じる処理
+    .gesture(
+      DragGesture()
+        .onEnded { value in
+          if value.translation.width < -50 {
+            withAnimation {
+              isOpen = false
+            }
+          }
+        }
+    )
   }
   
   // MARK: - Methods
