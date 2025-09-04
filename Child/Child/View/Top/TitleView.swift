@@ -14,7 +14,7 @@ struct TitleView: View {
   var body: some View {
     GeometryReader { geometry in
       ScrollView(.horizontal, showsIndicators: true) {
-        TextField("Title", text: Binding(
+        TextField("タイトル", text: Binding(
           get: { viewModel.title },
           set: { viewModel.updateTitle($0) }
         ))
