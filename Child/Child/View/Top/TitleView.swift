@@ -10,6 +10,7 @@ import RealmSwift
 
 struct TitleView: View {
   @StateObject private var viewModel = TitleViewModel()
+  @FocusState private var isTextFieldFocused: Bool
 
   var body: some View {
     GeometryReader { geometry in
@@ -21,6 +22,12 @@ struct TitleView: View {
         .lineLimit(1)
         .font(.system(size: geometry.size.width * 0.074))
         .padding(.horizontal, geometry.size.width * 0.024)
+        .focused($isTextFieldFocused)
+        .onAppear {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            isTextFieldFocused = true
+          }
+        }
       }
     }
   }
