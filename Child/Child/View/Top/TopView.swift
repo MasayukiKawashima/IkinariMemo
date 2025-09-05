@@ -14,6 +14,9 @@ struct TopView: View {
   @StateObject private var viewModel: TopViewModel = TopViewModel()
   @State private var isKeyboardVisible: Bool = false
   
+  private let screenHeight = UIScreen.main.bounds.height
+  private let screenWidth = UIScreen.main.bounds.width
+  
   // iPhone16Proの画面のHeight874（CSSピクセル）を基準に算出
   private let titleHeightRatio: CGFloat = 0.08
   private let contentHeightRatio: CGFloat = 0.58
@@ -29,9 +32,6 @@ struct TopView: View {
     NavigationStack {
     
       GeometryReader { geometry in
-        
-        let screenHeight = UIScreen.main.bounds.height
-        let screenWidth = UIScreen.main.bounds.width
         
         ZStack {
           VStack(spacing: 0) {

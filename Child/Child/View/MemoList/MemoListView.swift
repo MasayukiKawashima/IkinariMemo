@@ -14,6 +14,8 @@ struct MemoListView: View {
   @StateObject var viewModel: MemoListViewModel = MemoListViewModel()
   @Environment(\.dismiss) private var dismiss
   
+  private let screenWidth = UIScreen.main.bounds.width
+  
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   
@@ -23,7 +25,6 @@ struct MemoListView: View {
     GeometryReader { geometry in
       VStack {
         
-        let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
         let results = viewModel.hasAnyUserMemo()
         
         if results {
@@ -52,7 +53,7 @@ struct MemoListView: View {
             
             Text("No Memos")
               .bold()
-              .font(.system(size: geometry.size.width * placerHolderTextFontSizeRatio))
+              .font(.system(size: screenWidth * placerHolderTextFontSizeRatio))
             
             Spacer()
           }

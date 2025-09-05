@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SideMenuView: View {
   
-  //memo fullHeight = 874, geometry.size.height = 778.0
+  //UIScreen.main.bounds.height = 874.0
+  //memo screenHeight = 874, geometry.size.height = 778.0
   //memoTitleFontSize = 17.7384, memoUpdateDateFontSize = 12.448
   
   // MARK: - Properties
@@ -18,9 +19,8 @@ struct SideMenuView: View {
   
   @Binding var isOpen: Bool
   
-  private let maxWidth = UIScreen.main.bounds.width
-  
-  private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
+  private let screenHeight = UIScreen.main.bounds.height
+  private let screenWidth = UIScreen.main.bounds.width
   
   // Iphone16Pro(Height: 874px, Width: 402px)を基準に各レートを算出
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
@@ -35,6 +35,7 @@ struct SideMenuView: View {
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   
+  private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   // MARK: - Body
   
   var body: some View {
@@ -50,7 +51,7 @@ struct SideMenuView: View {
           }
         
         VStack {
-          let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+
           
           let results = viewModel.hasAnyUserMemo()
           //メモが一件でもある場合
@@ -97,16 +98,16 @@ struct SideMenuView: View {
             HStack(spacing: 4) {
               Spacer()
               Text("more")
-                .font(.system(size: fullHeight * moreTextHeightRatio))
+                .font(.system(size: screenHeight * moreTextHeightRatio))
             }
             .foregroundStyle(.gray)
             .padding(.top, 8)
-            .padding(.trailing,  fullHeight * moreTextTrailingPaddingRatio)
+            .padding(.trailing,  screenHeight * moreTextTrailingPaddingRatio)
           }
           
           Spacer()
           //　閉じる、設定ボタン
-          VStack(spacing: fullHeight * settingsSectionSpaceRatio) {
+          VStack(spacing: screenHeight * settingsSectionSpaceRatio) {
             Divider()
               .frame(height: 1.5)
               .background(Color.gray.opacity(0.4))
@@ -115,9 +116,9 @@ struct SideMenuView: View {
             
             HStack {
               Image(systemName: "gearshape")
-                .font(.system(size: fullHeight * gearshapeIconHeightRatio))
+                .font(.system(size: screenHeight * gearshapeIconHeightRatio))
                 .foregroundStyle(.gray)
-                .padding(.leading, fullHeight * gearshapeIconLeadingPaddingRatio)
+                .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
               Spacer()
               
               Button(action: {
@@ -125,18 +126,18 @@ struct SideMenuView: View {
                   isOpen.toggle()
                 } }) {
                   Image(systemName: "xmark")
-                    .font(.system(size: fullHeight * xmarkIconHeightRatio))
+                    .font(.system(size: screenHeight * xmarkIconHeightRatio))
                 }
                 .buttonStyle(XmarkButtonColorStyle())
-                .padding(.trailing, fullHeight * xmarkIconTrailingPaddingRatio)
+                .padding(.trailing, screenHeight * xmarkIconTrailingPaddingRatio)
             }
           }
           .padding(.bottom, 10)
         }
         .frame(height: geometry.size.height)
         .background(backgroundColor)
-        .padding(.trailing, maxWidth/4)
-        .offset(x: isOpen ? 0 : -maxWidth)
+        .padding(.trailing, screenWidth/4)
+        .offset(x: isOpen ? 0 : -screenWidth)
       }
     }
     //// 左向きスワイプで閉じる処理
@@ -150,7 +151,6 @@ struct SideMenuView: View {
           }
         }
     )
-    
   }
   
   // MARK: - Methods
