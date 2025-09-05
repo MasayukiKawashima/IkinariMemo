@@ -34,7 +34,7 @@ struct SideMenuView: View {
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
-
+  
   // MARK: - Body
   
   var body: some View {
@@ -61,9 +61,9 @@ struct SideMenuView: View {
                 ForEach(viewModel.getDisplayItems()) { item in
                   
                   UserMemoListItemView(item: item)
-                  .onTapGesture {
-                    handleMemoTap(item)
-                  }
+                    .onTapGesture {
+                      handleMemoTap(item)
+                    }
                 }
                 .onDelete { offsets in
                   viewModel.deleteItems(at: offsets)
@@ -150,6 +150,7 @@ struct SideMenuView: View {
           }
         }
     )
+    
   }
   
   // MARK: - Methods

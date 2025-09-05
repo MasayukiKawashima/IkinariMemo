@@ -24,8 +24,11 @@ struct TitleView: View {
         .padding(.horizontal, geometry.size.width * 0.024)
         .focused($isTextFieldFocused)
         .onAppear {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            isTextFieldFocused = true
+          if viewModel.isFirstLaunch {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+              isTextFieldFocused = true
+              viewModel.isFirstLaunch = false
+            }
           }
         }
       }

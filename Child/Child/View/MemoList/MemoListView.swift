@@ -22,6 +22,7 @@ struct MemoListView: View {
   var body: some View {
     GeometryReader { geometry in
       VStack {
+        
         let fullHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
         let results = viewModel.hasAnyUserMemo()
         

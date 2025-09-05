@@ -11,11 +11,17 @@ import Combine
 
 class TitleViewModel: ObservableObject {
   
+  // MARK: - Properties
+  
   @Published var title: String = ""
   private var cancellable: AnyCancellable?
   
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var realm: Realm
+  //アプリ起動時のみテキストフィールドのフォーカス処理のためのプロパティ
+  var isFirstLaunch: Bool = true
+  
+  // MARK: - Init
 
   init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
@@ -36,6 +42,8 @@ class TitleViewModel: ObservableObject {
         self?.title = newMemo.title
       }
   }
+  
+  // MARK: - Methods
 
   func updateTitle(_ newTitle: String) {
     guard newTitle != title else { return }
