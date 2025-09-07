@@ -13,6 +13,7 @@ struct ContentView: View {
   // MARK: - Properties
   
   @StateObject private var viewModel: ContentViewModel = ContentViewModel()
+  var focusedField: FocusState<TopView.FocusedField?>.Binding
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   private let placeholderText: String = "本文"
   
@@ -27,6 +28,7 @@ struct ContentView: View {
             set: { viewModel.updateContent($0) }
           ))
           .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
+          .focused(focusedField, equals: .content)
           HStack {
             Text("本文")
               .opacity(viewModel.textContent.isEmpty ? 0.3 : 0.0)
@@ -40,9 +42,4 @@ struct ContentView: View {
       }
     }
   }
-}
-
-
-#Preview {
-  ContentView()
 }
