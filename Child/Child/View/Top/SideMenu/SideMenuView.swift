@@ -141,16 +141,17 @@ struct SideMenuView: View {
       }
     }
     //// 左向きスワイプで閉じる処理
-    .gesture(
-      DragGesture()
-        .onEnded { value in
-          if value.translation.width < -50 {
-            withAnimation {
-              isOpen = false
-            }
-          }
-        }
-    )
+    /////メモの削除処理とスワイプ動作が重複しているため一旦無効にする
+//    .gesture(
+//      DragGesture()
+//        .onEnded { value in
+//          if value.translation.width < -50 {
+//            withAnimation {
+//              isOpen = false
+//            }
+//          }
+//        }
+//    )
   }
   
   // MARK: - Methods
