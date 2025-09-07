@@ -26,7 +26,8 @@ struct TitleView: View {
         ZStack {
           
           Color.clear
-            .contentShape(Rectangle()) // タップ判定を全体に
+            .contentShape(Rectangle())
+            .frame(width: geometry.size.width, height: geometry.size.height)// タップ判定を全体に
             .onTapGesture {
               focusedField.wrappedValue = .title
             }
@@ -35,8 +36,8 @@ struct TitleView: View {
             get: { viewModel.title },
             set: { viewModel.updateTitle($0) }
           ))
+
           .padding(.horizontal, geometry.size.width * textFieldPaddingHorizontalRatio)
-          .frame(width: geometry.size.width, height: geometry.size.height)
           .lineLimit(1)
           .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
           .focused(focusedField, equals: .title)
