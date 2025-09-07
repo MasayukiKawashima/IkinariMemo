@@ -13,6 +13,7 @@ struct TopView: View {
   
   @StateObject private var viewModel: TopViewModel = TopViewModel()
   @State private var isKeyboardVisible: Bool = false
+  @FocusState private var focusedField: FocusedField?
   
   private let screenHeight = UIScreen.main.bounds.height
   private let screenWidth = UIScreen.main.bounds.width
@@ -25,6 +26,13 @@ struct TopView: View {
   private let adBannerHeight: CGFloat = 50
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
+  
+  // MARK: - Enums
+  
+  enum FocusedField {
+    case title
+    case content
+  }
   
   // MARK: Body
   
@@ -68,13 +76,21 @@ struct TopView: View {
             }
             
             Spacer().frame(height: screenHeight * sideMenuIconBottomSpacerHeightRatio)
-            
-            TitleView()
-              .frame(height: screenHeight * titleHeightRatio)
+            VStack {
+              TitleView(focusedField: $focusedField)
+                .frame(height: screenHeight * titleHeightRatio)
               
-            ContentView()
-              .frame(height: screenHeight * contentHeightRatio)
-            
+              ContentView(focusedField: $focusedField)
+                .frame(height: screenHeight * contentHeightRatio)
+            }
+            .toolbar {
+              ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("閉じる") {
+                  focusedField = nil   // どちらの入力でも閉じられる
+                }
+              }
+            }
             
             Spacer().frame(height: screenHeight * contentViewBottomSpacerHeightRatio)
             

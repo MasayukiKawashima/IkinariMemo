@@ -13,13 +13,13 @@ struct TitleView: View {
   // MARK: - Properties
   
   @StateObject private var viewModel = TitleViewModel()
-  @FocusState private var isTextFieldFocused: Bool
+  var focusedField: FocusState<TopView.FocusedField?>.Binding
   
   private let textFieldFontSizeRatio: CGFloat = 0.074
   private let textFieldPaddingHorizontalRatio: CGFloat = 0.024
   
   // MARK: - Body
-
+  
   var body: some View {
     GeometryReader { geometry in
       ScrollView(.horizontal, showsIndicators: true) {
@@ -30,11 +30,11 @@ struct TitleView: View {
         .lineLimit(1)
         .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
         .padding(.horizontal, geometry.size.width * textFieldPaddingHorizontalRatio)
-        .focused($isTextFieldFocused)
+        .focused(focusedField, equals: .title)
         .onAppear {
           if viewModel.isFirstLaunch {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-              isTextFieldFocused = true
+              focusedField.wrappedValue = .title
               viewModel.isFirstLaunch = false
             }
           }
@@ -44,7 +44,3 @@ struct TitleView: View {
   }
 }
 
-
-#Preview {
-      TitleView()
-}
