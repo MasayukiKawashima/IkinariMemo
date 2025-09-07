@@ -23,19 +23,29 @@ struct TitleView: View {
   var body: some View {
     GeometryReader { geometry in
       ScrollView(.horizontal, showsIndicators: true) {
-        TextField("タイトル", text: Binding(
-          get: { viewModel.title },
-          set: { viewModel.updateTitle($0) }
-        ))
-        .lineLimit(1)
-        .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
-        .padding(.horizontal, geometry.size.width * textFieldPaddingHorizontalRatio)
-        .focused(focusedField, equals: .title)
-        .onAppear {
-          if viewModel.isFirstLaunch {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        ZStack {
+          
+          Color.clear
+            .contentShape(Rectangle()) // タップ判定を全体に
+            .onTapGesture {
               focusedField.wrappedValue = .title
-              viewModel.isFirstLaunch = false
+            }
+          
+          TextField("タイトル", text: Binding(
+            get: { viewModel.title },
+            set: { viewModel.updateTitle($0) }
+          ))
+          .padding(.horizontal, geometry.size.width * textFieldPaddingHorizontalRatio)
+          .frame(width: geometry.size.width, height: geometry.size.height)
+          .lineLimit(1)
+          .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
+          .focused(focusedField, equals: .title)
+          .onAppear {
+            if viewModel.isFirstLaunch {
+              DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                focusedField.wrappedValue = .title
+                viewModel.isFirstLaunch = false
+              }
             }
           }
         }

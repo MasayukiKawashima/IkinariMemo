@@ -22,13 +22,23 @@ struct ContentView: View {
   var body: some View {
     GeometryReader { geometry in
       ScrollView(.vertical, showsIndicators: true) {
-        ZStack {
+        
+        ZStack(alignment: .topLeading) {
+          
+          Color.clear
+            .contentShape(Rectangle()) // タップ判定を全体に
+            .onTapGesture {
+              focusedField.wrappedValue = .content
+            }
+          
           TextEditor(text: Binding(
             get: { viewModel.textContent },
             set: { viewModel.updateContent($0) }
           ))
           .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
+          .frame(width: geometry.size.width, height: geometry.size.height)
           .focused(focusedField, equals: .content)
+          
           HStack {
             Text("本文")
               .opacity(viewModel.textContent.isEmpty ? 0.3 : 0.0)
@@ -39,6 +49,7 @@ struct ContentView: View {
           }
           .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
         }
+
       }
     }
   }

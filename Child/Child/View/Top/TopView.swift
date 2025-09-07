@@ -76,6 +76,8 @@ struct TopView: View {
             }
             
             Spacer().frame(height: screenHeight * sideMenuIconBottomSpacerHeightRatio)
+            
+            
             VStack {
               TitleView(focusedField: $focusedField)
                 .frame(height: screenHeight * titleHeightRatio)
