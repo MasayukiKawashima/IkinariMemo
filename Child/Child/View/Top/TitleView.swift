@@ -15,8 +15,8 @@ struct TitleView: View {
   @StateObject private var viewModel = TitleViewModel()
   var focusedField: FocusState<TopView.FocusedField?>.Binding
   
-  private let textFieldFontSizeRatio: CGFloat = 0.074
-  private let textFieldPaddingHorizontalRatio: CGFloat = 0.024
+  private let textFieldFontSizeRatio: CGFloat = 0.07
+  private let textFieldPaddingHorizontalRatio: CGFloat = 0.03
   
   // MARK: - Body
   
