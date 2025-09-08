@@ -97,9 +97,10 @@ struct SideMenuView: View {
           ) {
             HStack(spacing: 4) {
               Spacer()
-              Text("more")
-                .font(.system(size: screenHeight * moreTextHeightRatio))
+              Text("メモ一覧")
+              Image(systemName: "chevron.right")
             }
+            .font(.system(size: screenHeight * moreTextHeightRatio))
             .foregroundStyle(.gray)
             .padding(.top, 8)
             .padding(.trailing,  screenHeight * moreTextTrailingPaddingRatio)
@@ -117,6 +118,7 @@ struct SideMenuView: View {
             HStack {
               Image(systemName: "gearshape")
                 .font(.system(size: screenHeight * gearshapeIconHeightRatio))
+                .foregroundStyle(Color.mainColor)
                 .foregroundStyle(.gray)
                 .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
               Spacer()
@@ -127,6 +129,7 @@ struct SideMenuView: View {
                 } }) {
                   Image(systemName: "xmark")
                     .font(.system(size: screenHeight * xmarkIconHeightRatio))
+                    .foregroundStyle(Color.mainColor)
                 }
                 .buttonStyle(XmarkButtonColorStyle())
                 .padding(.trailing, screenHeight * xmarkIconTrailingPaddingRatio)

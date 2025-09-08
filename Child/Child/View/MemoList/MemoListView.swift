@@ -60,8 +60,9 @@ struct MemoListView: View {
           .frame(maxWidth: .infinity)
         }
       }
+      .customBackButton()
+      .background(backgroundColor)
     }
-    .background(backgroundColor)
   }
   
   // MARK: - Methods

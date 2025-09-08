@@ -55,7 +55,7 @@ struct TopView: View {
                     size: max(screenHeight * iconSizeRatio, 1),
                     weight: .bold
                   ))
-                  .foregroundStyle(Color.black)
+                  .foregroundStyle(Color.mainColor)
                   .padding(.leading, screenWidth * iconSidePaddingRatio)
               }
               
@@ -70,7 +70,7 @@ struct TopView: View {
                     size: max(screenHeight * iconSizeRatio, 1),
                     weight: .bold
                   ))
-                  .foregroundStyle(Color.black)
+                  .foregroundStyle(Color.mainColor)
                   .padding(.trailing, screenWidth * iconSidePaddingRatio)
               }
             }
@@ -96,7 +96,7 @@ struct TopView: View {
             
             Spacer().frame(height: screenHeight * contentViewBottomSpacerHeightRatio)
             
-            Color.yellow
+            Color.gray
               .frame(height: adBannerHeight)
               .overlay(Text("Ad Banner"))
   
