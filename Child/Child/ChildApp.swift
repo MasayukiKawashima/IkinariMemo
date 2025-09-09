@@ -8,12 +8,22 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 @main
 struct ChildApp: App {
+  
+  // MARK: - Init
+  
+  init() {
+    MobileAds.shared.start()
+  }
+  
+  // MARK: - Body
     var body: some Scene {
         WindowGroup {
           TopView().environmentObject(CurrentUserMemoViewModel.shared)
         }
     }
 }
+

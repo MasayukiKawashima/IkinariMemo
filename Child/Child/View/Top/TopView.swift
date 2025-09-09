@@ -96,10 +96,8 @@ struct TopView: View {
             
             Spacer().frame(height: screenHeight * contentViewBottomSpacerHeightRatio)
             
-            Color.gray
-              .frame(height: adBannerHeight)
-              .overlay(Text("Ad Banner"))
-  
+            AdBannerView()
+              .frame(height: 50)
           }
           
           SideMenuView(isOpen: $viewModel.isSideMenuOpen)
