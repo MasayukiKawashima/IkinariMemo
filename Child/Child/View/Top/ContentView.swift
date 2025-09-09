@@ -35,6 +35,7 @@ struct ContentView: View {
             get: { viewModel.textContent },
             set: { viewModel.updateContent($0) }
           ))
+          .font(.system(size: 64))
           .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
           .frame(width: geometry.size.width, height: geometry.size.height)
           .focused(focusedField, equals: .content)
