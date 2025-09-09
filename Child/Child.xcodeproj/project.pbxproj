@@ -44,6 +44,16 @@
 		FA5585AE2E13B04400CF231E /* ChildUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChildUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FA8DE0E82E6F146500CC2A99 /* Exceptions for "Child" folder in "Child" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FA5585932E13B04200CF231E /* Child */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FA5585A72E13B04400CF231E /* ChildTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -57,6 +67,9 @@
 		};
 		FA5585D72E13B6F200CF231E /* Child */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FA8DE0E82E6F146500CC2A99 /* Exceptions for "Child" folder in "Child" target */,
+			);
 			path = Child;
 			sourceTree = "<group>";
 		};

@@ -1,6 +1,14 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2025 Google LLC
+
+## GoogleUserMessagingPlatform
+
+Copyright 2025 Google LLC
+
 ## Realm
 
                                  Apache License
