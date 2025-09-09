@@ -10,7 +10,6 @@ import GoogleMobileAds
 
 struct AdBannerView: UIViewRepresentable {
   
-
   func makeUIView(context: Context) -> BannerView {
     let screenWidth = UIScreen.main.bounds.width
     // Adaptive Banner のサイズを取得

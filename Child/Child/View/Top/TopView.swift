@@ -22,7 +22,7 @@ struct TopView: View {
   private let titleHeightRatio: CGFloat = 0.08
   private let contentHeightRatio: CGFloat = 0.58
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
-  private let contentViewBottomSpacerHeightRatio: CGFloat = 0.023
+  private let contentViewBottomSpacerHeightRatio: CGFloat = 0.015
   private let adBannerHeight: CGFloat = 50
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
@@ -83,7 +83,8 @@ struct TopView: View {
                 .frame(height: screenHeight * titleHeightRatio)
               
               ContentView(focusedField: $focusedField)
-                .frame(height: screenHeight * contentHeightRatio)
+                .frame(maxHeight: .infinity)
+                .padding(.bottom, screenHeight * contentViewBottomSpacerHeightRatio)
             }
             .toolbar {
               ToolbarItemGroup(placement: .keyboard) {
@@ -94,7 +95,7 @@ struct TopView: View {
               }
             }
             
-            Spacer().frame(height: screenHeight * contentViewBottomSpacerHeightRatio)
+            Spacer()
             
             AdBannerView()
               .frame(height: 50)
@@ -116,6 +117,7 @@ struct TopView: View {
               }
           }
         }
+        .ignoresSafeArea(.keyboard)
       }
     }
     .navigationBarHidden(true)
