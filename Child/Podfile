@@ -4,6 +4,7 @@
 target 'Child' do
 
   pod 'RealmSwift'
+  pod 'Google-Mobile-Ads-SDK'
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 

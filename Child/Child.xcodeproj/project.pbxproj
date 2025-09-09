@@ -44,6 +44,16 @@
 		FA5585AE2E13B04400CF231E /* ChildUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChildUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FA8DE0E82E6F146500CC2A99 /* Exceptions for "Child" folder in "Child" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FA5585932E13B04200CF231E /* Child */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FA5585A72E13B04400CF231E /* ChildTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -57,6 +67,9 @@
 		};
 		FA5585D72E13B6F200CF231E /* Child */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FA8DE0E82E6F146500CC2A99 /* Exceptions for "Child" folder in "Child" target */,
+			);
 			path = Child;
 			sourceTree = "<group>";
 		};
@@ -153,6 +166,7 @@
 				FA5585912E13B04200CF231E /* Frameworks */,
 				FA5585922E13B04200CF231E /* Resources */,
 				62B60F38F50E7DB0288BBE80 /* [CP] Embed Pods Frameworks */,
+				4810EB91DDDE384D2D76E41F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,6 +212,7 @@
 				FA5585AB2E13B04400CF231E /* Frameworks */,
 				FA5585AC2E13B04400CF231E /* Resources */,
 				43A3A9403B4939E0D6B43F00 /* [CP] Embed Pods Frameworks */,
+				8F8E29B1CA7A01BF5B12896A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,6 +357,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4810EB91DDDE384D2D76E41F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Child/Pods-Child-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Child/Pods-Child-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Child/Pods-Child-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		62B60F38F50E7DB0288BBE80 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +389,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Child/Pods-Child-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F8E29B1CA7A01BF5B12896A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3E583FCB65DEBDEF4E7CAC5 /* [CP] Check Pods Manifest.lock */ = {
@@ -459,6 +508,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GADApplicationIdentifier = "ca-app-pub-3940256099942544~1458002511";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -481,6 +531,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TOPSCREEN_BANNER_ID = "ca-app-pub-3940256099942544/2934735716";
 			};
 			name = Debug;
 		};
@@ -522,6 +573,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GADApplicationIdentifier = "ca-app-pub-7661829655812679~7874123451";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -536,6 +588,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				TOPSCREEN_BANNER_ID = "ca-app-pub-7661829655812679/2055105970";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -552,6 +605,7 @@
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Child/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -583,6 +637,7 @@
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Child/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

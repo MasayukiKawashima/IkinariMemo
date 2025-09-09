@@ -7,8 +7,4 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
-   <FileSystemSynchronizedGroup
-      location = "group:New Folder"
-      name = "New Folder">
-   </FileSystemSynchronizedGroup>
 </Workspace>
