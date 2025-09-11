@@ -35,7 +35,6 @@ struct SideMenuView: View {
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   
-  private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   // MARK: - Body
   
   var body: some View {
@@ -138,7 +137,7 @@ struct SideMenuView: View {
           .padding(.bottom, 10)
         }
         .frame(height: geometry.size.height)
-        .background(backgroundColor)
+        .background(Color.listBackgroundColor)
         .padding(.trailing, screenWidth/4)
         .offset(x: isOpen ? 0 : -screenWidth)
       }

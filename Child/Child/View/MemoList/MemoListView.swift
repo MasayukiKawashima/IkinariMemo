@@ -61,7 +61,7 @@ struct MemoListView: View {
         }
       }
       .customBackButton()
-      .background(backgroundColor)
+      .background(Color.listBackgroundColor)
     }
   }
   
