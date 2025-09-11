@@ -115,11 +115,20 @@ struct SideMenuView: View {
                       radius: 4, x: 0, y: -2)
             
             HStack {
-              Image(systemName: "gearshape")
-                .font(.system(size: screenHeight * gearshapeIconHeightRatio))
-                .foregroundStyle(Color.mainColor)
-                .foregroundStyle(.gray)
-                .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
+              NavigationLink(
+                destination: SettingsView()
+                  .onAppear {
+                    // 遷移直後にメニューを閉じる
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                      isOpen = false
+                    }
+                  }
+              ) {
+                Image(systemName: "gearshape")
+                  .font(.system(size: screenHeight * gearshapeIconHeightRatio))
+                  .foregroundStyle(Color.mainColor)
+                  .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
+              }
               Spacer()
               
               Button(action: {

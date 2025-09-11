@@ -24,6 +24,7 @@ struct CustomBackButton: ViewModifier {
               Image(systemName: "chevron.left")
               Text("戻る")
             }
+            .foregroundStyle(Color.gray)
           }
         }
       }

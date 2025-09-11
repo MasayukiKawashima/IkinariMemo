@@ -23,12 +23,12 @@ struct SettingsView: View {
           VStack {
               List {
                   Section {
-                      SettingItemView(title: "データの削除", destination: TopView())
+                    SettingItemView(title: "データの削除", destination: DeleteDataView())
                   }
                   Section {
-                      SettingItemView(title: "利用規約", destination: TopView())
-                      SettingItemView(title: "プライバシーポリシー", destination: TopView())
-                      SettingItemView(title: "お問い合わせ", destination: TopView())
+                    SettingItemView(title: "利用規約", destination: TermsDisplayView())
+                    SettingItemView(title: "プライバシーポリシー", destination: TermsDisplayView())
+                    SettingItemView(title: "お問い合わせ", destination: ContactView())
                   }
               }
               .scrollContentBackground(.hidden)
