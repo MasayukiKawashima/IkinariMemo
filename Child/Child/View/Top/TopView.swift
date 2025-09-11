@@ -23,6 +23,7 @@ struct TopView: View {
   private let contentHeightRatio: CGFloat = 0.58
   private let sideMenuIconBottomSpacerHeightRatio: CGFloat = 0.06
   private let contentViewBottomSpacerHeightRatio: CGFloat = 0.015
+  private let topEdgePaddingHeightRatio: CGFloat = 0.025
   private let adBannerHeight: CGFloat = 50
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
@@ -43,6 +44,7 @@ struct TopView: View {
         
         ZStack {
           VStack(spacing: 0) {
+            
             HStack {
               
               Button(action: {
@@ -74,6 +76,7 @@ struct TopView: View {
                   .padding(.trailing, screenWidth * iconSidePaddingRatio)
               }
             }
+            .padding(.top, screenHeight * topEdgePaddingHeightRatio)
             
             Spacer().frame(height: screenHeight * sideMenuIconBottomSpacerHeightRatio)
             
