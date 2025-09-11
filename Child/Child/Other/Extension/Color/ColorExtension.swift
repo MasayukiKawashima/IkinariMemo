@@ -11,4 +11,5 @@ import SwiftUI
 extension Color {
   static let mainColor = Color("MainColor")
   static let placerHolderFontColor = Color("MainColor").opacity(0.3)
+  static let listBackgroundColor = Color("ListBackgroundColor")
 }

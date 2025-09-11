@@ -35,7 +35,6 @@ struct SideMenuView: View {
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   
-  private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
   // MARK: - Body
   
   var body: some View {
@@ -116,11 +115,20 @@ struct SideMenuView: View {
                       radius: 4, x: 0, y: -2)
             
             HStack {
-              Image(systemName: "gearshape")
-                .font(.system(size: screenHeight * gearshapeIconHeightRatio))
-                .foregroundStyle(Color.mainColor)
-                .foregroundStyle(.gray)
-                .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
+              NavigationLink(
+                destination: SettingsView()
+                  .onAppear {
+                    // 遷移直後にメニューを閉じる
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                      isOpen = false
+                    }
+                  }
+              ) {
+                Image(systemName: "gearshape")
+                  .font(.system(size: screenHeight * gearshapeIconHeightRatio))
+                  .foregroundStyle(Color.mainColor)
+                  .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
+              }
               Spacer()
               
               Button(action: {
@@ -138,7 +146,7 @@ struct SideMenuView: View {
           .padding(.bottom, 10)
         }
         .frame(height: geometry.size.height)
-        .background(backgroundColor)
+        .background(Color.listBackgroundColor)
         .padding(.trailing, screenWidth/4)
         .offset(x: isOpen ? 0 : -screenWidth)
       }
