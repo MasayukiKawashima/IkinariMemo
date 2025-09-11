@@ -10,13 +10,15 @@ import GoogleMobileAds
 
 struct AdBannerView: UIViewRepresentable {
   
+  @StateObject private var viewModel: AdBannerViewModel = AdBannerViewModel()
+  
   func makeUIView(context: Context) -> BannerView {
     let screenWidth = UIScreen.main.bounds.width
     // Adaptive Banner のサイズを取得
     let adSize = currentOrientationAnchoredAdaptiveBanner(width: screenWidth)
     
     let banner = BannerView(adSize: adSize)
-    banner.adUnitID = adUnitID(key: "TopScreenBannerID")
+    banner.adUnitID = viewModel.adUnitID(key: "TopScreenBannerID")
     print(banner.adUnitID!)
     banner.rootViewController = UIApplication.shared.connectedScenes
       .compactMap { ($0 as? UIWindowScene)?.keyWindow?.rootViewController }
@@ -26,13 +28,6 @@ struct AdBannerView: UIViewRepresentable {
   }
 
   func updateUIView(_ uiView: BannerView, context: Context) {}
-  
-  func adUnitID(key: String) -> String? {
-    guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
-      return nil
-    }
-    return adUnitIDs[key]
-  }
 }
 
 
