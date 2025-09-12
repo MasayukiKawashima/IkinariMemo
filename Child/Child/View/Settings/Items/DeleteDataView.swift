@@ -32,6 +32,7 @@ struct DeleteDataView: View {
             isShowDeleteConfirmationAlert.toggle()
           }) {
             Image(systemName: "trash.fill")
+              .foregroundColor(Color.blue)
           }
           .alert("警告", isPresented: $isShowDeleteConfirmationAlert) {
       
