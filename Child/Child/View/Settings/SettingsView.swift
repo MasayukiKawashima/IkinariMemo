@@ -43,6 +43,7 @@ struct SettingsView: View {
               .foregroundStyle(Color(red: 67/255, green: 67/255, blue: 67/255))
           }
           .background(Color.listBackgroundColor)
+          .customBackButton()
       }
   }
 }
