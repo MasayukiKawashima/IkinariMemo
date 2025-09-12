@@ -26,8 +26,8 @@ struct SettingsView: View {
                     SettingItemView(title: "データの削除", destination: DeleteDataView())
                   }
                   Section {
-                    SettingItemView(title: "利用規約", destination: TermsDisplayView())
-                    SettingItemView(title: "プライバシーポリシー", destination: TermsDisplayView())
+                    SettingItemView(title: "利用規約", destination: TermsDisplayView(type: .termsOfUse))
+                    SettingItemView(title: "プライバシーポリシー", destination: TermsDisplayView(type: .privacyPolicy))
                     SettingItemView(title: "お問い合わせ", destination: ContactView())
                   }
               }
