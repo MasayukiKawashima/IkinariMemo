@@ -11,7 +11,10 @@ struct DeleteDataView: View {
   
   // MARK: - Properties
   
-  @State private var isShowAlert = false
+  @StateObject private var viewModel: DeleteDataViewModel = DeleteDataViewModel()
+  
+  @State private var isShowDeleteConfirmationAlert = false
+  @State private var isShowDeleteCompletedAlert = false
   
   // MARK: - Body
   
@@ -26,21 +29,26 @@ struct DeleteDataView: View {
           
           Button(action: {
               // ボタンがタップされた時のアクション
-            isShowAlert.toggle()
+            isShowDeleteConfirmationAlert.toggle()
           }) {
             Image(systemName: "trash.fill")
           }
-          .alert("警告", isPresented: $isShowAlert) {
+          .alert("警告", isPresented: $isShowDeleteConfirmationAlert) {
       
               Button("削除する", role: .destructive) {
                   // 🔴 削除処理を書く
-                  print("削除実行")
+                // １データ削除処理
+                viewModel.deleteAllMemos()
+                //　２終了ログ表示
+                isShowDeleteCompletedAlert.toggle()
               }
               
               Button("キャンセル", role: .cancel) {
               }
           } message: {
-              Text("アプリ内の全てのデータを削除してもよろしいですか\nこの操作は取り消せません")
+              Text("全てのメモを削除してもよろしいですか\nこの操作は取り消せません")
+          }
+          .alert("全てのメモが削除されました", isPresented: $isShowDeleteCompletedAlert) {
           }
         }
       }
