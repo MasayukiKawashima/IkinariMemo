@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 enum TermsType {
   case termsOfUse
@@ -27,14 +28,15 @@ enum TermsType {
   }
 }
 
-
 class TermsDisplayViewModel: ObservableObject {
   
   @Published var title: String
   @Published var urlString: String
+  @Published var isLoading: Bool = true   // 読み込み中かどうかだけ保持
   
   init(type: TermsType) {
     self.title = type.title
     self.urlString = type.urlString
   }
 }
+
