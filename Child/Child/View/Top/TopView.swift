@@ -12,7 +12,6 @@ struct TopView: View {
   // MARK: Properties
   
   @StateObject private var viewModel: TopViewModel = TopViewModel()
-  @State private var isKeyboardVisible: Bool = false
   @FocusState private var focusedField: FocusedField?
   
   private let screenHeight = UIScreen.main.bounds.height
@@ -106,11 +105,11 @@ struct TopView: View {
           
           SideMenuView(isOpen: $viewModel.isSideMenuOpen)
           
-          if isKeyboardVisible {
+          if viewModel.isKeyboardVisible {
             Color.black.opacity(0.001)
               .ignoresSafeArea()
               .onTapGesture {
-                // 🔹 キーボードを閉じる
+              
                 UIApplication.shared.sendAction(
                   #selector(UIResponder.resignFirstResponder),
                   to: nil,
@@ -127,10 +126,10 @@ struct TopView: View {
     .accentColor(.gray)
     
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-      isKeyboardVisible = true
+      viewModel.isKeyboardVisible = true
     }
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-      isKeyboardVisible = false
+      viewModel.isKeyboardVisible = false
     }
   }
 }

@@ -13,6 +13,7 @@ class TopViewModel: ObservableObject {
   // MARK: - Properties
   
   @Published var isSideMenuOpen: Bool = false
+  @Published var isKeyboardVisible: Bool = false
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var cancellable: AnyCancellable?
   

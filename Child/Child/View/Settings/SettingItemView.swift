@@ -14,7 +14,6 @@ struct SettingItemView<Destination: View>: View {
   let title: String
   let destination: Destination
   
-  
   // MARK: - Body
   
   var body: some View {
