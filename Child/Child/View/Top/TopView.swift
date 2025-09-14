@@ -27,13 +27,6 @@ struct TopView: View {
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
   
-  // MARK: - Enums
-  
-  enum FocusedField {
-    case title
-    case content
-  }
-  
   // MARK: Body
   
   var body: some View {

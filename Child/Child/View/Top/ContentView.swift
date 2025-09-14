@@ -13,7 +13,7 @@ struct ContentView: View {
   // MARK: - Properties
   
   @StateObject private var viewModel: ContentViewModel = ContentViewModel()
-  var focusedField: FocusState<TopView.FocusedField?>.Binding
+  var focusedField: FocusState<FocusedField?>.Binding
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   private let placeholderText: String = "本文"
   

@@ -8,6 +8,13 @@
 import Foundation
 import Combine
 
+// MARK: - Enums
+
+enum FocusedField {
+  case title
+  case content
+}
+
 class TopViewModel: ObservableObject {
   
   // MARK: - Properties
