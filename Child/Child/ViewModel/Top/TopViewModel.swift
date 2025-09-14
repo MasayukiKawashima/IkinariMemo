@@ -22,7 +22,7 @@ class TopViewModel: ObservableObject {
   @Published var isSideMenuOpen: Bool = false
   @Published var isKeyboardVisible: Bool = false
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
-  private var cancellable: AnyCancellable?
+//  private var cancellable: AnyCancellable?
   
   // MARK: - Init
   
@@ -30,9 +30,9 @@ class TopViewModel: ObservableObject {
     self.currentUserMemoViewModel = currentUserMemoViewModel
 
     // currentUserMemo の変化を監視
-    self.cancellable = currentUserMemoViewModel.$currentUserMemo
-      .sink { [weak self] newMemo in
-      }
+//    self.cancellable = currentUserMemoViewModel.$currentUserMemo
+//      .sink { [weak self] newMemo in
+//      }
   }
   
   // MARK: - Methods
