@@ -12,6 +12,7 @@ struct SettingsView: View {
   // MARK: - Properties
   
   private let bottomTextFontSizeRatio: CGFloat = 0.016
+  private let bottomTextBottomPaddingRatio: CGFloat = 0.011
   private let listItemHeightRatio: CGFloat = 0.041
   
   private let screenHeight = UIScreen.main.bounds.height
@@ -46,6 +47,7 @@ struct SettingsView: View {
           Text("Version 1.0.0")
           Text("© 2025 Masayuki Kawashima")
         }
+        .padding(.bottom, screenHeight * bottomTextBottomPaddingRatio)
         .font(.system(size: screenHeight * bottomTextFontSizeRatio))
         .foregroundStyle(Color(red: 67/255, green: 67/255, blue: 67/255))
       }
