@@ -11,7 +11,7 @@ import MessageUI
 @MainActor
 final class ContactItemViewModel: ObservableObject {
     
-    private let recipients: [String] = ["example@example.com"]
+    private let recipients: [String] = ["info.childmemoapp@gmail.com"]
     
     @Published var isShowingMailView = false
     

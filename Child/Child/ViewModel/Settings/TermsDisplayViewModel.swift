@@ -22,8 +22,8 @@ enum TermsType {
   var urlString: String {
     switch self {
       //各ページが完成するまでジドスタのページで代用
-    case .termsOfUse: return "https://www.notion.so/1619e6db1ebc801297fdfef8e61cc911"
-    case .privacyPolicy: return "https://www.notion.so/1619e6db1ebc801097eed65897bb162f"
+    case .termsOfUse: return "https://night-beryl-de2.notion.site/26e9e6db1ebc806ea495c3939f4d6106"
+    case .privacyPolicy: return "https://night-beryl-de2.notion.site/26e9e6db1ebc8016aa15c51b51d2e895"
     }
   }
 }
