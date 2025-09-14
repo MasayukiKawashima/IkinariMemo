@@ -9,8 +9,12 @@ import SwiftUI
 import MessageUI
 
 struct ContactItemView: View {
-    @StateObject private var viewModel = ContactItemViewModel() // ← ViewModelを保持
+  
+  // MARK: - Properties
+    @StateObject private var viewModel = ContactItemViewModel()
     
+  // MARK: - Body
+  
     var body: some View {
         Button {
             viewModel.sendMail()

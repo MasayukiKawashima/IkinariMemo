@@ -9,10 +9,14 @@ import Foundation
 
 class UserMemoListItem: Identifiable {
   
+  // MARK: - Properties
+  
   let id = UUID()
   let userMemo: UserMemo?
   let displayTitle: String
   let displayUpdatedDate: String
+  
+  // MARK: - Init
   
   init(userMemo: UserMemo) {
     self.userMemo = userMemo
