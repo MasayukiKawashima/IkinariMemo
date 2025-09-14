@@ -63,6 +63,7 @@ class SideMenuViewModel: ObservableObject {
     CurrentUserMemoViewModel.shared.upDate(userMemo: userMemo)
   }
   
+  
   func deleteItems(at offsets: IndexSet) {
     let items = getDisplayItems()
     
