@@ -13,15 +13,15 @@ class SideMenuViewModel: ObservableObject {
   
   // MARK: - Properties
   @Published var sideMenuMemoLists: [UserMemo] = []
-    private var token: NotificationToken?
-    let realm: Realm
+  private var token: NotificationToken?
+  let realm: Realm
   
   // MARK: - Init
-
-    init() {
-      self.realm = try! Realm()
-      observeMemos()
-    }
+  
+  init() {
+    self.realm = try! Realm()
+    observeMemos()
+  }
   
   // MARK: - Methods
   
@@ -101,7 +101,5 @@ class SideMenuViewModel: ObservableObject {
       return false
     }
   }
-
+  
 }
-
-
