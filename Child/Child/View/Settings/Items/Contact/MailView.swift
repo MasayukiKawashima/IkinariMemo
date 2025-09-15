@@ -13,7 +13,7 @@ struct MailView: UIViewControllerRepresentable {
   
   @Environment(\.dismiss) var dismiss
   
-  let recipients: [String]   // 宛先だけ保持
+  let recipients: [String]
   
   
   class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
