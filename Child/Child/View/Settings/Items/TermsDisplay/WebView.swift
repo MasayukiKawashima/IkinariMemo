@@ -1,5 +1,5 @@
 //
-//  WebViewWrapper.swift
+//  WebView.swift
 //  Child
 //
 //  Created by 川島真之 on 2025/09/12.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WebKit
 
-struct WebViewWrapper: UIViewRepresentable {
+struct WebView: UIViewRepresentable {
   
   let urlString: String
   @ObservedObject var viewModel: TermsDisplayViewModel

@@ -35,7 +35,8 @@ struct MemoListView: View {
                 
                 UserMemoListItemView(item: item)
                   .onTapGesture {
-                    handleMemoTap(item)
+                    viewModel.selectMemo(item)
+                    dismiss()
                   }
               }
               .onDelete { offsets in
@@ -63,12 +64,6 @@ struct MemoListView: View {
       .customBackButton()
       .background(Color.listBackgroundColor)
     }
-  }
-  
-  // MARK: - Methods
-  private func handleMemoTap(_ item: UserMemoListItem) {
-    viewModel.selectMemo(item)
-    dismiss()
   }
 }
 

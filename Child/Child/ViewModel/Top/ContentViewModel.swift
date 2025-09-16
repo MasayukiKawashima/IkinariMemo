@@ -31,6 +31,8 @@ class ContentViewModel: ObservableObject {
         self?.textContent = newMemo.content
       }
   }
+  
+  // MARK: - Methods
 
   func updateContent(_ newContent: String) {
     guard newContent != textContent else { return }

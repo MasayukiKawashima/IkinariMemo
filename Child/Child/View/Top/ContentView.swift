@@ -13,7 +13,7 @@ struct ContentView: View {
   // MARK: - Properties
   
   @StateObject private var viewModel: ContentViewModel = ContentViewModel()
-  var focusedField: FocusState<TopView.FocusedField?>.Binding
+  var focusedField: FocusState<FocusedField?>.Binding
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   private let placeholderText: String = "本文"
   
@@ -35,7 +35,7 @@ struct ContentView: View {
             get: { viewModel.textContent },
             set: { viewModel.updateContent($0) }
           ))
-//          .font(.system(size: 64))
+
           .padding(.horizontal, geometry.size.width * TextEditorSidePaddingRatio)
           .frame(width: geometry.size.width, height: geometry.size.height)
           .focused(focusedField, equals: .content)

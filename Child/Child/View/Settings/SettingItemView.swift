@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct SettingItemView<Destination: View>: View {
+  
+  // MARK: - Properties
+  
   let title: String
   let destination: Destination
+  
+  // MARK: - Body
   
   var body: some View {
     NavigationLink(destination: destination) {
