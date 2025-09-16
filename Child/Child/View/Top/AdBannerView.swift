@@ -19,7 +19,7 @@ struct AdBannerView: UIViewRepresentable {
     
     let banner = BannerView(adSize: adSize)
     banner.adUnitID = viewModel.adUnitID(key: "TopScreenBannerID")
-    print(banner.adUnitID!)
+ 
     banner.rootViewController = UIApplication.shared.connectedScenes
       .compactMap { ($0 as? UIWindowScene)?.keyWindow?.rootViewController }
       .first

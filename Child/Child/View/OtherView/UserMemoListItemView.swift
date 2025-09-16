@@ -9,14 +9,20 @@ import SwiftUI
 
 struct UserMemoListItemView: View {
   
+  // MARK: - Properties
+  
   private let item: UserMemoListItem
   
   private let memoTitleFontSizeRatio: CGFloat = 0.0202
   private let memoUpdatedDateFontSizeRatio: CGFloat = 0.0309
   
+  // MARK: - Init
+  
   init (item: UserMemoListItem) {
     self.item = item
   }
+  
+  // MARK: - Body
   
   var body: some View {
     

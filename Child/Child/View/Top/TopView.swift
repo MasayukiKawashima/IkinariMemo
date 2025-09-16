@@ -12,7 +12,6 @@ struct TopView: View {
   // MARK: Properties
   
   @StateObject private var viewModel: TopViewModel = TopViewModel()
-  @State private var isKeyboardVisible: Bool = false
   @FocusState private var focusedField: FocusedField?
   
   private let screenHeight = UIScreen.main.bounds.height
@@ -27,13 +26,6 @@ struct TopView: View {
   private let adBannerHeight: CGFloat = 50
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
-  
-  // MARK: - Enums
-  
-  enum FocusedField {
-    case title
-    case content
-  }
   
   // MARK: Body
   
@@ -106,11 +98,11 @@ struct TopView: View {
           
           SideMenuView(isOpen: $viewModel.isSideMenuOpen)
           
-          if isKeyboardVisible {
+          if viewModel.isKeyboardVisible {
             Color.black.opacity(0.001)
               .ignoresSafeArea()
               .onTapGesture {
-                // 🔹 キーボードを閉じる
+              
                 UIApplication.shared.sendAction(
                   #selector(UIResponder.resignFirstResponder),
                   to: nil,
@@ -127,10 +119,10 @@ struct TopView: View {
     .accentColor(.gray)
     
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-      isKeyboardVisible = true
+      viewModel.isKeyboardVisible = true
     }
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-      isKeyboardVisible = false
+      viewModel.isKeyboardVisible = false
     }
   }
 }

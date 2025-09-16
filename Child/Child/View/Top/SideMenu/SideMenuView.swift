@@ -62,7 +62,10 @@ struct SideMenuView: View {
                   
                   UserMemoListItemView(item: item)
                     .onTapGesture {
-                      handleMemoTap(item)
+                      viewModel.selectMemo(item)
+                      withAnimation(.linear(duration: 0.2)) {
+                        isOpen = false
+                      }
                     }
                 }
                 .onDelete { offsets in
@@ -163,15 +166,5 @@ struct SideMenuView: View {
 //          }
 //        }
 //    )
-  }
-  
-  // MARK: - Methods
-  
-  private func handleMemoTap(_ item: UserMemoListItem) {
-    
-    viewModel.selectMemo(item)
-    withAnimation(.linear(duration: 0.2)) {
-      isOpen = false
-    }
   }
 }

@@ -18,7 +18,7 @@ struct TermsDisplayView: View {
   
   var body: some View {
     ZStack {
-      WebViewWrapper(urlString: viewModel.urlString, viewModel: viewModel)
+      WebView(urlString: viewModel.urlString, viewModel: viewModel)
       
       if viewModel.isLoading {
         ProgressView()

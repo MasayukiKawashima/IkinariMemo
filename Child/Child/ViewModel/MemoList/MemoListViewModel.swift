@@ -27,14 +27,6 @@ class MemoListViewModel: ObservableObject {
   
   // MARK: - Methods
   
-//  func getTitlesFromAllMemoLists() -> [String] {
-//    // 実際のメモからタイトルを取得し、配列に変換
-//    let titles = Array(memoLists.map { userMemo in
-//      return userMemo.title.isEmpty ? "タイトル未設定" : userMemo.title
-//    })
-//    return titles
-//  }
-  
   func deleteItems(at offsets: IndexSet) {
     let items = getDisplayItems()
     

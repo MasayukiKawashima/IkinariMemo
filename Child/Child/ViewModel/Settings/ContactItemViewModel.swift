@@ -10,25 +10,29 @@ import MessageUI
 
 @MainActor
 final class ContactItemViewModel: ObservableObject {
-    
-    private let recipients: [String] = ["info.childmemoapp@gmail.com"]
-    
-    @Published var isShowingMailView = false
-    
-    var canSendMail: Bool {
-        MFMailComposeViewController.canSendMail()
+  
+  // MARK: - Properties
+  
+  private let recipients: [String] = ["info.childmemoapp@gmail.com"]
+  
+  @Published var isShowingMailView = false
+  
+  var canSendMail: Bool {
+    MFMailComposeViewController.canSendMail()
+  }
+  
+  // MARK: - Methods
+  
+  func sendMail() {
+    guard canSendMail else {
+      print("この端末ではメールを送信できません")
+      return
     }
-    
-    func sendMail() {
-        guard canSendMail else {
-            print("この端末ではメールを送信できません")
-            return
-        }
-        isShowingMailView = true
-    }
-    
-    func getRecipients() -> [String] {
-        recipients
-    }
+    isShowingMailView = true
+  }
+  
+  func getRecipients() -> [String] {
+    recipients
+  }
 }
 
