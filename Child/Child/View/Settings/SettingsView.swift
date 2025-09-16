@@ -49,7 +49,7 @@ struct SettingsView: View {
         }
         .padding(.bottom, screenHeight * bottomTextBottomPaddingRatio)
         .font(.system(size: screenHeight * bottomTextFontSizeRatio))
-        .foregroundStyle(Color(red: 67/255, green: 67/255, blue: 67/255))
+        .foregroundStyle(Color.customDarkGrayColor)
       }
       .background(Color.listBackgroundColor)
       .customBackButton()

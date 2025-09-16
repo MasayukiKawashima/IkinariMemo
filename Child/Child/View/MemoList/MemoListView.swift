@@ -54,6 +54,7 @@ struct MemoListView: View {
             
             Text("No Memos")
               .bold()
+              .foregroundStyle(Color.customDarkGrayColor)
               .font(.system(size: screenWidth * placerHolderTextFontSizeRatio))
             
             Spacer()

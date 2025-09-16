@@ -82,6 +82,7 @@ struct SideMenuView: View {
             VStack {
               Text("No Memos")
                 .bold()
+                .foregroundStyle(Color.customDarkGrayColor)
                 .font(.system(size: geometry.size.width * placerHolderTextFontSizeRatio))
             }
             .frame(height: geometry.size.height * 0.7)
