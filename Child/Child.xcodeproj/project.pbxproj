@@ -254,8 +254,8 @@
 			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
 				ja,
+				Base,
 			);
 			mainGroup = FA55858B2E13B04200CF231E;
 			minimizedProjectReferenceProxies = 1;
