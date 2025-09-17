@@ -130,7 +130,7 @@ struct SideMenuView: View {
               ) {
                 Image(systemName: "gearshape")
                   .font(.system(size: screenHeight * gearshapeIconHeightRatio))
-                  .foregroundStyle(Color.mainColor)
+                  .foregroundStyle(Color.gray)
                   .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
               }
               Spacer()
@@ -141,7 +141,7 @@ struct SideMenuView: View {
                 } }) {
                   Image(systemName: "xmark")
                     .font(.system(size: screenHeight * xmarkIconHeightRatio))
-                    .foregroundStyle(Color.mainColor)
+                    .foregroundStyle(Color.gray)
                 }
                 .buttonStyle(XmarkButtonColorStyle())
                 .padding(.trailing, screenHeight * xmarkIconTrailingPaddingRatio)
