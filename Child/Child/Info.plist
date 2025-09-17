@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UIUserInterfaceStyle</key>
-	<string></string>
+	<string>Light</string>
 	<key>AdUnitIDs</key>
 	<dict>
 		<key>TopScreenBannerID</key>
