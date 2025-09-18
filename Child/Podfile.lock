@@ -1,0 +1,30 @@
+PODS:
+  - Google-Mobile-Ads-SDK (12.10.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleUserMessagingPlatform (3.0.0)
+  - Realm (20.0.1):
+    - Realm/Headers (= 20.0.1)
+  - Realm/Headers (20.0.1)
+  - RealmSwift (20.0.1):
+    - Realm (= 20.0.1)
+
+DEPENDENCIES:
+  - Google-Mobile-Ads-SDK
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - Google-Mobile-Ads-SDK
+    - GoogleUserMessagingPlatform
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: 08194bf203dc13f4422de827a4b254f27cd4a3a5
+  GoogleUserMessagingPlatform: f8d0cdad3ca835406755d0a69aa634f00e76d576
+  Realm: 9572204903ef28caeb3c03bb30c1147f354ee3e7
+  RealmSwift: d230b44017a55a1ba97de6a944da1fe3bedb92b5
+
+PODFILE CHECKSUM: d143d614fd6185db3e6a78f4ae1f75c97517a0f7
+
+COCOAPODS: 1.16.2
