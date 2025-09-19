@@ -1,6 +1,6 @@
 ## ■ Child
 
-TopImage
+<img width="1600" height="800" alt="Image" src="https://github.com/user-attachments/assets/81c54a2f-49a0-4e36-a596-1fb61ded6315" />
 
 ## ■ ダウンロードはこちら
 
@@ -8,15 +8,15 @@ QRImage
 
 URLリンク
 
-### ■ アプリのイメージ
+## ■ アプリのイメージ
 
 イメージGif
 
-### ■ アプリを作ったきっかけ
+## ■ アプリを作ったきっかけ
 
 
 
-### ■ 機能一覧
+## ■ 機能一覧
 
 機能一覧図
 
@@ -42,4 +42,4 @@ URLリンク
 
 
 
-### ■ 最後に
+## ■ 最後に
