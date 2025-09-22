@@ -1,0 +1,6 @@
+framework module Pods_IkinariMemo {
+  umbrella header "Pods-IkinariMemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
