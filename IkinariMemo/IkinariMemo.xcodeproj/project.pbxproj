@@ -63,15 +63,11 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FA5585A72E13B04400CF231E /* IkinariMemoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = IkinariMemoTests;
 			sourceTree = "<group>";
 		};
 		FA5585B12E13B04400CF231E /* IkinariMemoUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = IkinariMemoUITests;
 			sourceTree = "<group>";
 		};
@@ -85,8 +81,6 @@
 		};
 		FA5585DC2E13B6F700CF231E /* Preview Content */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
@@ -624,6 +618,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IkinariMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "いきなりメモ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -661,6 +656,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IkinariMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "いきなりメモ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
