@@ -92,12 +92,7 @@ struct TopView: View {
             
             Spacer()
             
-//            AdBannerView()
-            ZStack {
-              Color.gray.opacity(0.5)
-              Text("Ad Banner")
-                .foregroundStyle(Color.white)
-            }
+            AdBannerView()
               .frame(height: 50)
           }
           
