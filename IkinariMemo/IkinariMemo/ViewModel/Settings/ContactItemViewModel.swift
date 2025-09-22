@@ -13,7 +13,7 @@ final class ContactItemViewModel: ObservableObject {
   
   // MARK: - Properties
   
-  private let recipients: [String] = ["info.IkinariMemomemoapp@gmail.com"]
+  private let recipients: [String] = ["info.ikinarimemo@gmail.com"]
   
   @Published var isShowingMailView = false
   
