@@ -1,6 +1,6 @@
 ## ■ Child
 
-<img width="1600" height="800" alt="Image" src="https://github.com/user-attachments/assets/81c54a2f-49a0-4e36-a596-1fb61ded6315" />
+<img width="1600" height="800" alt="" />
 
 ## ■ ダウンロードはこちら
 
