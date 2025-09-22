@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B4AC998C0EE09A963EE41BA /* Pods_IkinariMemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A84ED4C9714C9757F9DDCDE /* Pods_IkinariMemoTests.framework */; };
+		8CF1C9A518147671EA3CE31B /* Pods_IkinariMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594E52260D36AC16D7EDEAB0 /* Pods_IkinariMemo.framework */; };
+		F17DB7FEA319467D183AD1D2 /* Pods_IkinariMemo_IkinariMemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CCA10847534444845B5690 /* Pods_IkinariMemo_IkinariMemoUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA5585A52E13B04400CF231E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA55858C2E13B04200CF231E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA5585932E13B04200CF231E;
+			remoteInfo = Child;
+		};
+		FA5585AF2E13B04400CF231E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA55858C2E13B04200CF231E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA5585932E13B04200CF231E;
+			remoteInfo = Child;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		29CCA10847534444845B5690 /* Pods_IkinariMemo_IkinariMemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IkinariMemo_IkinariMemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35FF10A94E082F6093146E11 /* Pods-IkinariMemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemoTests.debug.xcconfig"; path = "Target Support Files/Pods-IkinariMemoTests/Pods-IkinariMemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		39CC5C156E02A347A51C98B9 /* Pods-IkinariMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemo.debug.xcconfig"; path = "Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo.debug.xcconfig"; sourceTree = "<group>"; };
+		482D7347CD651FCFC9959B4F /* Pods-IkinariMemo-IkinariMemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemo-IkinariMemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		594E52260D36AC16D7EDEAB0 /* Pods_IkinariMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IkinariMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A84ED4C9714C9757F9DDCDE /* Pods_IkinariMemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IkinariMemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BBBFBEC7D62AB5FC4A6866D /* Pods-Child-ChildUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Child-ChildUITests.debug.xcconfig"; path = "Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		79335E4907ECEF48F953B345 /* Pods-IkinariMemo-IkinariMemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemo-IkinariMemoUITests.release.xcconfig"; path = "Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7ACA245A15E91B91A16A480A /* Pods-Child-ChildUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Child-ChildUITests.release.xcconfig"; path = "Target Support Files/Pods-Child-ChildUITests/Pods-Child-ChildUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7B7931E8B80CDC939663285A /* Pods-ChildTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChildTests.debug.xcconfig"; path = "Target Support Files/Pods-ChildTests/Pods-ChildTests.debug.xcconfig"; sourceTree = "<group>"; };
+		98B72AE0CB30DC5AF8EE047D /* Pods-IkinariMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemo.release.xcconfig"; path = "Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo.release.xcconfig"; sourceTree = "<group>"; };
+		A175C70DF338566123EB7628 /* Pods-ChildTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChildTests.release.xcconfig"; path = "Target Support Files/Pods-ChildTests/Pods-ChildTests.release.xcconfig"; sourceTree = "<group>"; };
+		A305C9C604ED9C5807A52422 /* Pods-Child.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Child.release.xcconfig"; path = "Target Support Files/Pods-Child/Pods-Child.release.xcconfig"; sourceTree = "<group>"; };
+		AC87D32E0C7C7958A43083B2 /* Pods-Child.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Child.debug.xcconfig"; path = "Target Support Files/Pods-Child/Pods-Child.debug.xcconfig"; sourceTree = "<group>"; };
+		E4CDB8D92D3669AB62640D8F /* Pods-IkinariMemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IkinariMemoTests.release.xcconfig"; path = "Target Support Files/Pods-IkinariMemoTests/Pods-IkinariMemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA5585942E13B04200CF231E /* IkinariMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IkinariMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA5585A42E13B04400CF231E /* IkinariMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IkinariMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA5585AE2E13B04400CF231E /* IkinariMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IkinariMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FA8DE0E82E6F146500CC2A99 /* Exceptions for "IkinariMemo" folder in "IkinariMemo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FA5585932E13B04200CF231E /* IkinariMemo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FA5585A72E13B04400CF231E /* IkinariMemoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = IkinariMemoTests;
+			sourceTree = "<group>";
+		};
+		FA5585B12E13B04400CF231E /* IkinariMemoUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = IkinariMemoUITests;
+			sourceTree = "<group>";
+		};
+		FA5585D72E13B6F200CF231E /* IkinariMemo */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FA8DE0E82E6F146500CC2A99 /* Exceptions for "IkinariMemo" folder in "IkinariMemo" target */,
+			);
+			path = IkinariMemo;
+			sourceTree = "<group>";
+		};
+		FA5585DC2E13B6F700CF231E /* Preview Content */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA5585912E13B04200CF231E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CF1C9A518147671EA3CE31B /* Pods_IkinariMemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585A12E13B04400CF231E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4AC998C0EE09A963EE41BA /* Pods_IkinariMemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585AB2E13B04400CF231E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F17DB7FEA319467D183AD1D2 /* Pods_IkinariMemo_IkinariMemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		107E42A101BF5B1B304BD669 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				594E52260D36AC16D7EDEAB0 /* Pods_IkinariMemo.framework */,
+				29CCA10847534444845B5690 /* Pods_IkinariMemo_IkinariMemoUITests.framework */,
+				5A84ED4C9714C9757F9DDCDE /* Pods_IkinariMemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		617AED45DC2373C0E3C118D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC87D32E0C7C7958A43083B2 /* Pods-Child.debug.xcconfig */,
+				A305C9C604ED9C5807A52422 /* Pods-Child.release.xcconfig */,
+				5BBBFBEC7D62AB5FC4A6866D /* Pods-Child-ChildUITests.debug.xcconfig */,
+				7ACA245A15E91B91A16A480A /* Pods-Child-ChildUITests.release.xcconfig */,
+				7B7931E8B80CDC939663285A /* Pods-ChildTests.debug.xcconfig */,
+				A175C70DF338566123EB7628 /* Pods-ChildTests.release.xcconfig */,
+				39CC5C156E02A347A51C98B9 /* Pods-IkinariMemo.debug.xcconfig */,
+				98B72AE0CB30DC5AF8EE047D /* Pods-IkinariMemo.release.xcconfig */,
+				482D7347CD651FCFC9959B4F /* Pods-IkinariMemo-IkinariMemoUITests.debug.xcconfig */,
+				79335E4907ECEF48F953B345 /* Pods-IkinariMemo-IkinariMemoUITests.release.xcconfig */,
+				35FF10A94E082F6093146E11 /* Pods-IkinariMemoTests.debug.xcconfig */,
+				E4CDB8D92D3669AB62640D8F /* Pods-IkinariMemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA55858B2E13B04200CF231E = {
+			isa = PBXGroup;
+			children = (
+				FA5585D72E13B6F200CF231E /* IkinariMemo */,
+				FA5585DC2E13B6F700CF231E /* Preview Content */,
+				FA5585A72E13B04400CF231E /* IkinariMemoTests */,
+				FA5585B12E13B04400CF231E /* IkinariMemoUITests */,
+				FA5585952E13B04200CF231E /* Products */,
+				617AED45DC2373C0E3C118D8 /* Pods */,
+				107E42A101BF5B1B304BD669 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA5585952E13B04200CF231E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA5585942E13B04200CF231E /* IkinariMemo.app */,
+				FA5585A42E13B04400CF231E /* IkinariMemoTests.xctest */,
+				FA5585AE2E13B04400CF231E /* IkinariMemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA5585932E13B04200CF231E /* IkinariMemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5585B82E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemo" */;
+			buildPhases = (
+				05FBD8DF4AB395008CCF5617 /* [CP] Check Pods Manifest.lock */,
+				FA5585902E13B04200CF231E /* Sources */,
+				FA5585912E13B04200CF231E /* Frameworks */,
+				FA5585922E13B04200CF231E /* Resources */,
+				62B60F38F50E7DB0288BBE80 /* [CP] Embed Pods Frameworks */,
+				4810EB91DDDE384D2D76E41F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FA5585D72E13B6F200CF231E /* IkinariMemo */,
+				FA5585DC2E13B6F700CF231E /* Preview Content */,
+			);
+			name = IkinariMemo;
+			productName = Child;
+			productReference = FA5585942E13B04200CF231E /* IkinariMemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA5585A32E13B04400CF231E /* IkinariMemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5585BB2E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemoTests" */;
+			buildPhases = (
+				F3E583FCB65DEBDEF4E7CAC5 /* [CP] Check Pods Manifest.lock */,
+				FA5585A02E13B04400CF231E /* Sources */,
+				FA5585A12E13B04400CF231E /* Frameworks */,
+				FA5585A22E13B04400CF231E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA5585A62E13B04400CF231E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA5585A72E13B04400CF231E /* IkinariMemoTests */,
+			);
+			name = IkinariMemoTests;
+			productName = ChildTests;
+			productReference = FA5585A42E13B04400CF231E /* IkinariMemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA5585AD2E13B04400CF231E /* IkinariMemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5585BE2E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemoUITests" */;
+			buildPhases = (
+				30F0FF7F285080528D745E18 /* [CP] Check Pods Manifest.lock */,
+				FA5585AA2E13B04400CF231E /* Sources */,
+				FA5585AB2E13B04400CF231E /* Frameworks */,
+				FA5585AC2E13B04400CF231E /* Resources */,
+				43A3A9403B4939E0D6B43F00 /* [CP] Embed Pods Frameworks */,
+				8F8E29B1CA7A01BF5B12896A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA5585B02E13B04400CF231E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA5585B12E13B04400CF231E /* IkinariMemoUITests */,
+			);
+			name = IkinariMemoUITests;
+			productName = ChildUITests;
+			productReference = FA5585AE2E13B04400CF231E /* IkinariMemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA55858C2E13B04200CF231E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					FA5585932E13B04200CF231E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					FA5585A32E13B04400CF231E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = FA5585932E13B04200CF231E;
+					};
+					FA5585AD2E13B04400CF231E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = FA5585932E13B04200CF231E;
+					};
+				};
+			};
+			buildConfigurationList = FA55858F2E13B04200CF231E /* Build configuration list for PBXProject "IkinariMemo" */;
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				Base,
+			);
+			mainGroup = FA55858B2E13B04200CF231E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FA5585952E13B04200CF231E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA5585932E13B04200CF231E /* IkinariMemo */,
+				FA5585A32E13B04400CF231E /* IkinariMemoTests */,
+				FA5585AD2E13B04400CF231E /* IkinariMemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA5585922E13B04200CF231E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585A22E13B04400CF231E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585AC2E13B04400CF231E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05FBD8DF4AB395008CCF5617 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IkinariMemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30F0FF7F285080528D745E18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IkinariMemo-IkinariMemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43A3A9403B4939E0D6B43F00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4810EB91DDDE384D2D76E41F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62B60F38F50E7DB0288BBE80 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo/Pods-IkinariMemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F8E29B1CA7A01BF5B12896A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IkinariMemo-IkinariMemoUITests/Pods-IkinariMemo-IkinariMemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E583FCB65DEBDEF4E7CAC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IkinariMemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA5585902E13B04200CF231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585A02E13B04400CF231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA5585AA2E13B04400CF231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA5585A62E13B04400CF231E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA5585932E13B04200CF231E /* IkinariMemo */;
+			targetProxy = FA5585A52E13B04400CF231E /* PBXContainerItemProxy */;
+		};
+		FA5585B02E13B04400CF231E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA5585932E13B04200CF231E /* IkinariMemo */;
+			targetProxy = FA5585AF2E13B04400CF231E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FA5585B62E13B04400CF231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GADApplicationIdentifier = "ca-app-pub-3940256099942544~1458002511";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TOPSCREEN_BANNER_ID = "ca-app-pub-3940256099942544/2435281174";
+			};
+			name = Debug;
+		};
+		FA5585B72E13B04400CF231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GADApplicationIdentifier = "ca-app-pub-7661829655812679~7874123451";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TOPSCREEN_BANNER_ID = "ca-app-pub-7661829655812679/2055105970";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA5585B92E13B04400CF231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39CC5C156E02A347A51C98B9 /* Pods-IkinariMemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Preview Content\"";
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IkinariMemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kawashima.IkinariMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA5585BA2E13B04400CF231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B72AE0CB30DC5AF8EE047D /* Pods-IkinariMemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Preview Content\"";
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IkinariMemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kawashima.IkinariMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FA5585BC2E13B04400CF231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35FF10A94E082F6093146E11 /* Pods-IkinariMemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ChildTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IkinariMemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IkinariMemo";
+			};
+			name = Debug;
+		};
+		FA5585BD2E13B04400CF231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4CDB8D92D3669AB62640D8F /* Pods-IkinariMemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ChildTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IkinariMemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IkinariMemo";
+			};
+			name = Release;
+		};
+		FA5585BF2E13B04400CF231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 482D7347CD651FCFC9959B4F /* Pods-IkinariMemo-IkinariMemoUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ChildUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Child;
+			};
+			name = Debug;
+		};
+		FA5585C02E13B04400CF231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79335E4907ECEF48F953B345 /* Pods-IkinariMemo-IkinariMemoUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BNT6DPTTX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ChildUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Child;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA55858F2E13B04200CF231E /* Build configuration list for PBXProject "IkinariMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5585B62E13B04400CF231E /* Debug */,
+				FA5585B72E13B04400CF231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA5585B82E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5585B92E13B04400CF231E /* Debug */,
+				FA5585BA2E13B04400CF231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA5585BB2E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5585BC2E13B04400CF231E /* Debug */,
+				FA5585BD2E13B04400CF231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA5585BE2E13B04400CF231E /* Build configuration list for PBXNativeTarget "IkinariMemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5585BF2E13B04400CF231E /* Debug */,
+				FA5585C02E13B04400CF231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA55858C2E13B04200CF231E /* Project object */;
+}
