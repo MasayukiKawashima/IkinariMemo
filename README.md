@@ -1,6 +1,6 @@
 ## ■ いきなりメモ
 
-<img width="1600" height="800" alt="" />
+<img width="1600" height="800" alt="Image" src="https://github.com/user-attachments/assets/011fde21-9ba4-4508-b426-b4fbdeedb32f" />
 
 ## ■ ダウンロードはこちら
 
