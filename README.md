@@ -6,7 +6,7 @@
 
 QRImage
 
-URLリンク
+App Storeのページ → https://itunes.apple.com/jp/app/6752865794?mt=8
 
 ## ■ アプリのイメージ
 
