@@ -9,8 +9,9 @@
 App Storeのページ → https://itunes.apple.com/jp/app/6752865794?mt=8
 
 ## ■ アプリのイメージ
-
-<img src="https://github.com/user-attachments/assets/a9362843-3b12-4248-bea5-c843c0b8a5aa" width="300px">
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/cd748ecf-976b-44e8-ba76-dae14d5986da" width="300px"> |
 
 ## ■ アプリを作ったきっかけ
 
