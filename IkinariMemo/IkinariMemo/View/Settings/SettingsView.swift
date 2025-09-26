@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
 
   // MARK: - Properties
+  
+  @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
 
   private let bottomTextFontSizeRatio: CGFloat = 0.016
   private let bottomTextBottomPaddingRatio: CGFloat = 0.011
@@ -44,8 +46,8 @@ struct SettingsView: View {
         Spacer()
 
         VStack {
-          Text("Version 1.0.0")
-          Text("© 2025 Masayuki Kawashima")
+          Text("Version \(viewModel.appVersion)")
+          Text("© \(viewModel.year) Masayuki Kawashima")
         }
         .padding(.bottom, screenHeight * bottomTextBottomPaddingRatio)
         .font(.system(size: screenHeight * bottomTextFontSizeRatio))

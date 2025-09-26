@@ -14,6 +14,7 @@ final class ContactItemViewModel: ObservableObject {
   // MARK: - Properties
 
   private let recipients: [String] = ["info.ikinarimemo@gmail.com"]
+  private let bodyText: String = "お問い合わせの内容をご記入ください"
 
   @Published var isShowingMailView = false
 
@@ -33,5 +34,9 @@ final class ContactItemViewModel: ObservableObject {
 
   func getRecipients() -> [String] {
     recipients
+  }
+  
+  func getbodyText() -> String {
+    bodyText
   }
 }
