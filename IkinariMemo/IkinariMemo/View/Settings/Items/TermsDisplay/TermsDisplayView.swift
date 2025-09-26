@@ -9,23 +9,23 @@
 import SwiftUI
 
 struct TermsDisplayView: View {
-  
+
   // MARK: - Properties
-  
+
   @StateObject private var viewModel: TermsDisplayViewModel
-  
+
   // MARK: - Init
-  
+
   init(type: TermsType) {
     _viewModel = StateObject(wrappedValue: TermsDisplayViewModel(type: type))
   }
-  
+
   // MARK: - Body
-  
+
   var body: some View {
     ZStack {
       WebView(urlString: viewModel.urlString, viewModel: viewModel)
-      
+
       if viewModel.isLoading {
         ProgressView()
           .progressViewStyle(CircularProgressViewStyle())

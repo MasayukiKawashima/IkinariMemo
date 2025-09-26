@@ -18,68 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-/**
- `Object` is a class used to define Realm model objects.
-
- In Realm you define your model classes by subclassing `Object` and adding properties to be managed.
- You then instantiate and use your custom subclasses instead of using the `Object` class directly.
-
- ```swift
- class Dog: Object {
-     @Persisted var name: String
-     @Persisted var adopted: Bool
-     @Persisted var siblings: List<Dog>
- }
- ```
-
- ### Supported property types
-
- - `String`
- - `Int`, `Int8`, `Int16`, `Int32`, `Int64`
- - `Float`
- - `Double`
- - `Bool`
- - `Date`
- - `Data`
- - `Decimal128`
- - `ObjectId`
- - `UUID`
- - `AnyRealmValue`
- - Any RawRepresentable enum whose raw type is a legal property type. Enums
-   must explicitly be marked as conforming to `PersistableEnum`.
- - `Object` subclasses, to model many-to-one relationships
- - `EmbeddedObject` subclasses, to model owning one-to-one relationships
-
- All of the types above may also be `Optional`, with the exception of
- `AnyRealmValue`. `Object` and `EmbeddedObject` subclasses *must* be Optional.
-
- In addition to individual values, three different collection types are supported:
- - `List<Element>`: an ordered mutable collection similar to `Array`.
- - `MutableSet<Element>`: an unordered uniquing collection similar to `Set`.
- - `Map<String, Element>`: an unordered key-value collection similar to `Dictionary`.
-
- The Element type of collections may be any of the supported non-collection
- property types listed above. Collections themselves may not be Optional, but
- the values inside them may be, except for lists and sets of `Object` or
- `EmbeddedObject` subclasses.
-
- Finally, `LinkingObjects` properties can be used to track which objects link
- to this one.
-
- All properties which should be stored by Realm must be explicitly marked with
- `@Persisted`. Any properties not marked with `@Persisted` will be ignored
- entirely by Realm, and may be of any type.
-
- ### Querying
-
- You can retrieve all objects of a given type from a Realm by calling the `objects(_:)` instance method.
-
- ### Relationships
-
- See our [Swift guide](https://docs.mongodb.com/realm/sdk/swift/fundamentals/relationships/) for more details.
- */
 public typealias Object = RealmSwiftObject
 extension Object: _RealmCollectionValueInsideOptional {
     // MARK: Initializers

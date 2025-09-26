@@ -18,9 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-// A type which we can get the runtime schema information from
 public protocol _RealmSchemaDiscoverable {
     // The Realm property type associated with this type
     static var _rlmType: PropertyType { get }

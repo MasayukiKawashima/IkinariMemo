@@ -28,5 +28,3 @@ struct LearningForChildView: View {
 }
 
 PlaygroundPage.current.setLiveView(LearningForChildView())
-
-

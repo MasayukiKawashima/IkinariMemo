@@ -18,15 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-/**
- This class represents Realm model object schemas.
-
- When using Realm, `ObjectSchema` instances allow performing migrations and introspecting the database's schema.
-
- Object schemas map to tables in the core database.
- */
 @frozen public struct ObjectSchema: CustomStringConvertible {
 
     // MARK: Properties

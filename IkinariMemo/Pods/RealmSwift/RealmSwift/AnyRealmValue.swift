@@ -16,7 +16,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-
 import Foundation
 import Realm
 
@@ -183,7 +182,7 @@ public enum AnyRealmValue: Hashable {
     ///
     /// - Parameter dictionary: A Swift's dictionary of `AnyRealmValue` values.
     /// - Returns: Returns an `AnyRealmValue` storing a `Map`.
-    public static func fromDictionary(_ dictionary: Dictionary<String, AnyRealmValue>) -> AnyRealmValue {
+    public static func fromDictionary(_ dictionary: [String: AnyRealmValue]) -> AnyRealmValue {
         let map = Map<String, AnyRealmValue>()
         map.merge(dictionary, uniquingKeysWith: { $1 })
         return AnyRealmValue.dictionary(map)
@@ -193,7 +192,7 @@ public enum AnyRealmValue: Hashable {
     ///
     /// - Parameter array: A Swift's array of `AnyRealmValue`.
     /// - Returns: Returns a `AnyRealmValue` storing a `List`.
-    public static func fromArray(_ array: Array<AnyRealmValue>) -> AnyRealmValue {
+    public static func fromArray(_ array: [AnyRealmValue]) -> AnyRealmValue {
         let list = List<AnyRealmValue>()
         list.append(objectsIn: array)
         return AnyRealmValue.list(list)

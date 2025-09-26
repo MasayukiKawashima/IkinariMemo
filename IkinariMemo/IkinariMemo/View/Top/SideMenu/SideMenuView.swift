@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct SideMenuView: View {
-  
-  //UIScreen.main.bounds.height = 874.0
-  //memo screenHeight = 874, geometry.size.height = 778.0
-  //memoTitleFontSize = 17.7384, memoUpdateDateFontSize = 12.448
-  
+
+  // UIScreen.main.bounds.height = 874.0
+  // memo screenHeight = 874, geometry.size.height = 778.0
+  // memoTitleFontSize = 17.7384, memoUpdateDateFontSize = 12.448
+
   // MARK: - Properties
-  
+
   @StateObject var viewModel: SideMenuViewModel = SideMenuViewModel()
-  
+
   @Binding var isOpen: Bool
-  
+
   private let screenHeight = UIScreen.main.bounds.height
   private let screenWidth = UIScreen.main.bounds.width
-  
+
   // Iphone16Pro(Height: 874px, Width: 402px)を基準に各レートを算出
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
   private let memoRowsHeightRatio: CGFloat = 0.0286
@@ -34,9 +34,9 @@ struct SideMenuView: View {
   private let moreSectionFotterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
-  
+
   // MARK: - Body
-  
+
   var body: some View {
     ZStack() {
       GeometryReader { geometry in
@@ -48,18 +48,17 @@ struct SideMenuView: View {
               isOpen.toggle()
             }
           }
-        
+
         VStack {
 
-          
           let results = viewModel.hasAnyUserMemo()
-          //メモが一件でもある場合
+          // メモが一件でもある場合
           if results {
             //　メモリスト
             List() {
               Section {
                 ForEach(viewModel.getDisplayItems()) { item in
-                  
+
                   UserMemoListItemView(item: item)
                     .onTapGesture {
                       viewModel.selectMemo(item)
@@ -78,7 +77,7 @@ struct SideMenuView: View {
             .scrollDisabled(true)
             .listStyle(.grouped)
           } else {
-            //メモが一件もない場合
+            // メモが一件もない場合
             VStack {
               Text("No Memos")
                 .bold()
@@ -87,7 +86,7 @@ struct SideMenuView: View {
             }
             .frame(height: geometry.size.height * 0.7)
           }
-          
+
           // moreボタン
           NavigationLink(
             destination: MemoListView()
@@ -106,9 +105,9 @@ struct SideMenuView: View {
             .font(.system(size: screenHeight * moreTextHeightRatio))
             .foregroundStyle(.gray)
             .padding(.top, 8)
-            .padding(.trailing,  screenHeight * moreTextTrailingPaddingRatio)
+            .padding(.trailing, screenHeight * moreTextTrailingPaddingRatio)
           }
-          
+
           Spacer()
           //　閉じる、設定ボタン
           VStack(spacing: screenHeight * settingsSectionSpaceRatio) {
@@ -117,7 +116,7 @@ struct SideMenuView: View {
               .background(Color.gray.opacity(0.4))
               .shadow(color: Color.black.opacity(0.4),
                       radius: 4, x: 0, y: -2)
-            
+
             HStack {
               NavigationLink(
                 destination: SettingsView()
@@ -134,7 +133,7 @@ struct SideMenuView: View {
                   .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
               }
               Spacer()
-              
+
               Button(action: {
                 withAnimation(.linear(duration: 0.2)) {
                   isOpen.toggle()
@@ -156,7 +155,7 @@ struct SideMenuView: View {
       }
     }
     //// 左向きスワイプで閉じる処理
-    /////メモの削除処理とスワイプ動作が重複しているため一旦無効にする
+    ///// メモの削除処理とスワイプ動作が重複しているため一旦無効にする
 //    .gesture(
 //      DragGesture()
 //        .onEnded { value in
