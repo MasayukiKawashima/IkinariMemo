@@ -18,16 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-/**
- The type of a migration block used to migrate a Realm.
-
- - parameter migration:  A `Migration` object used to perform the migration. The migration object allows you to
-                         enumerate and alter any existing objects which require migration.
-
- - parameter oldSchemaVersion: The schema version of the Realm being migrated.
- */
 public typealias MigrationBlock = @Sendable (_ migration: Migration, _ oldSchemaVersion: UInt64) -> Void
 
 /// An object class used during migrations.

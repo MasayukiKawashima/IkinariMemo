@@ -18,23 +18,6 @@
 
 import Combine
 import Realm
-import Realm.Private
-
-// MARK: - Identifiable
-
-/// A protocol which defines a default identity for Realm Objects
-///
-/// Declaring your Object subclass as conforming to this protocol will supply
-/// a default implementation for `Identifiable`'s `id` which works for Realm
-/// Objects:
-///
-///     // Automatically conforms to `Identifiable`
-///     class MyObjectType: Object, ObjectKeyIdentifiable {
-///         // ...
-///     }
-///
-/// You can also manually conform to `Identifiable` if you wish, but note that
-/// using the object's memory address does *not* work for managed objects.
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public protocol ObjectKeyIdentifiable: Identifiable {
     /// The stable identity of the entity associated with `self`.
@@ -569,7 +552,6 @@ public func changesetPublisher<T: Object>(_ object: T, keyPaths: [String]? = nil
         object.observe(keyPaths: keyPaths, on: queue, fn)
     }
 }
-
 
 /// Creates a publisher that emits an object changeset each time the object changes.
 ///
@@ -1937,7 +1919,6 @@ public enum RealmPublishers {
             DeferredHandoverSectionedResultsChangeset(self, scheduler)
         }
     }
-
 
     /// A publisher which emits RealmCollectionChange<T> each time the observed object is modified
     ///

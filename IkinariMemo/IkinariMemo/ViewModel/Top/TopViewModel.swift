@@ -16,16 +16,16 @@ enum FocusedField {
 }
 
 class TopViewModel: ObservableObject {
-  
+
   // MARK: - Properties
-  
+
   @Published var isSideMenuOpen: Bool = false
   @Published var isKeyboardVisible: Bool = false
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
 //  private var cancellable: AnyCancellable?
-  
+
   // MARK: - Init
-  
+
   init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
 
@@ -34,9 +34,9 @@ class TopViewModel: ObservableObject {
 //      .sink { [weak self] newMemo in
 //      }
   }
-  
+
   // MARK: - Methods
-  
+
   func upDateCurrentUserMemo() {
     let newUserMemo: UserMemo = UserMemo()
     self.currentUserMemoViewModel.upDate(userMemo: newUserMemo)

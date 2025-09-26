@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct DeleteDataView: View {
-  
+
   // MARK: - Properties
-  
+
   @StateObject private var viewModel: DeleteDataViewModel = DeleteDataViewModel()
-  
+
   @State private var isShowDeleteConfirmationAlert = false
   @State private var isShowDeleteCompletedAlert = false
-  
+
   // MARK: - Body
-  
+
   var body: some View {
     VStack {
       List {
         HStack {
           Text("全てのメモを削除")
             .foregroundStyle(Color.red)
-          
+
           Spacer()
-          
+
           Button(action: {
               // ボタンがタップされた時のアクション
             isShowDeleteConfirmationAlert.toggle()
@@ -35,7 +35,7 @@ struct DeleteDataView: View {
               .foregroundColor(Color.red)
           }
           .alert("警告", isPresented: $isShowDeleteConfirmationAlert) {
-      
+
               Button("削除する", role: .destructive) {
                   // 🔴 削除処理を書く
                 // １データ削除処理
@@ -43,7 +43,7 @@ struct DeleteDataView: View {
                 //　２終了ログ表示
                 isShowDeleteCompletedAlert.toggle()
               }
-              
+
               Button("キャンセル", role: .cancel) {
               }
           } message: {

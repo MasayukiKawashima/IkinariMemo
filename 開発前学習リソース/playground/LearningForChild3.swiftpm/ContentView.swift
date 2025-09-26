@@ -5,7 +5,7 @@ import SwiftUI
 struct ContentView: View {
   /// メニューの開閉
   @State var isMenuOpen = false
-  
+
   var body: some View {
     ZStack {
       NavigationStack {
@@ -35,7 +35,7 @@ struct MenuView: View {
   @Binding var isOpen: Bool
   /// iPhoneの幅
   private let maxWidth = UIScreen.main.bounds.width
-  
+
   var body: some View {
     ZStack {
       /// isOpenで背景が透明な黒になる
@@ -82,4 +82,3 @@ struct MenuView: View {
     }
   }
 }
-

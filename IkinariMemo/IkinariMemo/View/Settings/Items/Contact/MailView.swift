@@ -10,16 +10,19 @@ import SwiftUI
 import MessageUI
 
 struct MailView: UIViewControllerRepresentable {
-  
+
+  // MARK: - Properties
+
   @Environment(\.dismiss) var dismiss
-  
+
   let recipients: [String]
-  
+
+  // MARK: - Coordinator
   
   class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
     var parent: MailView
     init(parent: MailView) { self.parent = parent }
-    
+
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult,
                                error: Error?) {
@@ -28,12 +31,13 @@ struct MailView: UIViewControllerRepresentable {
       }
     }
   }
-  
+
+  // MARK: - Methods
+
   func makeCoordinator() -> Coordinator {
     Coordinator(parent: self)
   }
-  
-  
+
   func makeUIViewController(context: Context) -> MFMailComposeViewController {
     let vc = MFMailComposeViewController()
     vc.mailComposeDelegate = context.coordinator
@@ -42,9 +46,6 @@ struct MailView: UIViewControllerRepresentable {
     vc.setMessageBody("", isHTML: false) // 常に空
     return vc
   }
-  
+
   func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
 }
-
-
-

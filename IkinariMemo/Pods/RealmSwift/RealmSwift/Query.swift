@@ -18,9 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-/// Enum representing an option for `String` queries.
 public struct StringOptions: OptionSet, Sendable {
     /// :doc:
     public let rawValue: Int8

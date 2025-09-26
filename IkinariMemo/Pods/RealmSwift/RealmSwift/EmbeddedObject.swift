@@ -18,43 +18,6 @@
 
 import Foundation
 import Realm
-import Realm.Private
-
-/**
- `EmbeddedObject` is a base class used to define embedded Realm model objects.
-
- Embedded objects work similarly to normal objects, but are owned by a single
- parent Object (which itself may be embedded). Unlike normal top-level objects,
- embedded objects cannot be directly created in or added to a Realm. Instead,
- they can only be created as part of a parent object, or by assigning an
- unmanaged object to a parent object's property. Embedded objects are
- automatically deleted when the parent object is deleted or when the parent is
- modified to no longer point at the embedded object, either by reassigning an
- Object property or by removing the embedded object from the List containing it.
-
- Embedded objects can only ever have a single parent object which links to
- them, and attempting to link to an existing managed embedded object will throw
- an exception.
-
- The property types supported on `EmbeddedObject` are the same as for `Object`,
- except for that embedded objects cannot link to top-level objects, so `Object`
- and `List<Object>` properties are not supported (`EmbeddedObject` and
- `List<EmbeddedObject>` *are*).
-
- Embedded objects cannot have primary keys or indexed properties.
-
- ```swift
- class Owner: Object {
-     @Persisted var name: String
-     @Persisted var dogs: List<Dog>
- }
- class Dog: EmbeddedObject {
-     @Persisted var name: String
-     @Persisted var adopted: Bool
-     @Persisted(originProperty: "dogs") var owner: LinkingObjects<Owner>
- }
- ```
- */
 public typealias EmbeddedObject = RealmSwiftEmbeddedObject
 extension EmbeddedObject: _RealmCollectionValueInsideOptional {
     /// :nodoc:
@@ -83,7 +46,6 @@ extension EmbeddedObject: _RealmCollectionValueInsideOptional {
         self.init()
         RLMInitializeWithValue(self, value, .partialPrivateShared())
     }
-
 
     // MARK: Properties
 

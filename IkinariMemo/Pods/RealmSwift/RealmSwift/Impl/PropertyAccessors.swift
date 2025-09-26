@@ -17,10 +17,6 @@
 ////////////////////////////////////////////////////////////////////////////
 
 import Realm
-import Realm.Private
-
-// Get a pointer to the given property's ivar on the object. This is similar to
-// object_getIvar() but returns a pointer to the value rather than the value.
 @_transparent
 private func ptr(_ property: RLMProperty, _ obj: RLMObjectBase) -> UnsafeMutableRawPointer {
     return Unmanaged.passUnretained(obj).toOpaque().advanced(by: property.swiftIvar)

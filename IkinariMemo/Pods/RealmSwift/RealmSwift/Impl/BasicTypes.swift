@@ -17,10 +17,6 @@
 ////////////////////////////////////////////////////////////////////////////
 
 import Realm
-import Realm.Private
-
-// MARK: - Property Types
-
 extension Int: SchemaDiscoverable {
     public static var _rlmType: PropertyType { .int }
 }

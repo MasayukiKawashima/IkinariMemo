@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct CustomBackButton: ViewModifier {
-  
+
   // MARK: - Properties
-  
+
   @Environment(\.dismiss) var dismiss
-  
+
   // MARK: - Methods
-  
+
   func body(content: Content) -> some View {
     content
       .navigationBarBackButtonHidden(true)
@@ -34,4 +34,3 @@ struct CustomBackButton: ViewModifier {
       }
   }
 }
-

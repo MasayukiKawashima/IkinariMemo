@@ -10,17 +10,17 @@ import RealmSwift
 import Combine
 
 class ContentViewModel: ObservableObject {
-  
+
   // MARK: - Properties
-  
+
   @Published var textContent: String = ""
   private var cancellable: AnyCancellable?
 
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var realm: Realm
-  
+
   // MARK: - Init
-  
+
   init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
     self.realm = try! Realm()
@@ -31,7 +31,7 @@ class ContentViewModel: ObservableObject {
         self?.textContent = newMemo.content
       }
   }
-  
+
   // MARK: - Methods
 
   func updateContent(_ newContent: String) {

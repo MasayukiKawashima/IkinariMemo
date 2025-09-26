@@ -17,8 +17,6 @@
 ////////////////////////////////////////////////////////////////////////////
 
 import Realm
-import Realm.Private
-
 extension Object: SchemaDiscoverable, _PersistableInsideOptional, _DefaultConstructible {
     public typealias PersistedType = Object
     public static var _rlmType: PropertyType { .object }

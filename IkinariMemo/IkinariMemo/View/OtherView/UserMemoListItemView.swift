@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct UserMemoListItemView: View {
-  
+
   // MARK: - Properties
-  
+
   private let item: UserMemoListItem
-  
+
   private let memoTitleFontSizeRatio: CGFloat = 0.0202
   private let memoUpdatedDateFontSizeRatio: CGFloat = 0.0309
-  
+
   // MARK: - Init
-  
+
   init (item: UserMemoListItem) {
     self.item = item
   }
-  
+
   // MARK: - Body
-  
+
   var body: some View {
-    
+
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
-    
+
     VStack {
       HStack {
         Text(item.displayTitle)
@@ -38,7 +38,7 @@ struct UserMemoListItemView: View {
           .padding(.leading, 6)
         Spacer()
       }
-      
+
       HStack {
         Text(item.displayUpdatedDate)
           .font(.system(size: screenWidth * memoUpdatedDateFontSizeRatio))
@@ -46,9 +46,8 @@ struct UserMemoListItemView: View {
           .padding(.leading, 6)
         Spacer()
       }
-      
+
     }
     .contentShape(Rectangle())
   }
 }
-
