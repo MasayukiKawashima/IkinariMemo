@@ -10,11 +10,17 @@ import SwiftUI
 
 struct TermsDisplayView: View {
   
+  // MARK: - Properties
+  
   @StateObject private var viewModel: TermsDisplayViewModel
+  
+  // MARK: - Init
   
   init(type: TermsType) {
     _viewModel = StateObject(wrappedValue: TermsDisplayViewModel(type: type))
   }
+  
+  // MARK: - Body
   
   var body: some View {
     ZStack {
@@ -32,9 +38,3 @@ struct TermsDisplayView: View {
     .customBackButton()
   }
 }
-
-
-
-//#Preview {
-//    TermsDisplayView()
-//}

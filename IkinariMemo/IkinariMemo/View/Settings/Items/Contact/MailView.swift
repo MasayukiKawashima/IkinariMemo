@@ -11,11 +11,14 @@ import MessageUI
 
 struct MailView: UIViewControllerRepresentable {
   
+  // MARK: - Properties
+  
   @Environment(\.dismiss) var dismiss
   
   let recipients: [String]
   
   
+  // MARK: - Coordinator
   class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
     var parent: MailView
     init(parent: MailView) { self.parent = parent }
@@ -28,6 +31,8 @@ struct MailView: UIViewControllerRepresentable {
       }
     }
   }
+  
+  // MARK: - Methods
   
   func makeCoordinator() -> Coordinator {
     Coordinator(parent: self)

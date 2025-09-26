@@ -10,7 +10,11 @@ import GoogleMobileAds
 
 struct AdBannerView: UIViewRepresentable {
   
+  // MARK: - Properties
+  
   @StateObject private var viewModel: AdBannerViewModel = AdBannerViewModel()
+  
+  // MARK: - Methods
   
   func makeUIView(context: Context) -> BannerView {
     let screenWidth = UIScreen.main.bounds.width

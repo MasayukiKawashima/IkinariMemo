@@ -10,8 +10,12 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
   
+  // MARK: - Properties
+  
   let urlString: String
   @ObservedObject var viewModel: TermsDisplayViewModel
+  
+  // MARK: - Methods
   
   func makeCoordinator() -> Coordinator {
     Coordinator(viewModel: viewModel)
@@ -28,6 +32,8 @@ struct WebView: UIViewRepresentable {
   }
   
   func updateUIView(_ uiView: WKWebView, context: Context) {}
+  
+  // MARK: - Coordinator
   
   class Coordinator: NSObject, WKNavigationDelegate {
     var viewModel: TermsDisplayViewModel
