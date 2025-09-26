@@ -16,6 +16,8 @@ struct MailView: UIViewControllerRepresentable {
   @Environment(\.dismiss) var dismiss
 
   let recipients: [String]
+  let bodyText: String
+  
 
   // MARK: - Coordinator
   
@@ -43,7 +45,7 @@ struct MailView: UIViewControllerRepresentable {
     vc.mailComposeDelegate = context.coordinator
     vc.setToRecipients(recipients)
     vc.setSubject("")               // 常に空
-    vc.setMessageBody("", isHTML: false) // 常に空
+    vc.setMessageBody(bodyText, isHTML: false)
     return vc
   }
 
