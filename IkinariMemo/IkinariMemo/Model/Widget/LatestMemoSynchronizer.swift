@@ -1,5 +1,5 @@
 //
-//  LatestMemoPublisher.swift
+//  LatestMemoSynchronizer.swift
 //  IkinariMemo
 //
 //  Created by 川島真之 on 2026/09/06.
@@ -10,17 +10,17 @@ import RealmSwift
 
 
 // MARK: - 説明
-// LatestMemoPublisherはRealmのUserMemoを監視して、監視開始時とUserMemoの変更時に共有UserDefaultsへ最新メモを流す（publish)役割を持ったクラス
+// LatestMemoSynchronizerはRealmのUserMemoを監視して、監視開始時とUserMemoの変更時に共有UserDefaultsへ最新メモを同期する（sync）役割を持ったクラス
 
 
 @MainActor
-final class LatestMemoPublisher {
+final class LatestMemoSynchronizer {
 
-  
+
   // MARK: - Properties
 
   // resultsとtoken（つまり、状態）を保持しなければいけないのでシングルトンとする
-  static let shared = LatestMemoPublisher()
+  static let shared = LatestMemoSynchronizer()
 
   // Results と NotificationToken の両方を保持する必要がある。
   // Results を保持しないと解放されて通知が止まる
@@ -33,12 +33,12 @@ final class LatestMemoPublisher {
   private init() {}
 
 
-  // MARK: -  購読と通知時の処理
+  // MARK: -  監視と通知時の処理
   // 起動時などで呼ばれ、UserMemoを監視を始める
-  // 監視開始時とUserMemoの変更時にpublishを呼ぶ
+  // 監視開始時とUserMemoの変更時にsyncを呼ぶ
 
   func start() {
-    guard token == nil else { return }   // 二重購読を防ぐ
+    guard token == nil else { return }   // 二重監視を防ぐ
 
     do {
       let realm = try Realm()
@@ -50,17 +50,17 @@ final class LatestMemoPublisher {
         switch change {
           // 監視開始時に必ず一度、initialで流れる
         case .initial(let memos):
-          self?.publish(memos.first)
+          self?.sync(memos.first)
           // 変更時
         case .update(let memos, _, _, _):
-          self?.publish(memos.first)
+          self?.sync(memos.first)
           // エラー時はデータを流さない
         case .error(let error):
-          print("[LatestMemoPublisher] Realm の監視に失敗: \(error)")
+          print("[LatestMemoSynchronizer] Realm の監視に失敗: \(error)")
         }
       }
     } catch {
-      print("[LatestMemoPublisher] Realm のオープンに失敗: \(error)")
+      print("[LatestMemoSynchronizer] Realm のオープンに失敗: \(error)")
     }
   }
 
@@ -71,14 +71,14 @@ final class LatestMemoPublisher {
       start()   // 起動時に Realm オープンへ失敗していた場合のリトライ
       return
     }
-    publish(results.first)
+    sync(results.first)
   }
 
 
-  // MARK: - 値を流す処理
-  // 監視時、購読開始時に共有UserDefaultsに値を流すメソッド
+  // MARK: - 値を同期する処理
+  // 監視時、監視開始時に共有UserDefaultsへ値を同期するメソッド
 
-  private func publish(_ memo: UserMemo?) {
+  private func sync(_ memo: UserMemo?) {
     let shared = memo.map {
       SharedUserMemo(
         id: $0.id.stringValue,

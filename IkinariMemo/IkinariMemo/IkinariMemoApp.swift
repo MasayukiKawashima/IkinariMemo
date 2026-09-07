@@ -24,7 +24,7 @@ struct IkinariMemoApp: App {
   init() {
 
     // Realmと共有UserDefaultsの同期のための処理
-    LatestMemoPublisher.shared.start()
+    LatestMemoSynchronizer.shared.start()
     // バナー広告処理
     MobileAds.shared.start()
   }
@@ -39,7 +39,7 @@ struct IkinariMemoApp: App {
       // アプリがフォアグラウンドに復帰した時に購読がされているかをチェックし、未購読なら購読処理を行う
         .onChange(of: scenePhase) { _, newPhase in
           if newPhase == .active {
-            LatestMemoPublisher.shared.refreshNow()
+            LatestMemoSynchronizer.shared.refreshNow()
           }
         }
         }

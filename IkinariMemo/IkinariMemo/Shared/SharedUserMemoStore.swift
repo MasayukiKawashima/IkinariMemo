@@ -23,7 +23,7 @@ enum SharedUserMemoStore {
 
 
   // MARK: - 保存 本体側からのみ利用
-  
+
   /// 内容に変化があった場合のみ保存し、Widget のタイムラインを更新する
   static func saveLatestMemo(_ memo: SharedUserMemo?) {
     guard let userDefaults else {
