@@ -10,60 +10,46 @@ import WidgetKit
 
 struct LatestMemoEntryView: View {
 
+
   // MARK: - Properties
 
   let entry: LatestUserMemoEntry
 
-  private let contentTextFontOpacityRate = 0.7
-  private let backgroundColorOpacityRate = 0.175
-  private let dateTextFontOpacityRate: Double = 0.7
-  private let separatorHeight: CGFloat = 0.5
-  private let titleLineLimit = 1
-  private let topLevelVStackSpacing: CGFloat = 6
+  private let backgroundColorOpacityRate = 0.15
 
-  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 
   // MARK: - Body
 
   var body: some View {
-    VStack(alignment: .leading, spacing: topLevelVStackSpacing) {
 
-      if let memo = entry.memo {
+    Group {
+      switch entry.displayState {
 
-        HStack {
-          Text(memo.updatedAt, format: .dateTime.year().month().day())
-            .font(.footnote)
-            .foregroundStyle(.primary.opacity(dateTextFontOpacityRate))
+      case .memo(let memo):
+        MemoView(memo: memo)
 
-          Spacer()
-
-          Image("EdgeOffIcon")
-            .resizable()
-            .scaledToFit()
-            .frame(width: iconSize, height: iconSize)
-        }
-
-        Text(memo.title)
-          .font(.headline)
-          .lineLimit(titleLineLimit)
-
-        Rectangle()
-          .frame(height: separatorHeight)
-          .foregroundStyle(Color.mainColor)
-
-        Text(memo.content)
-          .font(.footnote)
-          .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
-          .truncationMode(.tail)
-
-      } else {
-
+      case .noMemos:
         NoMemosView()
+
+      case .notSynced:
+        LaunchAppGuideView()
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
-      Color.white
+      backgroundColor
+    }
+  }
+
+
+  // MARK: - Private
+
+  private var backgroundColor: Color {
+    switch entry.displayState {
+    case .memo:
+      return .white
+    case .noMemos, .notSynced:
+      return .black.opacity(backgroundColorOpacityRate)
     }
   }
 }
@@ -71,7 +57,6 @@ struct LatestMemoEntryView: View {
 
 // MARK: - Preview
 
-// プレビュー専用に LatestMemoEntryView をラップした簡易 Widget
 private struct LatestMemoEntryPreviewWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: "LatestMemoEntryPreview", provider: LatestMemoProvider()) { entry in
@@ -84,10 +69,14 @@ private struct LatestMemoEntryPreviewWidget: Widget {
 #Preview(as: .systemMedium) {
   LatestMemoEntryPreviewWidget()
 } timeline: {
-  LatestUserMemoEntry(date: .now, memo: SharedUserMemo(
+  LatestUserMemoEntry(date: .now, displayState: .memo(SharedUserMemo(
     id: "1",
     title: "買い物リスト",
     content: "牛乳、卵、パン\n帰りにドラッグストアへ寄る",
     createdAt: .now,
-    updatedAt: .now))
+    updatedAt: .now)))
+
+  LatestUserMemoEntry(date: .now, displayState: .noMemos)
+
+  LatestUserMemoEntry(date: .now, displayState: .notSynced)
 }
