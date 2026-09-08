@@ -20,7 +20,7 @@ struct LatestMemoEntryView: View {
     case .memo:
       return .white
     case .noMemos, .notSynced:
-      return .black.opacity(0.15)
+      return .black.opacity(0.1)
     }
   }
 
