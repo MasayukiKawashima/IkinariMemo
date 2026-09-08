@@ -15,7 +15,14 @@ struct LatestMemoEntryView: View {
 
   let entry: LatestUserMemoEntry
 
-  private let backgroundColorOpacityRate = 0.15
+  private var backgroundColor: Color {
+    switch entry.displayState {
+    case .memo:
+      return .white
+    case .noMemos, .notSynced:
+      return .black.opacity(0.15)
+    }
+  }
 
 
   // MARK: - Body
@@ -38,18 +45,6 @@ struct LatestMemoEntryView: View {
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
       backgroundColor
-    }
-  }
-
-
-  // MARK: - Private
-
-  private var backgroundColor: Color {
-    switch entry.displayState {
-    case .memo:
-      return .white
-    case .noMemos, .notSynced:
-      return .black.opacity(backgroundColorOpacityRate)
     }
   }
 }
