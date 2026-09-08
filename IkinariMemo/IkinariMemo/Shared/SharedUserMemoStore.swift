@@ -60,10 +60,7 @@ enum SharedUserMemoStore {
   // MARK: - 読み込み Widget側と差分ゲートから利用
 
   /// 共有UserDefaultsに保存された状態を返す
-  ///
   /// - Returns: nil はアプリ本体がまだ一度も同期していないことを意味する
-  ///            この nil を「未同期」と解釈するのは LatestMemoProvider の役割
-
 
   static func loadLatestMemoState() -> SharedUserMemoState? {
     guard let data = userDefaults?.data(forKey: latestMemoKey) else { return nil }

@@ -11,5 +11,12 @@ import WidgetKit
 struct LatestUserMemoEntry: TimelineEntry {
 
   let date: Date
-  let memo: SharedUserMemo?
+  let displayState: DisplayState
+
+  enum DisplayState {
+
+      case memo(SharedUserMemo)
+      case noMemos
+      case notSynced
+    }
 }
