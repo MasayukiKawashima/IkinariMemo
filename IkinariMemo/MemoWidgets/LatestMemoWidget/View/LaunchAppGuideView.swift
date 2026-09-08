@@ -50,7 +50,7 @@ struct LaunchAppGuideView: View {
 
 // MARK: - Preview
 
-// プレビュー専用に LaunchAppGuideView をラップした簡易 Widget
+
 private struct LaunchAppGuidePreviewWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: "LaunchAppGuidePreview", provider: LatestMemoProvider()) { _ in
