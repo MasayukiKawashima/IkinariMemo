@@ -22,28 +22,35 @@ import WidgetKit
 
 struct LaunchAppGuideView: View {
 
-
-  // MARK: - Properties
-
-  private let messageTextFontOpacityRate = 0.7
-
   @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 
 
   // MARK: - Body
 
   var body: some View {
-    Text("アプリを開くと\n最新のメモが表示されます")
-      .font(.subheadline)
-      .multilineTextAlignment(.center)
-      .foregroundStyle(.primary.opacity(messageTextFontOpacityRate))
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .overlay(alignment: .topTrailing) {
-        Image("EdgeOffIcon")
-          .resizable()
-          .scaledToFit()
-          .frame(width: iconSize, height: iconSize)
-      }
+    VStack(spacing: 20) {
+        Text("Widgetを利用するには\nアプリを一度起動する必要があります。")
+            .font(.subheadline)
+            .fontWeight(.regular)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.primary.opacity(0.6))
+
+        HStack(spacing: 6) {
+            Text("タップしてアプリを起動")
+
+            Image(systemName: "hand.tap")
+        }
+        .font(.subheadline)
+        .fontWeight(.semibold)
+        .foregroundStyle(.primary)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .overlay(alignment: .topTrailing) {
+      Image("EdgeOffIcon")
+        .resizable()
+        .scaledToFit()
+        .frame(width: iconSize, height: iconSize)
+    }
   }
 }
 
