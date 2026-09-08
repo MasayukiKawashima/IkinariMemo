@@ -89,6 +89,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Shared/SharedUserMemo.swift,
+				Shared/SharedUserMemoState.swift,
 				Shared/SharedUserMemoStore.swift,
 				Shared/WidgetKind.swift,
 			);
