@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SharedUserMemo: Codable {
+struct SharedUserMemo: Codable, Equatable {
 
    let id: String
    let title: String

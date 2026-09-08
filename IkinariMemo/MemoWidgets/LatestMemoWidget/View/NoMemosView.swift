@@ -33,20 +33,17 @@ struct NoMemosView: View {
             .frame(width: iconSize, height: iconSize)
         }
     }
-    .containerBackground(for: .widget) {
-      Color.black.opacity(0.15)
-    }
   }
 }
 
 // MARK: - Preview
 
-// プレビュー専用に NoMemosView をラップした簡易 Widget
+
 private struct NoMemosPreviewWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: "NoMemosPreview", provider: LatestMemoProvider()) { _ in
       NoMemosView()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .containerBackground(for: .widget) { Color.black.opacity(0.15) }
     }
     .supportedFamilies([.systemMedium])
   }
@@ -55,5 +52,5 @@ private struct NoMemosPreviewWidget: Widget {
 #Preview(as: .systemMedium) {
   NoMemosPreviewWidget()
 } timeline: {
-  LatestUserMemoEntry(date: .now, memo: nil)
+  LatestUserMemoEntry(date: .now, displayState: .noMemos)
 }
