@@ -10,6 +10,9 @@ import WidgetKit
 
 struct LatestMemoProvider: TimelineProvider {
 
+
+  // MARK: - Properties
+
   private var dummy: SharedUserMemo {
     SharedUserMemo(id: "preview",
                    title: "一日を良くする朝の習慣",
@@ -19,28 +22,44 @@ struct LatestMemoProvider: TimelineProvider {
   }
 
 
+  // MARK: - TimelineProvider
+
   // ウィジェットギャラリーを開いた直後や、システムがプレビューを描画するときに表示するダミーを設定するメソッド
   func placeholder(in context: Context) -> LatestUserMemoEntry {
 
-    LatestUserMemoEntry(date: .now, memo: dummy)
+    LatestUserMemoEntry(date: .now, displayState: .memo(dummy))
   }
-  
+
   // ユーザーがWidgetのギャラリーを見ているときに表示するWidgetの見本を設定するメソッド
   func getSnapshot(in context: Context, completion: @escaping (LatestUserMemoEntry) -> ()) {
 
     // ギャラリー表示中は見本を、それ以外は実データを返す
-    let memo = context.isPreview ? dummy : SharedUserMemoStore.loadLatestMemo()
-    completion(LatestUserMemoEntry(date: .now, memo: memo))
+    // プレビュー時は必ず見本を表示する
+    let displayState: LatestUserMemoEntry.DisplayState = context.isPreview ? .memo(dummy) : currentDisplayState()
+    completion(LatestUserMemoEntry(date: .now, displayState: displayState))
   }
 
   // 実際にWidgetに表示する本番用データを設定するメソッド
   func getTimeline(in context: Context, completion: @escaping (Timeline<LatestUserMemoEntry>) -> ()) {
 
-    let entry = LatestUserMemoEntry(date: .now, memo: SharedUserMemoStore.loadLatestMemo())
+    let entry = LatestUserMemoEntry(date: .now, displayState: currentDisplayState())
     completion(Timeline(entries: [entry], policy: .never))
   }
 
-  //    func relevances() async -> WidgetRelevances<Void> {
-  //        // Generate a list containing the contexts this widget is relevant in.
-  //    }
+
+  // MARK: - Methods
+
+  /// 共有UserDefaultsの保存状態を、表示すべき状態へ変換する
+  ///
+  private func currentDisplayState() -> LatestUserMemoEntry.DisplayState {
+
+    switch SharedUserMemoStore.loadLatestMemoState() {
+    case .memo(let memo):
+      return .memo(memo)
+    case .noMemos:
+      return .noMemos
+    case nil:
+      return .notSynced
+    }
+  }
 }
