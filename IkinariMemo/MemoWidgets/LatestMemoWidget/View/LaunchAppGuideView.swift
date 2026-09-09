@@ -29,7 +29,7 @@ struct LaunchAppGuideView: View {
 
   var body: some View {
     VStack(spacing: 20) {
-        Text("Widgetを利用するには\nアプリを一度起動する必要があります。")
+        Text("ウィジェットを利用するには\nアプリを一度起動する必要があります。")
             .font(.subheadline)
             .fontWeight(.regular)
             .multilineTextAlignment(.center)
