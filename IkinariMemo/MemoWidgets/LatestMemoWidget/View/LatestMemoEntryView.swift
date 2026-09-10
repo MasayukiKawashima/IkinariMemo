@@ -24,6 +24,11 @@ struct LatestMemoEntryView: View {
     }
   }
 
+  private var tapDisplayTarget: MemoDeepLink.DisplayTarget {
+    guard case .memo(let memo) = entry.displayState else { return .newMemo }
+    return .memo(id: memo.id)
+  }
+
 
   // MARK: - Body
 
@@ -43,6 +48,7 @@ struct LatestMemoEntryView: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    .widgetURL(MemoDeepLink.url(for: tapDisplayTarget))
     .containerBackground(for: .widget) {
       backgroundColor
     }
