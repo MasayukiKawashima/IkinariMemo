@@ -55,9 +55,8 @@ enum MemoDeepLink {
   // MARK: - 解析 アプリ本体側から利用
 
   /// 受け取った URL を表示内容へ変換する
-  /// 解釈できない URL は握り潰さず .newMemo として返し、
-  /// 「通常起動と同じ状態にする」という判断を呼び出し側に明示的に伝える
-  ///
+  /// 解釈できない URL は握り潰さず .newMemo として返し、「通常起動と同じ状態にする」という判断を呼び出し側に明示的に伝える
+
   static func displayTarget(from url: URL) -> DisplayTarget {
 
     guard url.scheme == scheme,
