@@ -46,7 +46,12 @@ struct TitleView: View {
           .onAppear {
             if viewModel.isFirstLaunch {
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                focusedField.wrappedValue = .title
+                let memo = CurrentUserMemoViewModel.shared.currentUserMemo
+                // 空の新規メモのときだけ自動フォーカスする
+                // Widget から既存メモを開いた場合はキーボードを出さない
+                if memo.title.isEmpty && memo.content.isEmpty {
+                  focusedField.wrappedValue = .title
+                }
                 viewModel.isFirstLaunch = false
               }
             }
