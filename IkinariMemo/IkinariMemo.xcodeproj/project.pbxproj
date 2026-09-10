@@ -88,6 +88,7 @@
 		FA52453E303D5B800059E1CE /* Exceptions for "IkinariMemo" folder in "MemoWidgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Shared/MemoDeepLink.swift,
 				Shared/SharedUserMemo.swift,
 				Shared/SharedUserMemoState.swift,
 				Shared/SharedUserMemoStore.swift,
