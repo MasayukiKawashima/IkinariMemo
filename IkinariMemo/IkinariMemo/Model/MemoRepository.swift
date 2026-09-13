@@ -9,6 +9,7 @@ import RealmSwift
 /// テスト時にモック差し替えができるようにするためのプロトコル（任意）
 protocol MemoRepositoryProtocol {
   func fetchAllSortedByCreatedAt() -> Results<UserMemo>
+  func fetch(id: String) -> UserMemo?
   func hasAnyMemo() -> Bool
   func observeAll(_ onChange: @escaping () -> Void) -> NotificationToken?
   func save(_ memo: UserMemo, title: String?, content: String?)
@@ -51,6 +52,11 @@ final class MemoRepository: MemoRepositoryProtocol {
   func fetchAllSortedByCreatedAt() -> Results<UserMemo> {
     realm.objects(UserMemo.self).sorted(byKeyPath: "createdAt", ascending: false)
   }
+
+  func fetch(id: String) -> UserMemo? {
+      guard let objectID = try? ObjectId(string: id) else { return nil }
+      return realm.object(ofType: UserMemo.self, forPrimaryKey: objectID)
+    }
 
   func hasAnyMemo() -> Bool {
     !realm.objects(UserMemo.self).isEmpty

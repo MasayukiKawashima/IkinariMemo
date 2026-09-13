@@ -15,8 +15,4 @@ class UserMemo: Object, ObjectKeyIdentifiable {
   @Persisted var content: String = ""
   @Persisted var createdAt: Date = Date()
   @Persisted var updatedAt: Date = Date()
-
-  override static func primaryKey() -> String? {
-    return "_id"
-  }
 }

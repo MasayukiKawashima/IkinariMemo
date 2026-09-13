@@ -35,6 +35,12 @@ struct IkinariMemoApp: App {
   var body: some Scene {
     WindowGroup {
       TopView().environmentObject(CurrentUserMemoViewModel.shared)
+
+      // Widget タップ時に表示するメモを決定する処理
+        .onOpenURL { url in
+          MemoOpenRouter.shared.handle(url)
+        }
+      
       // 何らかの理由によりRealm変更の購読が行われなかった場合の保険処理
       // アプリがフォアグラウンドに復帰した時に購読がされているかをチェックし、未購読なら購読処理を行う
         .onChange(of: scenePhase) { _, newPhase in
@@ -42,6 +48,6 @@ struct IkinariMemoApp: App {
             LatestMemoSynchronizer.shared.refreshNow()
           }
         }
-        }
     }
+  }
 }

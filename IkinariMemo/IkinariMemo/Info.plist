@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIDesignRequiresCompatibility</key>
-	<true/>
 	<key>AdUnitIDs</key>
 	<dict>
 		<key>TopScreenBannerID</key>
@@ -12,6 +10,19 @@
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ja</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>dev.kawashima.IkinariMemo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ikinarimemo</string>
+			</array>
+		</dict>
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>$(GADApplicationIdentifier)</string>
@@ -214,5 +225,7 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 </dict>
 </plist>
