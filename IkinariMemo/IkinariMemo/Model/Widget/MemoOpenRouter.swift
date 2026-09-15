@@ -46,26 +46,21 @@ final class MemoOpenRouter {
   // MARK: - Methods
 
   /// 受け取った URL を表示対象へ反映する
-
   func updateDisplayTarget(from url: URL) -> DisplayTargetUpdate {
 
-      switch MemoDeepLink.displayTarget(from: url) {
-      case .memo(let id):
-        return updateDisplayTarget(memoID: id)
+    switch MemoDeepLink.displayTarget(from: url) {
 
-      case .newMemo:
-        // 新規メモの用意は CurrentUserMemoViewModel の初期化が担うため何もしない
-        // 常駐中のタップで編集中のメモを消さないために意図的に何もしないようにしている
-        return .notUpdated
-      }
-    }
-
-  /// id に一致するメモを Realm から取得して表示対象にする
-    /// 見つからない場合（Widget のスナップショットが古く、既に削除済みなど）は
-    /// 何もせず、通常起動と同じ状態のままにする
-    private func updateDisplayTarget(memoID: String) -> DisplayTargetUpdate {
-      guard let memo = repository.fetch(id: memoID) else { return .notUpdated }
+    case .memo(let id):
+      // メモが見つからない場合（Widget のスナップショットが古く、既に削除済みなど）は
+      // 何もせず、通常起動と同じ状態のままにする
+      guard let memo = repository.fetch(id: id) else { return .notUpdated }
       currentUserMemoViewModel.upDate(userMemo: memo)
       return .updated
+
+    case .newMemo:
+      // 新規メモの用意は CurrentUserMemoViewModel の初期化が担うため何もしない
+      // 常駐中のタップで編集中のメモを消さないために意図的に何もしないようにしている
+      return .notUpdated
     }
+  }
 }
