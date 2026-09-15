@@ -20,7 +20,7 @@ struct IkinariMemoApp: App {
 
   // Widget からメモを開いた際にビュー階層を作り直すための ID
   // 値を変えると TopView 以下が再生成され、遷移スタックとサイドメニューが初期状態に戻る
-  @State private var rootID = UUID()
+  @State private var topViewID = UUID()
 
 
   // MARK: - Init
@@ -33,20 +33,26 @@ struct IkinariMemoApp: App {
     MobileAds.shared.start()
   }
 
-  
+
   // MARK: - Body
 
   var body: some Scene {
     WindowGroup {
       TopView()
-        .id(rootID)
+        .id(topViewID)
         .environmentObject(CurrentUserMemoViewModel.shared)
 
       // Widget タップ時に表示するメモを決定する処理
         .onOpenURL { url in
-          // メモを開けたときだけトップ画面へ戻す
-          if MemoOpenRouter.shared.handle(url) {
-            rootID = UUID()
+          switch MemoOpenRouter.shared.updateDisplayTarget(from: url) {
+
+          case .updated:
+            // 表示対象が変わったので、直前に開いていた画面に関わらずトップ画面を見せる
+            topViewID = UUID()
+
+          case .notUpdated:
+            // 表示対象が変わっていないため画面も動かさない
+            break
           }
         }
 
