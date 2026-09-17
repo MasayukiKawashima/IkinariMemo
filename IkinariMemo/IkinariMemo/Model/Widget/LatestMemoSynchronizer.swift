@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 // LatestMemoSynchronizerはRealmのUserMemoを監視して、監視開始時とUserMemoの変更時に共有UserDefaultsへ最新メモを同期する（sync）役割を持ったクラス
-@MainActor
 final class LatestMemoSynchronizer {
 
 

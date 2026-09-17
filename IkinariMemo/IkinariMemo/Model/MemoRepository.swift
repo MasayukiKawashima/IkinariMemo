@@ -10,6 +10,7 @@ import RealmSwift
 // MARK: - MemoRepositoryProtocol
 
 protocol MemoRepositoryProtocol {
+  
   func fetchAllSortedByCreatedAt() -> Results<UserMemo>
   func fetch(id: String) -> UserMemo?
   func hasAnyMemo() -> Bool
