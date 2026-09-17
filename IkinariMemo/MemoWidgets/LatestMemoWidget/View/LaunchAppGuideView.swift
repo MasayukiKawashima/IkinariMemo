@@ -22,6 +22,9 @@ import WidgetKit
 
 struct LaunchAppGuideView: View {
 
+
+  // MARK: - Properties
+
   @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 
 

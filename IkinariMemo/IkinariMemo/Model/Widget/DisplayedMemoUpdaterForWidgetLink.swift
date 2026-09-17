@@ -13,9 +13,6 @@ final class DisplayedMemoUpdaterForWidgetLink {
 
   // MARK: - DisplayTargetUpdate
 
-  /// URL から得た DisplayTarget を表示対象へ反映した結果
-  /// 反映しなかった理由（新規メモ指定／対象が削除済み）は
-  /// どちらも「表示対象は元のまま」に帰着するため区別しない
   enum DisplayTargetUpdate {
 
     /// 表示対象を Widget のメモへ更新した(currentUserMemoViewModelの更新）
