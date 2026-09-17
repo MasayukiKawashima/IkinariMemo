@@ -28,23 +28,22 @@ final class MemoRepository: MemoRepositoryProtocol {
 
   // MARK: - Properties
 
-  static let shared = MemoRepository()
   private let realm: Realm
 
 
   // MARK: - Init
 
   init(realm: Realm? = nil) {
-    if let realm {
-      self.realm = realm
-    } else {
-      do {
-        self.realm = try Realm()
-      } catch {
-        fatalError("Realm の初期化に失敗しました: \(error)")
+      if let realm {
+        self.realm = realm
+      } else {
+        do {
+          self.realm = try Realm()
+        } catch {
+          fatalError("Realm の初期化に失敗しました: \(error)")
+        }
       }
     }
-  }
 
 
   // MARK: - Methods
