@@ -48,11 +48,11 @@ struct IkinariMemoApp: App {
           switch updater.updateDisplayTarget(from: url) {
 
           case .updated:
-            // 表示対象が変わったので、直前に開いていた画面に関わらずトップ画面を見せる
+            // 表示対象が変わったので、直前に開いていた画面に関わらずトップ画面を見せる。そのためにtopViewIDを初期化。
             topViewID = UUID()
 
           case .notUpdated:
-            // 表示対象が変わっていないため画面も動かさない
+            // 表示対象が変わっていないため画面遷移も行わない
             break
           }
         }

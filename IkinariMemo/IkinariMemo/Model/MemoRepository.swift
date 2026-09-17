@@ -22,6 +22,7 @@ protocol MemoRepositoryProtocol {
 /// writeAndSyncStore は書き込み成功後に共有 UserDefaults（updateSharedStore）を必ず更新する。
 /// Widget のリロード（reloadWidget）は頻度制限があるため writeAndSyncStore には含めず、
 /// 削除時や編集終了時など必要な箇所で明示的に呼ぶ。
+
 final class MemoRepository: MemoRepositoryProtocol {
 
 
@@ -47,6 +48,7 @@ final class MemoRepository: MemoRepositoryProtocol {
   }
 
 
+  // MARK: - Methods
   // MARK: - 読み取り
 
   func fetchAllSortedByCreatedAt() -> Results<UserMemo> {
