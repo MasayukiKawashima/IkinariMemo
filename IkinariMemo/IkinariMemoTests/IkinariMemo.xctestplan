@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "71A5353B-69BA-4CAB-8050-CE9835AFE796",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:IkinariMemo.xcodeproj",
+        "identifier" : "FA5585A32E13B04400CF231E",
+        "name" : "IkinariMemoTests"
+      }
+    }
+  ],
+  "version" : 1
+}

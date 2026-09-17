@@ -8,7 +8,9 @@ import XCTest
 
 final class SharedUserMemoStoreTests: XCTestCase {
 
-    // 各テスト前後に共有ストアを空にして、テスト間の状態を独立させる
+    // 各テスト前後に共有ストアを .noMemos に戻して、テスト間の状態を独立させる。
+    // 現行仕様では saveLatestMemo(nil) はキー削除ではなく .noMemos を書き込むため、
+    // 未同期(nil)状態は作れない。公開APIのみで初期化するブラックボックス方針。
     override func setUpWithError() throws {
         SharedUserMemoStore.saveLatestMemo(nil)
     }
@@ -35,34 +37,33 @@ final class SharedUserMemoStoreTests: XCTestCase {
         )
     }
 
+    /// 状態から SharedUserMemo を取り出す。.memo 以外は nil。
+    private func loadedMemo() -> SharedUserMemo? {
+        if case .memo(let memo) = SharedUserMemoStore.loadLatestMemoState() {
+            return memo
+        }
+        return nil
+    }
+
     // MARK: - 保存 → 読み込み
 
     func test_saveThenLoad_returnsSameMemo() {
         let memo = makeMemo()
 
         SharedUserMemoStore.saveLatestMemo(memo)
-        let loaded = SharedUserMemoStore.loadLatestMemo()
 
-        XCTAssertEqual(loaded?.id, memo.id)
-        XCTAssertEqual(loaded?.title, memo.title)
-        XCTAssertEqual(loaded?.content, memo.content)
-        XCTAssertEqual(loaded?.createdAt, memo.createdAt)
-        XCTAssertEqual(loaded?.updatedAt, memo.updatedAt)
+        XCTAssertEqual(SharedUserMemoStore.loadLatestMemoState(), .memo(memo))
     }
 
-    // MARK: - nil 保存で削除される
+    // MARK: - nil 保存で .noMemos になる
 
-    func test_saveNil_loadReturnsNil() {
+    func test_saveNil_loadReturnsNoMemos() {
         SharedUserMemoStore.saveLatestMemo(makeMemo())
-        XCTAssertNotNil(SharedUserMemoStore.loadLatestMemo())
+        XCTAssertEqual(SharedUserMemoStore.loadLatestMemoState(), .memo(makeMemo()))
 
         SharedUserMemoStore.saveLatestMemo(nil)
 
-        XCTAssertNil(SharedUserMemoStore.loadLatestMemo())
-    }
-
-    func test_loadWithoutSave_returnsNil() {
-        XCTAssertNil(SharedUserMemoStore.loadLatestMemo())
+        XCTAssertEqual(SharedUserMemoStore.loadLatestMemoState(), .noMemos)
     }
 
     // MARK: - 文字数切り詰め
@@ -71,7 +72,7 @@ final class SharedUserMemoStoreTests: XCTestCase {
         let longTitle = String(repeating: "あ", count: 150)
         SharedUserMemoStore.saveLatestMemo(makeMemo(title: longTitle))
 
-        let loaded = SharedUserMemoStore.loadLatestMemo()
+        let loaded = loadedMemo()
 
         XCTAssertEqual(loaded?.title.count, 100)
         XCTAssertEqual(loaded?.title, String(repeating: "あ", count: 100))
@@ -81,7 +82,7 @@ final class SharedUserMemoStoreTests: XCTestCase {
         let longContent = String(repeating: "い", count: 600)
         SharedUserMemoStore.saveLatestMemo(makeMemo(content: longContent))
 
-        let loaded = SharedUserMemoStore.loadLatestMemo()
+        let loaded = loadedMemo()
 
         XCTAssertEqual(loaded?.content.count, 500)
         XCTAssertEqual(loaded?.content, String(repeating: "い", count: 500))
@@ -92,7 +93,7 @@ final class SharedUserMemoStoreTests: XCTestCase {
         let content = String(repeating: "b", count: 500) // ちょうど上限
         SharedUserMemoStore.saveLatestMemo(makeMemo(title: title, content: content))
 
-        let loaded = SharedUserMemoStore.loadLatestMemo()
+        let loaded = loadedMemo()
 
         XCTAssertEqual(loaded?.title, title)
         XCTAssertEqual(loaded?.content, content)
