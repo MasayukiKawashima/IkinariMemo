@@ -31,7 +31,7 @@ final class DisplayedMemoUpdaterForWidgetLink {
 
   // MARK: - Init
 
-  init(repository: MemoRepositoryProtocol = MemoRepository.shared,
+  init(repository: MemoRepositoryProtocol = MemoRepository(),
        currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
     self.repository = repository
     self.currentUserMemoViewModel = currentUserMemoViewModel

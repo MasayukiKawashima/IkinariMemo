@@ -25,7 +25,7 @@ class TitleViewModel: ObservableObject {
   // MARK: - Init
 
   init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared,
-       repository: MemoRepositoryProtocol = MemoRepository.shared) {
+       repository: MemoRepositoryProtocol = MemoRepository()) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
     self.repository = repository
 
