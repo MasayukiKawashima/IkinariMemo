@@ -28,8 +28,6 @@ final class DisplayedMemoUpdaterForWidgetLink {
 
   // MARK: - Properties
 
-  static let shared = DisplayedMemoUpdaterForWidgetLink()
-
   private let repository: MemoRepositoryProtocol
   private let currentUserMemoViewModel: CurrentUserMemoViewModel
 
