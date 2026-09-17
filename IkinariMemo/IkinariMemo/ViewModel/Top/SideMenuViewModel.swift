@@ -21,7 +21,7 @@ class SideMenuViewModel: ObservableObject {
 
   // MARK: - Init
 
-  init(repository: MemoRepositoryProtocol = MemoRepository.shared) {
+  init(repository: MemoRepositoryProtocol = MemoRepository()) {
     self.repository = repository
     observeMemos()
   }

@@ -13,14 +13,14 @@
 import SwiftUI
 import WidgetKit
 
-
-// MARK: - 説明
-// アプリ本体がまだ一度も同期していない場合に表示するView
-// アップデート後、一度もアプリを起動せずにウィジェットを追加した場合に出る
-// 「メモがありません」と表示すると不具合だと誤解されウィジェットを削除されてしまうため、
-// 次に取るべき行動（アプリを開く）を示す
+// アップデート後、一度もアプリを起動せずにウィジェットを追加した場合に出るView
+// アプリを起動していないとRealmと共有UserDefaultsの同期が行われていないので、Widgetが機能しない場合がある
+// なのでアプリを一度立ち上げてもらうことを目的としたView
 
 struct LaunchAppGuideView: View {
+
+
+  // MARK: - Properties
 
   @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 

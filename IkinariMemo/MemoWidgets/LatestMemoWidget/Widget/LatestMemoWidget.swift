@@ -9,6 +9,9 @@ import WidgetKit
 import SwiftUI
 
 struct LatestMemoWidget: Widget {
+  
+
+  // MARK: - WidgetConfiguration
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: WidgetKind.latestMemo, provider: LatestMemoProvider()) { entry in

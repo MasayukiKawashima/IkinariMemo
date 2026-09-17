@@ -6,8 +6,11 @@
 import Foundation
 import RealmSwift
 
-/// テスト時にモック差し替えができるようにするためのプロトコル（任意）
+
+// MARK: - MemoRepositoryProtocol
+
 protocol MemoRepositoryProtocol {
+  
   func fetchAllSortedByCreatedAt() -> Results<UserMemo>
   func fetch(id: String) -> UserMemo?
   func hasAnyMemo() -> Bool
@@ -18,35 +21,33 @@ protocol MemoRepositoryProtocol {
   func reloadWidgetTimeline()
 }
 
-/// Realm への全アクセスを集約する層。
-/// writeAndSyncStore は書き込み成功後に共有 UserDefaults（updateSharedStore）を必ず更新する。
-/// Widget のリロード（reloadWidget）は頻度制限があるため writeAndSyncStore には含めず、
-/// 削除時や編集終了時など必要な箇所で明示的に呼ぶ。
+
+// MARK: - MemoRepository
+
 final class MemoRepository: MemoRepositoryProtocol {
 
 
   // MARK: - Properties
 
-  static let shared = MemoRepository()
   private let realm: Realm
 
 
   // MARK: - Init
 
-  /// テストではインメモリ Realm などを注入できる
   init(realm: Realm? = nil) {
-    if let realm {
-      self.realm = realm
-    } else {
-      do {
-        self.realm = try Realm()
-      } catch {
-        fatalError("Realm の初期化に失敗しました: \(error)")
+      if let realm {
+        self.realm = realm
+      } else {
+        do {
+          self.realm = try Realm()
+        } catch {
+          fatalError("Realm の初期化に失敗しました: \(error)")
+        }
       }
     }
-  }
 
 
+  // MARK: - Methods
   // MARK: - 読み取り
 
   func fetchAllSortedByCreatedAt() -> Results<UserMemo> {
@@ -69,13 +70,12 @@ final class MemoRepository: MemoRepositoryProtocol {
 
   // MARK: - 書き込み
 
-  /// メモの新規保存 / 更新。
-  /// title / content は変更したい項目だけ渡す（nil の項目は据え置き）。
-  /// ※ プロパティの変更は必ず write トランザクション内で行う必要があるため、
-  ///   値の代入は writeAndSyncStore の中で実施している。
+  // メモの新規保存と更新。
+  // title 、 content は変更したい項目だけ渡す（nil の項目は据え置き）。
+  // プロパティの変更は必ず write トランザクション内で行う必要があるため、値の代入は writeAndSyncStore の中で実施している。
+
   func save(_ memo: UserMemo, title: String? = nil, content: String? = nil) {
-    // 逐次保存。共有 UserDefaults の更新のみ（writeAndSyncStore 内で実施）。
-    // Widget のリロードは頻度制限があるため行わず、編集終了時に reloadWidgetTimeline() で行う。
+
     writeAndSyncStore {
       if let title { memo.title = title }
       if let content { memo.content = content }
@@ -99,7 +99,7 @@ final class MemoRepository: MemoRepositoryProtocol {
     WidgetSync.reloadWidget()
   }
 
-  /// 編集終了時など、明示的に Widget のタイムラインを更新したいときに呼ぶ。
+  // 編集終了時など、明示的に Widget のタイムラインを更新したいときに呼ぶ。
   func reloadWidgetTimeline() {
     WidgetSync.reloadWidget()
   }
@@ -107,9 +107,9 @@ final class MemoRepository: MemoRepositoryProtocol {
 
   // MARK: - 共通処理
 
-  /// write トランザクションを実行し、成功したら共有 UserDefaults を最新へ更新する。
-  /// Widget のリロードは含めない（必要な箇所で WidgetSync.reloadWidget を呼ぶ）。
-  /// - Parameter updates: write トランザクション内で行うデータ更新処理
+  // Realmへの書き込みと共有UserDefaultsへの保存を行う
+  // Widget のリロード（reloadWidgetTimeline）は頻度制限があるため writeAndSyncStore には含めず、削除時や編集終了時など必要な箇所で明示的に呼ぶ。
+
   private func writeAndSyncStore(_ updates: () -> Void) {
     do {
       try realm.write {

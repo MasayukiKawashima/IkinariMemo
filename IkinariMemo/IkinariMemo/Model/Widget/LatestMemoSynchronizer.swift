@@ -8,12 +8,7 @@
 import Foundation
 import RealmSwift
 
-
-// MARK: - 説明
 // LatestMemoSynchronizerはRealmのUserMemoを監視して、監視開始時とUserMemoの変更時に共有UserDefaultsへ最新メモを同期する（sync）役割を持ったクラス
-
-
-@MainActor
 final class LatestMemoSynchronizer {
 
 
@@ -21,9 +16,7 @@ final class LatestMemoSynchronizer {
 
   // resultsとtoken（つまり、状態）を保持しなければいけないのでシングルトンとする
   static let shared = LatestMemoSynchronizer()
-
-  // Results と NotificationToken の両方を保持する必要がある。
-  // Results を保持しないと解放されて通知が止まる
+  
   private var results: Results<UserMemo>?
   private var token: NotificationToken?
 

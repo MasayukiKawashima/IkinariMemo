@@ -15,6 +15,9 @@ import WidgetKit
 
 enum WidgetSync {
 
+
+  // MARK: - Methods
+
   /// 最新メモを共有 UserDefaults に書き出す。
   /// Realm への書き込みのたびに呼び、Widget が参照するデータを常に最新に保つ。
   static func updateSharedStore() {
