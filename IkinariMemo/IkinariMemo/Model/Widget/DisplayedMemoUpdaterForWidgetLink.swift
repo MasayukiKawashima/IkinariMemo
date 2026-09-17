@@ -1,5 +1,5 @@
 //
-//  MemoOpenRouter.swift
+//  DisplayedMemoUpdaterForWidgetLink.swift
 //  IkinariMemo
 //
 //  Created by 川島真之 on 2026/09/10.
@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-final class MemoOpenRouter {
+final class DisplayedMemoUpdaterForWidgetLink {
 
 
   // MARK: - DisplayTargetUpdate
@@ -28,7 +28,7 @@ final class MemoOpenRouter {
 
   // MARK: - Properties
 
-  static let shared = MemoOpenRouter()
+  static let shared = DisplayedMemoUpdaterForWidgetLink()
 
   private let repository: MemoRepositoryProtocol
   private let currentUserMemoViewModel: CurrentUserMemoViewModel

@@ -44,7 +44,7 @@ struct IkinariMemoApp: App {
 
       // Widget タップ時に表示するメモを決定する処理
         .onOpenURL { url in
-          switch MemoOpenRouter.shared.updateDisplayTarget(from: url) {
+          switch DisplayedMemoUpdaterForWidgetLink.shared.updateDisplayTarget(from: url) {
 
           case .updated:
             // 表示対象が変わったので、直前に開いていた画面に関わらずトップ画面を見せる
