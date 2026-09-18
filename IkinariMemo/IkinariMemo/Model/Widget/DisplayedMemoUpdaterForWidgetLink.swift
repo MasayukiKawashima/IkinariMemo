@@ -25,13 +25,13 @@ final class DisplayedMemoUpdaterForWidgetLink {
   // MARK: - Properties
 
   private let repository: MemoRepositoryProtocol
-  private let currentUserMemoViewModel: CurrentUserMemoViewModel
+  private let currentUserMemoViewModel: CurrentUserMemoViewModelProtocol
 
 
   // MARK: - Init
 
   init(repository: MemoRepositoryProtocol = MemoRepository(),
-       currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+       currentUserMemoViewModel: CurrentUserMemoViewModelProtocol = CurrentUserMemoViewModel.shared) {
     self.repository = repository
     self.currentUserMemoViewModel = currentUserMemoViewModel
   }
