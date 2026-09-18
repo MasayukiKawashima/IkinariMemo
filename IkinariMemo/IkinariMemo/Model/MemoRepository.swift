@@ -12,6 +12,7 @@ import RealmSwift
 protocol MemoRepositoryProtocol {
   
   func fetchAllSortedByCreatedAt() -> Results<UserMemo>
+  func fetchLatestUpdated() -> UserMemo?
   func fetch(id: String) -> UserMemo?
   func hasAnyMemo() -> Bool
   func observeAll(_ onChange: @escaping () -> Void) -> NotificationToken?
@@ -52,6 +53,12 @@ final class MemoRepository: MemoRepositoryProtocol {
 
   func fetchAllSortedByCreatedAt() -> Results<UserMemo> {
     realm.objects(UserMemo.self).sorted(byKeyPath: "createdAt", ascending: false)
+  }
+
+  func fetchLatestUpdated() -> UserMemo? {
+    realm.objects(UserMemo.self)
+      .sorted(byKeyPath: "updatedAt", ascending: false)
+      .first
   }
 
   func fetch(id: String) -> UserMemo? {
@@ -115,7 +122,7 @@ final class MemoRepository: MemoRepositoryProtocol {
       try realm.write {
         updates()
       }
-      WidgetSync.updateSharedStore()
+      WidgetSync.updateSharedStore(using: self)
     } catch {
       assertionFailure("Realm 書き込みに失敗しました: \(error)")
     }

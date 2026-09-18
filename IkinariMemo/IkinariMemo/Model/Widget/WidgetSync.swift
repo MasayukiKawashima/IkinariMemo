@@ -20,16 +20,9 @@ enum WidgetSync {
 
   /// 最新メモを共有 UserDefaults に書き出す。
   /// Realm への書き込みのたびに呼び、Widget が参照するデータを常に最新に保つ。
-  static func updateSharedStore() {
-    autoreleasepool {
-      guard let realm = try? Realm() else {
-        assertionFailure("Realm を開けませんでした")
-        return
-      }
+  static func updateSharedStore(using repository: MemoRepositoryProtocol) {
 
-      let latest = realm.objects(UserMemo.self)
-        .sorted(byKeyPath: "updatedAt", ascending: false)
-        .first
+    let latest = repository.fetchLatestUpdated()
 
       SharedUserMemoStore.saveLatestMemo(latest.map {
         SharedUserMemo(id: $0.id.stringValue,
@@ -38,7 +31,7 @@ enum WidgetSync {
                        createdAt: $0.createdAt,
                        updatedAt: $0.updatedAt)
       })
-    }
+
   }
 
   /// Widget のタイムラインを再読み込みさせる。
