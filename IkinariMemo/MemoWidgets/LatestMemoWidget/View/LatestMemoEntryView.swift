@@ -48,6 +48,8 @@ struct LatestMemoEntryView: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    // tapDisplayTargetが.newMemoだった場合はMemoDeepLink.urlでnilが返され
+    //　.widgetURL(nil)となり、WidgetKitの標準起動になる
     .widgetURL(MemoDeepLink.url(for: tapDisplayTarget))
     .containerBackground(for: .widget) {
       backgroundColor
