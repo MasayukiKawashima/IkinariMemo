@@ -12,7 +12,7 @@ enum MemoDeepLink {
 
   // MARK: - Properties
 
-  static let scheme = "ikinarimemo"
+  private static let scheme = "ikinarimemo"
   private static let memoHost = "memo"
   private static let idKey = "id"
 
@@ -23,16 +23,13 @@ enum MemoDeepLink {
 
     case memo(id: String)
 
-    /// 空の新規メモを表示する（通常のアプリ起動と同じ状態）
-    /// メモ以外の状態の Widget タップ、および解釈できない URL がここに落ちる
+    // 空の新規メモを表示する（通常のアプリ起動と同じ状態）
+    // メモ以外の状態の Widget タップ、および解釈できない URL がここに落ちる
     case newMemo
   }
 
 
-  // MARK: - 生成 Widget 側から利用
-
-  /// 表示内容に対応する URL を作る
-  /// - Returns: .newMemo の場合は nil
+  // MARK: - URL生成 Widget 側から利用
 
   static func url(for target: DisplayTarget) -> URL? {
 
@@ -52,7 +49,7 @@ enum MemoDeepLink {
   }
 
 
-  // MARK: - 解析 アプリ本体側から利用
+  // MARK: - URL解析 アプリ本体側から利用
 
   /// 受け取った URL を表示内容へ変換する
   /// 解釈できない URL は握り潰さず .newMemo として返し、「通常起動と同じ状態にする」という判断を呼び出し側に明示的に伝える
@@ -67,9 +64,7 @@ enum MemoDeepLink {
             .value,
           !id.isEmpty
     else {
-      #if DEBUG
-      print("[MemoDeepLink] 解釈できない URL のため新規メモを表示します: \(url)")
-      #endif
+      print("[MemoDeepLink] 解釈できないURL。\(url)")
       return .newMemo
     }
 

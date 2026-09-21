@@ -8,7 +8,18 @@
 import Foundation
 import RealmSwift
 
-final class CurrentUserMemoViewModel: ObservableObject {
+
+// MARK: - CurrentUserMemoViewModelProtocol
+
+protocol CurrentUserMemoViewModelProtocol {
+
+  func upDate(userMemo: UserMemo)
+}
+
+
+// MARK: - CurrentUserMemoViewModel
+
+final class CurrentUserMemoViewModel: ObservableObject, CurrentUserMemoViewModelProtocol {
 
 
   // MARK: - Properties
