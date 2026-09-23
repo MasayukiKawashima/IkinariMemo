@@ -83,13 +83,8 @@ struct TopView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.bottom, screenHeight * contentViewBottomSpacerHeightRatio)
             }
-            .toolbar {
-              ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("閉じる") {
-                  focusedField = nil   // どちらの入力でも閉じられる
-                }
-              }
+            .keyboardCloseToolbar {
+              focusedField = nil   // どちらの入力でも閉じられる
             }
 
             Spacer()
