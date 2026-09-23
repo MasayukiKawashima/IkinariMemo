@@ -47,7 +47,12 @@ struct TitleView: View {
             guard viewModel.isFirstLaunch else { return }
             viewModel.isFirstLaunch = false
 
+            // FIXME: 閉じるボタンの実装について
             // キーボードツールバーの登録が完了するまで待つ
+            // 以前は0.1秒だったがこれだとツールバーの登録が完了する前にキーボードが表示されてしまい、
+            // 閉じるボタンが表示されないバグが発生した。
+            // なので0.5に延長したがこれは根本解決ではないので、キーボードツールバーに頼らない閉じるボタンの作成を検討したい。
+            // なのでTitleViewとTopViewの両方のキーボード閉じるボタン周りの調整を今後行う
             try? await Task.sleep(for: .milliseconds(500))
 
             // 待機中に画面が閉じられた場合は何もしない
