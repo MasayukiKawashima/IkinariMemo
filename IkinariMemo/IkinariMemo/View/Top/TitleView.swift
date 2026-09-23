@@ -43,17 +43,21 @@ struct TitleView: View {
           .lineLimit(1)
           .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
           .focused(focusedField, equals: .title)
-          .onAppear {
-            if viewModel.isFirstLaunch {
-              DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                let memo = CurrentUserMemoViewModel.shared.currentUserMemo
-                // 空の新規メモのときだけ自動フォーカスする
-                // Widget から既存メモを開いた場合はキーボードを出さない
-                if memo.title.isEmpty && memo.content.isEmpty {
-                  focusedField.wrappedValue = .title
-                }
-                viewModel.isFirstLaunch = false
-              }
+          .task {
+            guard viewModel.isFirstLaunch else { return }
+            viewModel.isFirstLaunch = false
+
+            // キーボードツールバーの登録が完了するまで待つ
+            try? await Task.sleep(for: .milliseconds(500))
+
+            // 待機中に画面が閉じられた場合は何もしない
+            guard !Task.isCancelled else { return }
+
+            let memo = CurrentUserMemoViewModel.shared.currentUserMemo
+            // 空の新規メモのときだけ自動フォーカスする
+            // Widget から既存メモを開いた場合はキーボードを出さない
+            if memo.title.isEmpty && memo.content.isEmpty {
+              focusedField.wrappedValue = .title
             }
           }
         }
