@@ -43,17 +43,26 @@ struct TitleView: View {
           .lineLimit(1)
           .font(.system(size: geometry.size.width * textFieldFontSizeRatio))
           .focused(focusedField, equals: .title)
-          .onAppear {
-            if viewModel.isFirstLaunch {
-              DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                let memo = CurrentUserMemoViewModel.shared.currentUserMemo
-                // 空の新規メモのときだけ自動フォーカスする
-                // Widget から既存メモを開いた場合はキーボードを出さない
-                if memo.title.isEmpty && memo.content.isEmpty {
-                  focusedField.wrappedValue = .title
-                }
-                viewModel.isFirstLaunch = false
-              }
+          .task {
+            guard viewModel.isFirstLaunch else { return }
+            viewModel.isFirstLaunch = false
+
+            // FIXME: 閉じるボタンの実装について
+            // キーボードツールバーの登録が完了するまで待つ
+            // 以前は0.1秒だったがこれだとツールバーの登録が完了する前にキーボードが表示されてしまい、
+            // 閉じるボタンが表示されないバグが発生した。
+            // なので0.5に延長したがこれは根本解決ではないので、キーボードツールバーに頼らない閉じるボタンの作成を検討したい。
+            // なのでTitleViewとTopViewの両方のキーボード閉じるボタン周りの調整を今後行う
+            try? await Task.sleep(for: .milliseconds(500))
+
+            // 待機中に画面が閉じられた場合は何もしない
+            guard !Task.isCancelled else { return }
+
+            let memo = CurrentUserMemoViewModel.shared.currentUserMemo
+            // 空の新規メモのときだけ自動フォーカスする
+            // Widget から既存メモを開いた場合はキーボードを出さない
+            if memo.title.isEmpty && memo.content.isEmpty {
+              focusedField.wrappedValue = .title
             }
           }
         }
