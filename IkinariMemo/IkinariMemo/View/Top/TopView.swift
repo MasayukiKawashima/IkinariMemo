@@ -89,6 +89,15 @@ struct TopView: View {
 
             Spacer()
 
+            //　AdBannerViewのダミー
+            // スクリーンショット、録画を行う時に使用
+//            Text("AdBanner")
+//                .foregroundColor(.white)
+//                .padding()
+//                .frame(height: 50)
+//                .frame(maxWidth: .infinity)
+//                .background(Color.gray)
+
             AdBannerView()
               .frame(height: 50)
           }
