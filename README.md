@@ -12,7 +12,7 @@
 ## ■ アプリのイメージ
 | |
 |-|
-| <img src="https://github.com/user-attachments/assets/cd748ecf-976b-44e8-ba76-dae14d5986da" width="300px"> |
+| <img src="https://github.com/user-attachments/assets/4870f759-bb29-4b5f-bbd2-0640d7659020" width="300px"> |
 
 ## ■ アプリを作ったきっかけ
 
