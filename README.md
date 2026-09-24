@@ -52,6 +52,7 @@
 | UI            | SwiftUI, UIKit   |
 | データベース        | Realm        |
 | 広告　　　　　　　　|AdMob          |
+| ウィジェット | WidgetKit |
 | コード整形         | SwiftLint    |
 | バージョン管理       | Git, GitHub  |
 | ブランチ戦略        |Git-flow       |
