@@ -91,7 +91,7 @@
 
 |ウィジェットの配置|編集画面の表示　　　　　|
 |---------------|--------------------|
-|               |                    |
+|<img src="https://github.com/user-attachments/assets/504c208d-5161-491a-858d-7ffa662f0f7f" width="300px">|<img src="https://github.com/user-attachments/assets/593200c8-0cf6-461d-9aac-797ccdac36d9" width="300px">|
 
 ## ■ 最後に
 ここまでご覧いただき誠にありがとうございました。
